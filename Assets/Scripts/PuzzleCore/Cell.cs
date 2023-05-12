@@ -1,84 +1,93 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Temp;
 using UnityEngine;
 
-public class Cell : MonoBehaviour
+namespace PuzzleCore
 {
-    #region Contants
+    public class Cell : MonoBehaviour
+    {
+        #region Contants
 
-    public const float Size = 1f;
+        public const float Size = 1f;
 
-    #endregion
+        #endregion
     
     
-    #region Colors
+        #region Colors
 
-    public static Color AvailableColor = Color.white;
-    public static Color HighlightedColor = Color.green;
-    public static Color UnAvailableColor = Color.gray;
+        private static readonly Color AvailableColor = Color.white;
+        private static readonly Color HighlightedColor = Color.green;
+        private static readonly Color UnAvailableColor = Color.gray;
 
-    #endregion
+        #endregion
 
 
-    #region Properties
+        #region Properties
 
-    public Vector3 Position => gameObject.transform.position;
+        public Vector3 Position => gameObject.transform.position;
 
-    public Vector3 RelevantPosition => _position;
+        public Vector3 RelevantPosition => _position;
 
-    public Vector3 ParentPosition => _parent.transform.position;
+        public Vector3 ParentPosition => _parent.transform.position;
     
-    public bool Available { get; set; } = true;
+        public bool Available { get; set; } = true;
 
-    public bool ShouldBeCleared { get; set; } = false;
+        public bool ShouldBeCleared { get; set; } = false;
 
-    public bool OrderedForPlacement { get; set; } = false;
+        public bool OrderedForPlacement { get; set; } = false;
 
-    public bool AnchorBlockPlacement { get; set; } = false;
+        public bool AnchorBlockPlacement { get; set; } = false;
 
-    #endregion
+        public PowerUp PowerUp { get; set; } = PowerUp.None;
+
+        #endregion
 
 
-    #region Private Values
+        #region Private Values
 
-    private SpriteRenderer _renderer;
-    private Transform _parent;
-    private Vector3 _position;
+        private SpriteRenderer _renderer;
+        private Transform _parent;
+        private Vector3 _position;
 
-    #endregion
+        #endregion
     
 
     
 
-    private void Awake()
-    {
-        _renderer = GetComponent<SpriteRenderer>();
-        _parent = transform.parent;
-        _position = _parent.transform.position + gameObject.transform.position;
-    }
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+            _parent = transform.parent;
+            _position = _parent.transform.position + gameObject.transform.position;
+        }
 
-    public void ChangeColor(bool t)
-    {
-        _renderer.color = t ? Color.green: Color.white;
-    }
+        private void SetColor(Color color)
+        {
+            _renderer.color = color;
+        }
 
-    public void SetBlock()
-    {
-        _renderer.color = Color.gray;
-    }
+        public void SetAvailable()
+        {
+            ShouldBeCleared = false;
+            Available = true;
+            AnchorBlockPlacement = false;
+            OrderedForPlacement = false;
+            PowerUp = PowerUp.None;
+            SetColor(AvailableColor);
+        }
 
-    public void SetColor(Color color)
-    {
-        _renderer.color = color;
-    }
+        public void SetUnavailable()
+        {
+            Available = false;
+            ShouldBeCleared = false;
+            AnchorBlockPlacement = false;
+            OrderedForPlacement = false;
+            SetColor(UnAvailableColor);
+        }
 
-    public void Clear()
-    {
-        ShouldBeCleared = false;
-        Available = true;
-        AnchorBlockPlacement = false;
-        OrderedForPlacement = false;
-        SetColor(AvailableColor);
+        public void SetHighlighted()
+        {
+            OrderedForPlacement = true;
+            SetColor(HighlightedColor);
+        }
     }
 }

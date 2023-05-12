@@ -1,17 +1,17 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
-namespace PuzzleCore
+namespace Temp
 {
-    public class PuzzleFiguresSpawner
+    public class PuzzleFigureSpawner
     {
         #region Private Values
 
-        private readonly PuzzleFigure[] _figurePrefabs;
+        private readonly GameObject[] _figurePrefabs;
         
         private readonly Transform[] _spawnPoints;
 
@@ -24,22 +24,22 @@ namespace PuzzleCore
 
         #region Constructor
 
-        public PuzzleFiguresSpawner(PuzzleFigure[] figurePrefabs, Transform[] spawnPoints)
+        public PuzzleFigureSpawner(GameObject[] figurePrefabs, Transform[] spawnPoints, float[] weights)
         {
             _figurePrefabs = figurePrefabs;
             _spawnPoints = spawnPoints;
 
-            CountFiguresWeights();
+            CountFiguresWeights(weights);
         }
 
-        private void CountFiguresWeights()
+        private void CountFiguresWeights(float[] weights)
         {
-            _allWeight = _figurePrefabs.Sum(puzzleFigure => puzzleFigure.Weight);
+            _allWeight = weights.Sum();
             _figureWeights = new float[_figurePrefabs.Length + 1];
             _figureWeights[0] = 0;
             for (var i = 1; i < _figurePrefabs.Length + 1; i++)
             {
-                _figureWeights[i] = _figureWeights[i - 1] + _figurePrefabs[i - 1].Weight;
+                _figureWeights[i] = _figureWeights[i - 1] + weights[i - 1];
             }
         }
 
@@ -48,9 +48,9 @@ namespace PuzzleCore
 
         #region Handling Puzzle Figures
 
-        public PuzzleFigure[] SpawnFigures()
+        public Figure[] SpawnFigures()
         {
-            var activeFigures = new PuzzleFigure[_spawnPoints.Length];
+            var activeFigures = new Figure[_spawnPoints.Length];
             var indices = new List<int>(_spawnPoints.Length);
         
             for (int i = 0; i < _spawnPoints.Length; i++)
@@ -62,9 +62,9 @@ namespace PuzzleCore
                     index = GetNewSpawnFigureIndex();
                 }
                 indices.Add(index);
-                var figure = Object.Instantiate(_figurePrefabs[index]);
-                figure.Initialize();
-                figure.SetPositionByCenter(_spawnPoints[i].position);
+                var gameObject = Object.Instantiate(_figurePrefabs[index]);
+                var figure = new Figure(gameObject, 0.5f);
+                figure.SetNewPosition(_spawnPoints[i].position, true, false);
                 activeFigures[i] = figure;
                 SetPowerUps(figure);
             }
@@ -72,9 +72,9 @@ namespace PuzzleCore
             return activeFigures;
         }
 
-        public void RemoveFigure(PuzzleFigure figure)
+        public void RemoveFigure(Figure figure)
         {
-            Object.Destroy(figure.gameObject);
+            Object.Destroy(figure.View);
         }
 
         #endregion
@@ -94,10 +94,9 @@ namespace PuzzleCore
             throw new Exception("Incorrect weight array or weight generation");
         }
 
-        private void SetPowerUps(PuzzleFigure figure)
+        private void SetPowerUps(Figure figure)
         {
             
         }
     }
 }
-

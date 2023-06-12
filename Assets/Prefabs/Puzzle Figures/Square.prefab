@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 2860801968246240211}
   - component: {fileID: 1951813705104472975}
   - component: {fileID: 8904924878538768885}
-  - component: {fileID: 2048210854580791187}
+  - component: {fileID: -8163617633210909495}
   m_Layer: 10
   m_Name: Square
   m_TagString: Untagged
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4174574383263972237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -310,7 +310,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.0212231, y: 1.9974756}
   m_EdgeRadius: 0
---- !u!114 &2048210854580791187
+--- !u!114 &-8163617633210909495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,14 +319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4174574383263972237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232e87fb07ac4e6dbb90bf7a471f019d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ccab70efb45ad43b7647f575f6e2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks:
-  - {fileID: 8206427605112453517}
-  - {fileID: 4150718918799512957}
-  - {fileID: 3321676208923064227}
-  weight: 0.299
+  weight: 0.707
 --- !u!1 &8206427605112453517
 GameObject:
   m_ObjectHideFlags: 0

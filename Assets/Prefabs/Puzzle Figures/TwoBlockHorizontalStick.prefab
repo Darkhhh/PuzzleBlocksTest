@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4697065225952311104}
   - component: {fileID: 4697065225952311105}
   - component: {fileID: 4697065225952311118}
-  - component: {fileID: -9139878918336565943}
+  - component: {fileID: 993892249908715139}
   m_Layer: 10
   m_Name: TwoBlockHorizontalStick
   m_TagString: Untagged
@@ -113,7 +113,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9883499, y: 1.0040479}
   m_EdgeRadius: 0
---- !u!114 &-9139878918336565943
+--- !u!114 &993892249908715139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,13 +122,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4697065225952311117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232e87fb07ac4e6dbb90bf7a471f019d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ccab70efb45ad43b7647f575f6e2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idTag: 0
-  blocks:
-  - {fileID: 4697065226248062602}
-  weight: 0.778
+  weight: 0.659
 --- !u!1 &4697065226248062602
 GameObject:
   m_ObjectHideFlags: 0

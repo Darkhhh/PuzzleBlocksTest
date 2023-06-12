@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3145263687668632114}
   - component: {fileID: 4962580511128889500}
   - component: {fileID: 964933256571066155}
-  - component: {fileID: 432096593798778985}
+  - component: {fileID: 6435163923891755145}
   m_Layer: 10
   m_Name: LongAngleRightBottom
   m_TagString: Untagged
@@ -196,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7508422817867541092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -310,7 +310,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9939008, y: 1}
   m_EdgeRadius: 0
---- !u!114 &432096593798778985
+--- !u!114 &6435163923891755145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -319,15 +319,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7508422817867541092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232e87fb07ac4e6dbb90bf7a471f019d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ccab70efb45ad43b7647f575f6e2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idTag: 0
-  blocks:
-  - {fileID: 6226706487885736230}
-  - {fileID: 7994868410705147027}
-  - {fileID: 2043748560279957245}
-  weight: 0.629
+  weight: 0.899
 --- !u!1 &7994868410705147027
 GameObject:
   m_ObjectHideFlags: 0

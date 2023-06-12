@@ -1,0 +1,6 @@
+.in-game-label {
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
+    color: rgba(159, 65, 65, 255);
+}

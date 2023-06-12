@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 1492295189104403696}
   - component: {fileID: 2860801968246240211}
   - component: {fileID: 1951813705104472975}
-  - component: {fileID: 2048210854580791187}
+  - component: {fileID: 6862379709212252021}
   m_Layer: 10
   m_Name: LongHorizontalDonat
   m_TagString: Untagged
@@ -541,7 +541,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.9884562, y: 2.9717402}
   m_EdgeRadius: 0
---- !u!114 &2048210854580791187
+--- !u!114 &6862379709212252021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,21 +550,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4174574383263972237}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232e87fb07ac4e6dbb90bf7a471f019d, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ccab70efb45ad43b7647f575f6e2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idTag: 0
-  blocks:
-  - {fileID: 8206427605112453517}
-  - {fileID: 4150718918799512957}
-  - {fileID: 3321676208923064227}
-  - {fileID: 2792956459988802891}
-  - {fileID: 2612043819126113536}
-  - {fileID: 6307611184378487903}
-  - {fileID: 6907483435862094639}
-  - {fileID: 1934739211587445349}
-  - {fileID: 8651675696525874563}
-  weight: 0.114
+  weight: 0.087
 --- !u!1 &6307611184378487903
 GameObject:
   m_ObjectHideFlags: 0

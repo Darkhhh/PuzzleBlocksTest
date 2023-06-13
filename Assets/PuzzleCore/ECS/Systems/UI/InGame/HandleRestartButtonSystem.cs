@@ -2,6 +2,7 @@
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
 using UI.InGame;
 
@@ -52,7 +53,9 @@ namespace PuzzleCore.ECS.Systems.UI.InGame
             foreach (var entity in _cellsFilter.Value)
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
-                c.View.SetSimple();
+                //TODO Experimental
+                c.View.ChangeState(CellView.CellState.Default);
+                //c.View.SetSimple();
                 c.Available = true;
                 _orderedCellComponents.Value.Del(entity);
                 if (_clearingCellsComponents.Value.Has(entity)) _clearingCellsComponents.Value.Del(entity);

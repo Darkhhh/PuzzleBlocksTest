@@ -99,6 +99,7 @@ namespace PuzzleCore.ECS
                 .Add(new HandleManualPowerUpReleaseSystem())
                 .Add(new RoughClearPuzzleGridSystem(powerUpsHandler))
                 
+                .Add(new HighlightDestroyableCellsSystem())
                 .Add(new ReHighlightGridSystem())
                 .Add(new DeHighlightGridSystem())
 

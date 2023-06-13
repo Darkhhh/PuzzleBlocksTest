@@ -1,6 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
+using PuzzleCore.ECS.Views;
 
 namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
 {
@@ -31,7 +32,9 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
             foreach (var entity in _clearingCellsFilter.Value)
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
-                c.View.SetSimple();
+                //TODO Experiments
+                c.View.ChangeState(CellView.CellState.Default);
+                //c.View.SetSimple();
                 c.Available = true;
                 _clearingCellsComponents.Value.Del(entity);
             }

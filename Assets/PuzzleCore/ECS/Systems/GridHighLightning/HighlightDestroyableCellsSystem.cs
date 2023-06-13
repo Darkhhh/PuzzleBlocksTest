@@ -4,18 +4,23 @@ using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Common;
 using PuzzleCore.ECS.Components;
+using PuzzleCore.ECS.Components.Events;
+using PuzzleCore.ECS.SharedData;
 using PuzzleCore.ECS.Views;
+using SevenBoldPencil.EasyEvents;
 using UnityEngine;
 
-namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
+namespace PuzzleCore.ECS.Systems.GridHighLightning
 {
-    public class CheckFullRowAndColumnsSystem : IEcsInitSystem, IEcsRunSystem
+    public class HighlightDestroyableCellsSystem : IEcsInitSystem, IEcsRunSystem
     {
         #region ECS Filters
 
         private readonly EcsFilterInject<Inc<CellComponent>> _cellsFilter = default;
         
         private readonly EcsFilterInject<Inc<ShouldBeRemovedFigureComponent>> _removedFiguresFilter = default;
+        
+        private readonly EcsFilterInject<Inc<CellOrderedForPlacementComponent, CellComponent>> _orderedCellsFilter = default;
 
         #endregion
 
@@ -25,6 +30,8 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
         private readonly EcsPoolInject<CellComponent> _cellComponents = default;
         
         private readonly EcsPoolInject<ShouldBeClearedCellComponent> _clearingCellsComponents = default;
+        
+        private readonly EcsPoolInject<CellOrderedForPlacementComponent> _orderedCellsComponents = default;
 
         #endregion
 
@@ -33,36 +40,34 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
 
         private readonly Dictionary<Vector3Int, int> _entityCellsByPosition = new();
         private int _xOffset, _yOffset, _edge;
+        private EventsBus _events;
 
         #endregion
         
         
         public void Init(IEcsSystems systems)
         {
+            _events = systems.GetShared<SystemsSharedData>().EventsBus;
             ref var firstCell = ref _cellComponents.Value.Get(_cellsFilter.Value.GetRawEntities()[0]);
             _xOffset = (int) firstCell.View.ParentPosition.x;
             _yOffset = (int) firstCell.View.ParentPosition.y;
             _edge = Mathf.RoundToInt((float)Math.Sqrt(_cellsFilter.Value.GetEntitiesCount())) / 2;
-            
             foreach (var entity in _cellsFilter.Value)
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
                 _entityCellsByPosition.Add(c.Position.GetIntVector(), entity);
             }
         }
-        
+
         public void Run(IEcsSystems systems)
         {
-            if (_removedFiguresFilter.Value.GetEntitiesCount() == 0) return;
+            if (!_events.HasEventSingleton<HighlightGridEvent>()) return;
 
-            
-            
-            // _entityCellsByPosition.Clear();
-            // foreach (var entity in _cellsFilter.Value)
-            // {
-            //     ref var c = ref _cellComponents.Value.Get(entity);
-            //     _entityCellsByPosition.Add(c.Position.GetIntVector(), entity);
-            // }
+            foreach (var entity in _cellsFilter.Value)
+            {
+                ref var cell = ref _cellComponents.Value.Get(entity);
+                cell.View.ChangeState(CellView.CellState.Occupied);
+            }
             
             var clearingCells = new List<int>();
             for (var x = -_edge; x <= _edge; x += (int)CellView.Size)
@@ -76,7 +81,7 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available)
+                    if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
                     {
                         columnClearingCellsEntities.Clear();
                         break;
@@ -97,7 +102,7 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
                     if (!_entityCellsByPosition.TryGetValue(cellPosition, out var entity))
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available)
+                    if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
                     {
                         rowClearingCellsEntities.Clear();
                         break;
@@ -110,11 +115,11 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
 
             foreach (var entity in clearingCells)
             {
-                if (_clearingCellsComponents.Value.Has(entity)) continue;
-                _clearingCellsComponents.Value.Add(entity);
+                ref var cell = ref _cellComponents.Value.Get(entity);
+                //TODO Experiments
+                cell.View.ChangeState(CellView.CellState.Destroyable);
+                //cell.View.SetDestroyable(cell.Available);
             }
-            
-            //_entityCellsByPosition.Clear();
         }
     }
 }

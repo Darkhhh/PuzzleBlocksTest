@@ -66,7 +66,9 @@ namespace PuzzleCore.ECS.Systems.FigureHandling
                 foreach (var ey in _orderedCellsFilter.Value)
                 {
                     ref var cell = ref _cellComponents.Value.Get(ey);
-                    cell.View.SetUnAvailable();
+                    //TODO Experiments
+                    cell.View.ChangeState(CellView.CellState.Occupied);
+                    //cell.View.SetUnAvailable();
                     cell.Available = false;
                 }
 

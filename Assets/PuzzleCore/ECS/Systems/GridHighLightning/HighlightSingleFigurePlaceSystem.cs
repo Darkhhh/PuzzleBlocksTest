@@ -5,6 +5,7 @@ using PuzzleCore.ECS.Common;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.Components.Events;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
 using UnityEngine;
 
@@ -63,7 +64,8 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
 
             var blockPositions = figure.RelativeBlockPositions;
             ref var cell = ref _cellComponents.Value.Get(placeData.AnchorCellEntity);
-            cell.View.SetSuggestion();
+            cell.View.ChangeState(CellView.CellState.Suggested);
+            //cell.View.SetSuggestion();
             var cellPosition = cell.Position.GetIntVector();
             for (var i = 0; i < blockPositions.Length; i++)
             {
@@ -71,7 +73,8 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                         out var e)) continue;
                 
                 ref var c = ref _cellComponents.Value.Get(e);
-                c.View.SetSuggestion();
+                //c.View.SetSuggestion();
+                c.View.ChangeState(CellView.CellState.Suggested);
             }
         }
 

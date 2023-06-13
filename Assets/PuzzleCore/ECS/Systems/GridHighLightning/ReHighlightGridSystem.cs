@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.Components.Events;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
 
 namespace PuzzleCore.ECS.Systems.GridHighLightning
@@ -45,7 +46,9 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
             {
                 ref var cell = ref _cellComponents.Value.Get(entity);
                 if(cell.View.Suggested) continue;
-                cell.View.SetAvailable();
+                // TODO Experiments
+                cell.View.ChangeState(CellView.CellState.Default);
+                //cell.View.SetAvailable(cell.Available);
             }
             
             foreach (var entity in _orderedCellsFilter.Value)
@@ -53,9 +56,14 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                 ref var cell = ref _cellComponents.Value.Get(entity);
                 if (_dragPowerUpFilter.Value.GetEntitiesCount() > 0)
                 {
-                    if (!cell.Available) cell.View.SetTarget();
+                    //if (!cell.Available) cell.View.SetTarget();
+                    cell.View.ChangeState(CellView.CellState.Targeted);
                 }
-                else cell.View.SetHighlighted();
+                else
+                {
+                    cell.View.ChangeState(CellView.CellState.Highlighted);
+                    //cell.View.SetHighlighted();
+                }
             }
         }
     }

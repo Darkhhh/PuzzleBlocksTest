@@ -117,7 +117,7 @@ namespace PuzzleCore.ECS.Views
         #endregion
 
 
-        public void ChangeState(CellState newState)
+        public bool ChangeState(CellState newState)
         {
             switch (_currentState)
             {
@@ -130,7 +130,7 @@ namespace PuzzleCore.ECS.Views
                     break;
                 case CellState.Destroyable:
                 {
-                    if (newState != CellState.Default) return;
+                    if (newState != CellState.Default) return false;
                     _lastState = CellState.Destroyable;
                     _currentState = newState;
                     SetState(newState);
@@ -138,7 +138,7 @@ namespace PuzzleCore.ECS.Views
                     break;
                 case CellState.Suggested:
                 {
-                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Occupied)) return;
+                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Occupied)) return false;
                     _lastState = CellState.Suggested;
                     _currentState = newState;
                     SetState(newState);
@@ -146,7 +146,7 @@ namespace PuzzleCore.ECS.Views
                     break;
                 case CellState.Highlighted:
                 {
-                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Occupied)) return;
+                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Occupied)) return false;
                     _lastState = CellState.Highlighted;
                     _currentState = newState;
                     SetState(newState);
@@ -154,7 +154,7 @@ namespace PuzzleCore.ECS.Views
                     break;
                 case CellState.Occupied:
                 {
-                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Targeted)) break;
+                    if (newState is not (CellState.Default or CellState.Destroyable or CellState.Targeted)) return false;
                     _lastState = CellState.Occupied;
                     _currentState = newState;
                     SetState(newState);
@@ -162,7 +162,7 @@ namespace PuzzleCore.ECS.Views
                     break;
                 case CellState.Targeted:
                 {
-                    if (newState is not (CellState.Default or CellState.Occupied)) return;
+                    if (newState is not (CellState.Default or CellState.Occupied)) return false;
                     _lastState = CellState.Targeted;
                     _currentState = newState;
                     SetState(newState);
@@ -171,6 +171,8 @@ namespace PuzzleCore.ECS.Views
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
+            return true;
         }
 
         private void SetState(CellState state)

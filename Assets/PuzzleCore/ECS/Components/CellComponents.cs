@@ -24,4 +24,16 @@ namespace PuzzleCore.ECS.Components
 
         public PowerUpView View;
     }
+    
+    public struct DefaultCellStateComponent { }
+    
+    public struct SuggestedCellStateComponent { }
+    
+    public struct HighlightedCellStateComponent { }
+    
+    public struct OccupiedCellStateComponent { }
+    
+    public struct DestroyableCellStateComponent { }
+    
+    public struct TargetedCellStateComponent { }
 }

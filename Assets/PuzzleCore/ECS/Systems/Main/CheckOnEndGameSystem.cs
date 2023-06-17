@@ -40,7 +40,7 @@ namespace PuzzleCore.ECS.Systems.Main
                 {
                     ref var cell = ref _cellComponents.Value.Get(entity);
                     
-                    if (!cell.Available) continue;
+                    //if (!cell.Available) continue;
                     if (!FigureCanBePlaced(cell.Position.GetIntVector(), figure.RelativeBlockPositions)) continue;
 
                     placeableFigures++;
@@ -77,7 +77,7 @@ namespace PuzzleCore.ECS.Systems.Main
                         out var entity)) return false;
                 
                 ref var c = ref _cellComponents.Value.Get(entity);
-                if (!c.Available) return false;
+                //if (!c.Available) return false;
             }
 
             return true;

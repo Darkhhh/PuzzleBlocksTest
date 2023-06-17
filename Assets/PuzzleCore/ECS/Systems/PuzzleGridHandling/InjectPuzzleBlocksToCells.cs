@@ -22,7 +22,7 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
             {
                 ref var cell = ref cells.Get(entity);
                 
-                cell.View.InjectPuzzleBlock(_handler.GetPuzzleBlock());
+                //cell.View.InjectPuzzleBlock(_handler.GetPuzzleBlock());
             }
         }
     }

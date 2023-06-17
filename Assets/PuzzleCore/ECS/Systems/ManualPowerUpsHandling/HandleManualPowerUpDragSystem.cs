@@ -10,6 +10,8 @@ namespace PuzzleCore.ECS.Systems.ManualPowerUpsHandling
     /// </summary>
     public class HandleManualPowerUpDragSystem : IEcsRunSystem
     {
+        //TODO Реагировать на событие DraggableOverGridObjectTakenEvent
+        
         private readonly EcsFilterInject<Inc<ManualPowerUp, DraggingObjectComponent>> _draggingManualPowerUp = default;
         private readonly EcsPoolInject<ManualPowerUp> _manualPowerUpComponents = default;
         private readonly EcsPoolInject<DraggingObjectComponent> _draggingObjectComponents = default;

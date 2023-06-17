@@ -40,8 +40,8 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
         public void Init(IEcsSystems systems)
         {
             ref var firstCell = ref _cellComponents.Value.Get(_cellsFilter.Value.GetRawEntities()[0]);
-            _xOffset = (int) firstCell.View.ParentPosition.x;
-            _yOffset = (int) firstCell.View.ParentPosition.y;
+            //_xOffset = (int) firstCell.View.ParentPosition.x;
+            //_yOffset = (int) firstCell.View.ParentPosition.y;
             _edge = Mathf.RoundToInt((float)Math.Sqrt(_cellsFilter.Value.GetEntitiesCount())) / 2;
             
             foreach (var entity in _cellsFilter.Value)
@@ -76,11 +76,11 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available)
-                    {
-                        columnClearingCellsEntities.Clear();
-                        break;
-                    }
+                    // if (cell.Available)
+                    // {
+                    //     columnClearingCellsEntities.Clear();
+                    //     break;
+                    // }
                     columnClearingCellsEntities.Add(entity);
                 }
                 
@@ -97,11 +97,11 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
                     if (!_entityCellsByPosition.TryGetValue(cellPosition, out var entity))
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available)
-                    {
-                        rowClearingCellsEntities.Clear();
-                        break;
-                    }
+                    // if (cell.Available)
+                    // {
+                    //     rowClearingCellsEntities.Clear();
+                    //     break;
+                    // }
                     rowClearingCellsEntities.Add(entity);
                 }
                 

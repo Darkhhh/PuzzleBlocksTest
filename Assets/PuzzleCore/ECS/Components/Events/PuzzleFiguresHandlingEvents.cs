@@ -10,4 +10,9 @@ namespace PuzzleCore.ECS.Components.Events
         public int Entity;
         public bool Increase;
     }
+
+    public struct AddPowerUpEvent : IEventSingleton
+    {
+        public bool[] Data;
+    }
 }

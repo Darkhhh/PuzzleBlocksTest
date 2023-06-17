@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.Components.Events;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Systems.Experimental.CellHandling;
 using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
                 //TODO Experiments
-                c.View.ChangeState(CellView.CellState.Default);
+                c.View.ChangeState(CellStateEnum.Default);
                 // if (c.View.Suggested) continue;
                 // c.View.SetAvailable(c.Available);
             }

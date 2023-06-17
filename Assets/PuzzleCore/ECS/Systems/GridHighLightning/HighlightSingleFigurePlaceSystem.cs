@@ -64,7 +64,7 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
 
             var blockPositions = figure.RelativeBlockPositions;
             ref var cell = ref _cellComponents.Value.Get(placeData.AnchorCellEntity);
-            cell.View.ChangeState(CellView.CellState.Suggested);
+            //cell.View.ChangeState(CellState.Suggested);
             //cell.View.SetSuggestion();
             var cellPosition = cell.Position.GetIntVector();
             for (var i = 0; i < blockPositions.Length; i++)
@@ -74,7 +74,7 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                 
                 ref var c = ref _cellComponents.Value.Get(e);
                 //c.View.SetSuggestion();
-                c.View.ChangeState(CellView.CellState.Suggested);
+                //c.View.ChangeState(CellState.Suggested);
             }
         }
 

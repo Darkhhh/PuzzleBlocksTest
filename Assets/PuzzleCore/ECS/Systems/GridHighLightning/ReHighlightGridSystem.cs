@@ -45,9 +45,9 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
             foreach (var entity in _cellsFilter.Value)
             {
                 ref var cell = ref _cellComponents.Value.Get(entity);
-                if(cell.View.Suggested) continue;
+                //if(cell.View.Suggested) continue;
                 // TODO Experiments
-                cell.View.ChangeState(CellView.CellState.Default);
+                //cell.View.ChangeState(CellState.Default);
                 //cell.View.SetAvailable(cell.Available);
             }
             
@@ -57,11 +57,11 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                 if (_dragPowerUpFilter.Value.GetEntitiesCount() > 0)
                 {
                     //if (!cell.Available) cell.View.SetTarget();
-                    cell.View.ChangeState(CellView.CellState.Targeted);
+                    //cell.View.ChangeState(CellState.Targeted);
                 }
                 else
                 {
-                    cell.View.ChangeState(CellView.CellState.Highlighted);
+                    //cell.View.ChangeState(CellState.Highlighted);
                     //cell.View.SetHighlighted();
                 }
             }

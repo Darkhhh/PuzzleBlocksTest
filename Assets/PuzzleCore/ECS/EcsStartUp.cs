@@ -66,11 +66,11 @@ namespace PuzzleCore.ECS
             #region Init Systems
 
             _initSystems
-                .Add(new AssignCellsSystem(grid))
-                .Add(new InjectPuzzleBlocksToCells(handler))
-                .Add(new InjectTargetBlockSystem(targetPrefab))
-                .Add(new AssignManualPowerUpsSystem(manualPowerUpsStorage))
-                .Add(new InGameUserInterfaceInitSystem(uiHandler))
+                .Add(new AssignCellsSystem(grid))                                                                                       // +
+                .Add(new InjectPuzzleBlocksToCells(handler))                                                                            // +
+                .Add(new InjectTargetBlockSystem(targetPrefab))                                                                         // +
+                .Add(new AssignManualPowerUpsSystem(manualPowerUpsStorage))                                                             // +
+                .Add(new InGameUserInterfaceInitSystem(uiHandler))                                                                      // +
                 .Inject()
                 .Init();
 
@@ -79,15 +79,20 @@ namespace PuzzleCore.ECS
             #region GamePlay Systems
 
             _systems
-                .Add(new DetectUserInputSystem(sceneCamera))
-                .Add(new AssignPowerUpToFigureSystem(spawnPoints.Length, powerUpProbability))
-                .Add(new CreateFiguresSystem(handler, spawnPoints))
-                .Add(new AddPowerUpOnFigureSystem(powerUpsHandler))
+                .Add(new DetectUserInputSystem(sceneCamera))                                                                            // +
+                .Add(new AssignPowerUpToFigureSystem(spawnPoints.Length, powerUpProbability))                                           // +
+                .Add(new CreateFiguresSystem(handler, spawnPoints))                                                                     // +
+                .Add(new AddPowerUpOnFigureSystem(powerUpsHandler))                                                                     // +
+                
+                
+                
                 .Add(new DetectDraggableObjectSystem(LayerMask.GetMask("PuzzleFigure", "ManualPowerUp")))
                 .Add(new DetectDraggableOverGridObjectSystem())
                 .Add(new HandleManualPowerUpDragSystem())
                 .Add(new MoveDraggingObjectSystem())
                 .Add(new DragOverGridHandleSystem(magnetDistance))
+                
+                
                 .Add(new CountPointsSystem())
                 .Add(new ClearPuzzleGridSystem())
                 

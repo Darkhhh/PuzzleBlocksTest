@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace PuzzleCore.ECS.Views
 {
+    public enum CellState : byte
+    {
+        Default, Suggested, Highlighted, Occupied, Destroyable, Targeted
+    }
+    
     public class CellView : MonoBehaviour
     {
-        public enum CellState : byte
-        {
-            Default, Suggested, Highlighted, Occupied, Destroyable, Targeted
-        }
-        
-        
         private SpriteRenderer _renderer;
         private GameObject _puzzleBlock = null;
         private GameObject _target = null;
@@ -119,6 +118,8 @@ namespace PuzzleCore.ECS.Views
 
         public bool ChangeState(CellState newState)
         {
+            if (newState == _currentState) return false;
+            
             switch (_currentState)
             {
                 case CellState.Default:
@@ -201,14 +202,15 @@ namespace PuzzleCore.ECS.Views
                 case CellState.Occupied:
                 {
                     _puzzleBlock.SetActive(true);
-                    _puzzleBlock.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
+                    //_puzzleBlock.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
                     _target.SetActive(false);
                     //SetColor(AvailableColor);
                 }
                     break;
                 case CellState.Destroyable:
                 {
-                    _puzzleBlock.transform.DOScale(new Vector3(.85f, .85f, .85f), 0.1f);
+                    _puzzleBlock.transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+                    //_puzzleBlock.transform.DOScale(new Vector3(.85f, .85f, .85f), 0.1f);
                 }
                     break;
                 case CellState.Targeted:

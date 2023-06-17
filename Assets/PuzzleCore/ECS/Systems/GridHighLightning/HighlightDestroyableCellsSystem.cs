@@ -49,8 +49,8 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
         {
             _events = systems.GetShared<SystemsSharedData>().EventsBus;
             ref var firstCell = ref _cellComponents.Value.Get(_cellsFilter.Value.GetRawEntities()[0]);
-            _xOffset = (int) firstCell.View.ParentPosition.x;
-            _yOffset = (int) firstCell.View.ParentPosition.y;
+            //_xOffset = (int) firstCell.View.ParentPosition.x;
+            //_yOffset = (int) firstCell.View.ParentPosition.y;
             _edge = Mathf.RoundToInt((float)Math.Sqrt(_cellsFilter.Value.GetEntitiesCount())) / 2;
             foreach (var entity in _cellsFilter.Value)
             {
@@ -66,7 +66,7 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
             foreach (var entity in _cellsFilter.Value)
             {
                 ref var cell = ref _cellComponents.Value.Get(entity);
-                cell.View.ChangeState(CellView.CellState.Occupied);
+                //cell.View.ChangeState(CellState.Occupied);
             }
             
             var clearingCells = new List<int>();
@@ -81,11 +81,11 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
-                    {
-                        columnClearingCellsEntities.Clear();
-                        break;
-                    }
+                    // if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
+                    // {
+                    //     columnClearingCellsEntities.Clear();
+                    //     break;
+                    // }
                     columnClearingCellsEntities.Add(entity);
                 }
                 
@@ -102,11 +102,11 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
                     if (!_entityCellsByPosition.TryGetValue(cellPosition, out var entity))
                         throw new Exception($"Can't reach cell by {cellPosition} position");
                     ref var cell = ref _cellComponents.Value.Get(entity);
-                    if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
-                    {
-                        rowClearingCellsEntities.Clear();
-                        break;
-                    }
+                    // if (cell.Available && ! _orderedCellsComponents.Value.Has(entity))
+                    // {
+                    //     rowClearingCellsEntities.Clear();
+                    //     break;
+                    // }
                     rowClearingCellsEntities.Add(entity);
                 }
                 
@@ -117,7 +117,7 @@ namespace PuzzleCore.ECS.Systems.GridHighLightning
             {
                 ref var cell = ref _cellComponents.Value.Get(entity);
                 //TODO Experiments
-                cell.View.ChangeState(CellView.CellState.Destroyable);
+                //cell.View.ChangeState(CellState.Destroyable);
                 //cell.View.SetDestroyable(cell.Available);
             }
         }

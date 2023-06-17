@@ -11,6 +11,9 @@ using UnityEngine;
 
 namespace PuzzleCore.ECS.Systems.Drag
 {
+    /// <summary>
+    /// Определяет над какими клетками проходит перетаскиваемый над сеткой объект
+    /// </summary>
     public class DragOverGridHandleSystem : IEcsInitSystem, IEcsRunSystem
     {
         #region ECS Filters
@@ -82,12 +85,17 @@ namespace PuzzleCore.ECS.Systems.Drag
                 foreach (var e in _cellsFilter.Value)
                 {
                     ref var cell = ref _cellComponents.Value.Get(e);
-                    if(!(Utilities.CountDistanceNoSqrt(cell.Position, dragOverGridObject.CurrentPosition)
-                         < _magnetDistance * _magnetDistance)) continue;
+                    
+                    if(!(Utilities.CountDistanceNoSqrt(cell.Position, dragOverGridObject.CurrentPosition) < _magnetDistance * _magnetDistance)) continue;
 
+                    
                     if (dragOverGridObject.CheckOnCellAvailability)
                     {
-                        if (!cell.Available) continue;
+                        //TODO Check
+                        if(systems.GetWorld().GetPool<OccupiedCellStateComponent>().Has(e)) continue;
+                        
+                        //if (!cell.Available) continue;
+                        
                         anchorCellEntity = e;
                         break;
                     }
@@ -106,8 +114,18 @@ namespace PuzzleCore.ECS.Systems.Drag
                 if (anchorCellEntity == -1)
                 {
                     // Если есть перетаскиваемый над сеткой объект, но он находится вне сетки
-                    _events.NewEventSingleton<DeHighlightGridEvent>();
-                    ClearOrderedCells();
+                    
+                    //ToDO !!!!! Поменять клетки на Default и закинуть компонент ChangeState
+                    {
+                        foreach (var eni in systems.GetWorld().Filter<HighlightedCellStateComponent>().End())
+                        {
+                            systems.GetWorld().GetPool<HighlightedCellStateComponent>().Del(eni);
+                            systems.GetWorld().GetPool<DefaultCellStateComponent>().Add(eni);
+                            systems.GetWorld().GetPool<ChangeCellStateComponent>().Add(eni);
+                        }
+                    }
+                    //_events.NewEventSingleton<DeHighlightGridEvent>();
+                    //ClearOrderedCells();
                     return;
                 }
 
@@ -120,33 +138,43 @@ namespace PuzzleCore.ECS.Systems.Drag
                 }
 
                 // Если есть перетаскиваемый объект, но он поменял свою позицию
-                _events.NewEventSingleton<HighlightGridEvent>();
+                //_events.NewEventSingleton<HighlightGridEvent>();
+                
+                
                 ref var anchorCell = ref _cellComponents.Value.Get(anchorCellEntity);
 
                 var orderedCellsEntities = FindPlaceableObjectCells(
-                    dragOverGridObject.PlaceableObject,
-                    anchorCell.Position.GetIntVector(),
-                    dragOverGridObject.CheckOnCellAvailability);
+                        dragOverGridObject.PlaceableObject, 
+                        anchorCell.Position.GetIntVector(), 
+                        dragOverGridObject.CheckOnCellAvailability);
 
-                if (dragOverGridObject.MustBeFullOnGrid)
+                if (dragOverGridObject.MustBeFullOnGrid &&
+                    orderedCellsEntities.Count != dragOverGridObject.PlaceableObject.GetRelativeBlockPositions().Length)
                 {
-                    if (orderedCellsEntities.Count !=
-                        dragOverGridObject.PlaceableObject.GetRelativeBlockPositions().Length) return;
+                    return;
                 }
 
             
-                ClearOrderedCells();
+                //ClearOrderedCells();
             
+                
+                //ToDO !!!!!!!!!!!!!
                 foreach (var orderedCellEntity in orderedCellsEntities)
                 {
-                    _orderedCellComponents.Value.Add(orderedCellEntity);
+                    //_orderedCellComponents.Value.Add(orderedCellEntity);
+                    systems.GetWorld().GetPool<HighlightedCellStateComponent>().Add(orderedCellEntity);
                 }
-                _orderedCellComponents.Value.Add(anchorCellEntity);
+                systems.GetWorld().GetPool<HighlightedCellStateComponent>().Add(anchorCellEntity);
+                //_orderedCellComponents.Value.Add(anchorCellEntity);
                 _anchorCellComponents.Value.Add(anchorCellEntity);
+                
+                // !!!!!!!!!!!!!
             }
         }
 
 
+        private readonly EcsPoolInject<OccupiedCellStateComponent> _occupiedCellsComponents = default;
+        
         #region Private Methods
 
         private List<int> FindPlaceableObjectCells(IGridPlaceableObject placeableObject, Vector3Int anchorCellPosition,  
@@ -161,7 +189,10 @@ namespace PuzzleCore.ECS.Systems.Drag
                 if (checkOnAvailable)
                 {
                     ref var c = ref _cellComponents.Value.Get(entity);
-                    if (c.Available) orderedCellsEntities.Add(entity);
+                    
+                    //TODO Check
+                    if(_occupiedCellsComponents.Value.Has(entity)) orderedCellsEntities.Add(entity);
+                    //if (c.Available) orderedCellsEntities.Add(entity);
                 }
                 else
                 {
@@ -172,17 +203,19 @@ namespace PuzzleCore.ECS.Systems.Drag
             return orderedCellsEntities;
         }
         
+        
         private void ClearOrderedCells()
         {
-            foreach (var entity in _orderedCellsFilter.Value)
-            {
-                _orderedCellComponents.Value.Del(entity);
-            }
-
-            foreach (var entity in _anchoredCellsFilter.Value)
-            {
-                _anchorCellComponents.Value.Del(entity);
-            }
+            // TODO Remove
+            // foreach (var entity in _orderedCellsFilter.Value)
+            // {
+            //     _orderedCellComponents.Value.Del(entity);
+            // }
+            //
+            // foreach (var entity in _anchoredCellsFilter.Value)
+            // {
+            //     _anchorCellComponents.Value.Del(entity);
+            // }
         }
 
         #endregion

@@ -8,6 +8,9 @@ using UnityEngine;
 
 namespace PuzzleCore.ECS.Systems.Drag
 {
+    /// <summary>
+    /// При нажатии левой кнопки мыши ищет DraggableObjectComponent объект из заданных слоев
+    /// </summary>
     public class DetectDraggableObjectSystem : IEcsInitSystem, IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<DraggingObjectComponent>> _draggingObjectFilter = default;

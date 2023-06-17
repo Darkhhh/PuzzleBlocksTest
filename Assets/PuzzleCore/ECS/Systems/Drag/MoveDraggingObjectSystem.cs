@@ -7,6 +7,9 @@ using SevenBoldPencil.EasyEvents;
 
 namespace PuzzleCore.ECS.Systems.Drag
 {
+    /// <summary>
+    /// Перемещает перетаскиваемы объект (DraggingObjectComponent) по сцене
+    /// </summary>
     public class MoveDraggingObjectSystem : IEcsInitSystem, IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<DraggingObjectComponent>> _draggingObjectFilter = default;

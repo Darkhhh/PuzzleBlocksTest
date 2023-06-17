@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace PuzzleCore.ECS.Systems.Drag
 {
+    /// <summary>
+    /// Создает событие левого и правого клика мышкой, а также событие текущей позиции мыши
+    /// </summary>
     public class DetectUserInputSystem : IEcsInitSystem, IEcsRunSystem
     {
         private readonly Camera _sceneCamera;
@@ -35,6 +38,7 @@ namespace PuzzleCore.ECS.Systems.Drag
                 e.Position = _sceneCamera.ScreenToWorldPoint(Input.mousePosition);
             }
 
+            //TODO Не создавать событие, а обновлять данные в GameData классе
             ref var mousePositionEvent = ref _events.NewEventSingleton<CurrentMousePositionEvent>();
             mousePositionEvent.Position = _sceneCamera.ScreenToWorldPoint(Input.mousePosition);
         }

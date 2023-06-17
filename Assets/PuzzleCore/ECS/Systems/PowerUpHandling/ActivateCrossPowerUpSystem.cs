@@ -53,8 +53,8 @@ namespace PuzzleCore.ECS.Systems.PowerUpHandling
             }
             
             ref var firstCell = ref _cellComponents.Value.Get(_cellsFilter.Value.GetRawEntities()[0]);
-            _xOffset = (int) firstCell.View.ParentPosition.x;
-            _yOffset = (int) firstCell.View.ParentPosition.y;
+            //_xOffset = (int) firstCell.View.ParentPosition.x;
+            //_yOffset = (int) firstCell.View.ParentPosition.y;
             _edge = Mathf.RoundToInt((float)Math.Sqrt(_cellsFilter.Value.GetEntitiesCount())) / 2;
         }
         
@@ -106,7 +106,7 @@ namespace PuzzleCore.ECS.Systems.PowerUpHandling
                     throw new Exception($"Can't reach cell by {position} position");
                 
                 ref var cell = ref _cellComponents.Value.Get(entity);
-                if (cell.Available) continue;
+                //if (cell.Available) continue;
                 
                 if (_shouldBeClearedCellComponents.Value.Has(entity)) continue;
                 _shouldBeClearedCellComponents.Value.Add(entity);
@@ -126,7 +126,7 @@ namespace PuzzleCore.ECS.Systems.PowerUpHandling
                     throw new Exception($"Can't reach cell by {position} position");
                 
                 ref var cell = ref _cellComponents.Value.Get(entity);
-                if (cell.Available) continue;
+                //if (cell.Available) continue;
                 
                 
                 if (_shouldBeClearedCellComponents.Value.Has(entity)) continue;

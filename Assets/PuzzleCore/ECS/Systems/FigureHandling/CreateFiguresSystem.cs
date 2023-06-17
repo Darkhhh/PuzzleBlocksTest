@@ -12,6 +12,10 @@ using Random = UnityEngine.Random;
 
 namespace PuzzleCore.ECS.Systems.FigureHandling
 {
+    /// <summary>
+    /// Создает фигуры, если их не осталось, навешивает на фигуры компоненты PuzzleFigureComponent,
+    /// DraggableObjectComponent и DraggableOverGridComponent
+    /// </summary>
     public class CreateFiguresSystem : IEcsInitSystem, IEcsRunSystem
     {
         #region ECS Filters

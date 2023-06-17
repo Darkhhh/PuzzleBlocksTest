@@ -36,4 +36,5 @@ namespace PuzzleCore.ECS.Components
 
         public int AnchorCellEntity;
     }
+    
 }

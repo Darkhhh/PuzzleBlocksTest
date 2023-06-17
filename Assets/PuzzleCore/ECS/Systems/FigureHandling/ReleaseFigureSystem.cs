@@ -67,9 +67,9 @@ namespace PuzzleCore.ECS.Systems.FigureHandling
                 {
                     ref var cell = ref _cellComponents.Value.Get(ey);
                     //TODO Experiments
-                    cell.View.ChangeState(CellView.CellState.Occupied);
+                    //cell.View.ChangeState(CellState.Occupied);
                     //cell.View.SetUnAvailable();
-                    cell.Available = false;
+                    //cell.Available = false;
                 }
 
                 _removedFiguresComponents.Value.Add(entity);

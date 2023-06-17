@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 namespace PuzzleCore.ECS.Systems.FigureHandling
 {
+    /// <summary>
+    /// Определяет на каких фигурах будет находиться усиления
+    /// </summary>
     public class AssignPowerUpToFigureSystem : IEcsInitSystem, IEcsRunSystem
     {
         #region ECS Filters

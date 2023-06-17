@@ -4,6 +4,10 @@ using PuzzleCore.ECS.Components;
 
 namespace PuzzleCore.ECS.Systems.Drag
 {
+    /// <summary>
+    /// Если найден объект, который теперь перетаскивается по сцене, определяет является ли он перетаскиваемым по
+    /// доске (DraggableOverGridComponent), если да, то вешает на него DraggingOverGridComponent
+    /// </summary>
     public class DetectDraggableOverGridObjectSystem : IEcsRunSystem
     {
         private readonly EcsFilterInject<Inc<DraggingObjectComponent>> _draggingObjectFilter = default;

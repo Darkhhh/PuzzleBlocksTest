@@ -1,5 +1,6 @@
 ﻿using PuzzleCore.ECS.Common;
 using SevenBoldPencil.EasyEvents;
+using Temp.SharedData;
 
 namespace PuzzleCore.ECS.SharedData
 {
@@ -8,5 +9,7 @@ namespace PuzzleCore.ECS.SharedData
         public EventsBus EventsBus { get; set; }
         
         public InGameData GameData { get; set; }
+        
+        public SceneData SceneData { get; set; }
     }
 }

@@ -54,9 +54,9 @@ namespace PuzzleCore.ECS.Systems.UI.InGame
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
                 //TODO Experimental
-                c.View.ChangeState(CellView.CellState.Default);
+                //c.View.ChangeState(CellState.Default);
                 //c.View.SetSimple();
-                c.Available = true;
+                //c.Available = true;
                 _orderedCellComponents.Value.Del(entity);
                 if (_clearingCellsComponents.Value.Has(entity)) _clearingCellsComponents.Value.Del(entity);
 

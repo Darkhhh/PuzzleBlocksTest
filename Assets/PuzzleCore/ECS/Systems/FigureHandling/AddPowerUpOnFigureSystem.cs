@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace PuzzleCore.ECS.Systems.FigureHandling
 {
+    /// <summary>
+    /// Добавляет усиления на фигуры, согласно данным, определенным в AssignPowerUpToFigureSystem
+    /// </summary>
     public class AddPowerUpOnFigureSystem : IEcsRunSystem
     {
         #region ECS Filters

@@ -1,14 +1,22 @@
-﻿using PuzzleCore.ECS.Views;
+﻿using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using PuzzleCore.ECS.Views;
 using UnityEngine;
 
 namespace PuzzleCore.ECS.Components
 {
+    // public struct CellComponent
+    // {
+    //     public CellView View;
+    //
+    //     public bool Available;
+    //
+    //     public Vector3 Position => View.transform.position;
+    // }
+
     public struct CellComponent
     {
-        public CellView View;
-
-        public bool Available;
-
+        public Cell View;
+        
         public Vector3 Position => View.transform.position;
     }
 
@@ -36,4 +44,6 @@ namespace PuzzleCore.ECS.Components
     public struct DestroyableCellStateComponent { }
     
     public struct TargetedCellStateComponent { }
+    
+    public struct ChangeCellStateComponent { }
 }

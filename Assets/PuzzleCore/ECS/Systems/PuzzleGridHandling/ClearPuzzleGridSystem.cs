@@ -33,9 +33,9 @@ namespace PuzzleCore.ECS.Systems.PuzzleGridHandling
             {
                 ref var c = ref _cellComponents.Value.Get(entity);
                 //TODO Experiments
-                c.View.ChangeState(CellView.CellState.Default);
+                //c.View.ChangeState(CellState.Default);
                 //c.View.SetSimple();
-                c.Available = true;
+                //c.Available = true;
                 _clearingCellsComponents.Value.Del(entity);
             }
         }

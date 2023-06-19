@@ -3,12 +3,12 @@ using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.SharedData;
 using Temp.InitializeSystems;
 
-namespace Temp.Entrance.Systems
+namespace Temp.Entrance.EntrySystems
 {
     /// <summary>
     /// Здесь находятся системы, которые отрабатывают только после загрузки сцены
     /// </summary>
-    public class InitializeSceneSystems : IEntryEcsSystems
+    public class InitializeSceneEntryEcsSystems : IEntryEcsSystems
     {
         public EcsSystems Systems { get; set; }
         

@@ -8,6 +8,7 @@ using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.Components.Events;
 using PuzzleCore.ECS.SharedData;
 using PuzzleCore.ECS.Views;
+using Temp.Components.Events;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -110,8 +111,10 @@ namespace Temp.PreGameplayRunSystems
             }
 
             var events = systems.GetShared<SystemsSharedData>().EventsBus;
-            events.NewEventSingleton<CheckOnEndGameComponent>();
-            events.NewEventSingleton<DecreaseAllFiguresScaleComponent>();
+            //events.NewEventSingleton<CheckOnEndGameComponent>();
+            //events.NewEventSingleton<DecreaseAllFiguresScaleComponent>();
+            events.NewEventSingleton<FiguresWereSpawnedEvent>();
+            events.NewEventSingleton<FindPlaceForFiguresEvent>();
             
             ref var e = ref events.NewEventSingleton<AddPowerUpEvent>();
             e.Data = new bool[_spawnPoints.Length];

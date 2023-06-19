@@ -86,30 +86,30 @@ namespace PuzzleCore.ECS
                 
                 
                 
-                .Add(new DetectDraggableObjectSystem(LayerMask.GetMask("PuzzleFigure", "ManualPowerUp")))
-                .Add(new DetectDraggableOverGridObjectSystem())
-                .Add(new HandleManualPowerUpDragSystem())
-                .Add(new MoveDraggingObjectSystem())
-                .Add(new DragOverGridHandleSystem(magnetDistance))
+                .Add(new DetectDraggableObjectSystem(LayerMask.GetMask("PuzzleFigure", "ManualPowerUp")))        // +
+                .Add(new DetectDraggableOverGridObjectSystem())                                                                         // +
+                .Add(new HandleManualPowerUpDragSystem())                                                                               // +
+                .Add(new MoveDraggingObjectSystem())                                                                                    // +
+                .Add(new DragOverGridHandleSystem(magnetDistance))                                                                      // +
                 
                 
                 .Add(new CountPointsSystem())
                 .Add(new ClearPuzzleGridSystem())
                 
-                .Add(new ReleaseDraggingOverGridObjectSystem())
-                .Add(new ReleaseDraggingObjectSystem())
-                .Add(new ReleaseFigureSystem())
+                .Add(new ReleaseDraggingOverGridObjectSystem())                                                                         // +
+                .Add(new ReleaseDraggingObjectSystem())                                                                                 // +
+                .Add(new ReleaseFigureSystem())                                                                                         // +
                 
-                .Add(new HandlePuzzleFigureDragSystem())
-                .Add(new HandleManualPowerUpReleaseSystem())
+                .Add(new HandlePuzzleFigureDragSystem())                                                                                // +
+                .Add(new HandleManualPowerUpReleaseSystem())                                                                            // +
                 .Add(new RoughClearPuzzleGridSystem(powerUpsHandler))
                 
-                .Add(new HighlightDestroyableCellsSystem())
+                .Add(new HighlightDestroyableCellsSystem())                                                                             // +
                 .Add(new ReHighlightGridSystem())
                 .Add(new DeHighlightGridSystem())
 
                 .Add(new SetPowerUpOnGridSystem(powerUpsHandler))
-                .Add(new CheckFullRowAndColumnsSystem())
+                .Add(new CheckFullRowAndColumnsSystem())                                                                                // +
 
                 .Add(new ActivateCrossPowerUpSystem(powerUpsHandler))
                 .Add(new ActivateMultiplierPowerUpSystem(powerUpsHandler))
@@ -119,9 +119,9 @@ namespace PuzzleCore.ECS
                 .Add(new ChangeFigureScaleSystem())
                 
                 .Add(new RemovePowerUpFromFigureSystem(powerUpsHandler))
-                .Add(new DeSpawnFigureSystem())
-                .Add(new CheckOnEndGameSystem())
-                .Add(new HighlightSingleFigurePlaceSystem())
+                .Add(new DeSpawnFigureSystem())                                                                                         // +
+                .Add(new CheckOnEndGameSystem())                                                                                        // +
+                .Add(new HighlightSingleFigurePlaceSystem())                                                                            // +
                 
                 .Inject()
                 .Init();

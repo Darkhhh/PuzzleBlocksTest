@@ -40,8 +40,11 @@ namespace PuzzleCore.ECS.Components
     public struct HighlightedCellStateComponent { }
     
     public struct OccupiedCellStateComponent { }
-    
-    public struct DestroyableCellStateComponent { }
+
+    public struct DestroyableCellStateComponent
+    {
+        public CellStateEnum PreviousState;
+    }
     
     public struct TargetedCellStateComponent { }
     

@@ -1,12 +1,12 @@
 ﻿using Leopotam.EcsLite;
 using PuzzleCore.ECS.SharedData;
 
-namespace Temp.Entrance.Systems
+namespace Temp.Entrance.EntrySystems
 {
     /// <summary>
     /// Тут находятся отладочные системы для дебага ECS
     /// </summary>
-    public class EcsEditorSystems : IEntryEcsSystems
+    public class EcsEditorEntryEcsSystems : IEntryEcsSystems
     {
         private bool _initialized = false;
 

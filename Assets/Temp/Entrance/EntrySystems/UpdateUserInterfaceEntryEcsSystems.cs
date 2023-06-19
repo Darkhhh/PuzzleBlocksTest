@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using PuzzleCore.ECS.SharedData;
 
-namespace Temp.Entrance.Systems
+namespace Temp.Entrance.EntrySystems
 {
-    public class CleanUpSystems : IEntryEcsSystems
+    public class UpdateUserInterfaceEntryEcsSystems : IEntryEcsSystems
     {
         public EcsSystems Systems { get; set; }
         public void Init(EcsWorld world, SystemsSharedData sharedData)

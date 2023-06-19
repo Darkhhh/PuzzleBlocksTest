@@ -37,4 +37,5 @@ namespace PuzzleCore.ECS.Components
         public int AnchorCellEntity;
     }
     
+    public struct CanNotBeTakenComponent { }
 }

@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using PuzzleCore.ECS.SharedData;
 using SevenBoldPencil.EasyEvents;
-using Temp.Entrance.Systems;
+using Temp.Entrance.EntrySystems;
 using Temp.SharedData;
 using UnityEngine;
 
@@ -37,12 +37,12 @@ namespace Temp.Entrance
 
             _container = new SystemsContainer(_world, _sharedData);
             _container
-                .Add(new EcsEditorSystems())
-                .Add(new InitializeSceneSystems())
-                .Add(new PreGameplaySystems())
-                //.Add(new GameplaySystems())
-                //.Add(new PostGameplaySystems())
-                //.Add(new CleanUpSystems())
+                .Add(new EcsEditorEntryEcsSystems())
+                .Add(new InitializeSceneEntryEcsSystems())
+                .Add(new PreGameplayEntryEcsSystems())
+                .Add(new GameplayEntryEcsSystems())
+                .Add(new PostGameplayEntryEcsSystems())
+                .Add(new CleanUpEntryEcsSystems())
                 //.Add(new UpdateUserInterfaceSystems())
                 .Init();
         }

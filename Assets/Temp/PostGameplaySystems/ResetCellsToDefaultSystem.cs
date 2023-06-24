@@ -1,6 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
+using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using Temp.Utils;
 
 namespace Temp.PostGameplaySystems
 {
@@ -35,9 +37,11 @@ namespace Temp.PostGameplaySystems
             {
                 foreach (var entity in _highlightedCellsFilter.Value)
                 {
-                    _highlightedCellsPool.Value.Del(entity);
-                    _defaultCellsPool.Value.Add(entity);
-                    _changeStateCellsPool.Value.Add(entity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Default);
+                    
+                    // _highlightedCellsPool.Value.Del(entity);
+                    // _defaultCellsPool.Value.Add(entity);
+                    // _changeStateCellsPool.Value.Add(entity);
                 }
             }
             
@@ -47,9 +51,11 @@ namespace Temp.PostGameplaySystems
             {
                 foreach (var entity in _targetedCellsFilter.Value)
                 {
-                    _targetedCellsPool.Value.Del(entity);
-                    _defaultCellsPool.Value.Add(entity);
-                    _changeStateCellsPool.Value.Add(entity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Default);
+                    
+                    // _targetedCellsPool.Value.Del(entity);
+                    // _defaultCellsPool.Value.Add(entity);
+                    // _changeStateCellsPool.Value.Add(entity);
                 }
             }
 
@@ -59,9 +65,11 @@ namespace Temp.PostGameplaySystems
             {
                 foreach (var entity in _highlightedCellsFilter.Value)
                 {
-                    _highlightedCellsPool.Value.Del(entity);
-                    _defaultCellsPool.Value.Add(entity);
-                    _changeStateCellsPool.Value.Add(entity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Default);
+                    
+                    // _highlightedCellsPool.Value.Del(entity);
+                    // _defaultCellsPool.Value.Add(entity);
+                    // _changeStateCellsPool.Value.Add(entity);
                 }
             }
             
@@ -71,9 +79,11 @@ namespace Temp.PostGameplaySystems
             {
                 foreach (var entity in _targetedCellsFilter.Value)
                 {
-                    _targetedCellsPool.Value.Del(entity);
-                    _defaultCellsPool.Value.Add(entity);
-                    _changeStateCellsPool.Value.Add(entity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Default);
+                    
+                    // _targetedCellsPool.Value.Del(entity);
+                    // _defaultCellsPool.Value.Add(entity);
+                    // _changeStateCellsPool.Value.Add(entity);
                 }
             }
         }

@@ -3,6 +3,7 @@ using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.SharedData;
 using Temp.DragSystems;
 using Temp.GameplaySystems;
+using Temp.GameplaySystems.GridPowerUp;
 
 namespace Temp.Entrance.EntrySystems
 {
@@ -29,7 +30,13 @@ namespace Temp.Entrance.EntrySystems
                 .Add(new ReleaseManualPowerUpSystem())
                 
                 .Add(new HandleManualPowerUpReleaseSystem())
+                .Add(new SetPowerUpOnGridSystem(sceneData.powerUpsHandler))
                 .Add(new HandlePuzzleFigureReleaseSystem())
+                
+                .Add(new ActivateCrossSystem())
+                .Add(new ActivateCoinSystem())
+                .Add(new ActivateArmorCellSystem(sceneData.powerUpsHandler))
+                .Add(new ActivateMultipliersSystem())
                 
                 .Inject()
                 .Init();

@@ -15,8 +15,10 @@ namespace Temp.Entrance.EntrySystems
             Systems = new EcsSystems(world, sharedData);
             
             Systems
-                .Add(new ResetCellsToDefaultSystem())
+                .Add(new ChangeFiguresScaleSystem())
+                .Add(new ClearDestroyableCellsSystem(sceneData.powerUpsHandler))
                 .Add(new LightCellsSystem())
+                .Add(new CountCoinsAndScoreSystem())
                 .Add(new CheckOnEndGameSystem())
                 .Inject()
                 .Init();

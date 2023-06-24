@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using PuzzleCore.ECS.Components.Events;
 using PuzzleCore.ECS.SharedData;
 using Temp.CleanUpSystems;
 using Temp.Components.Events;
@@ -15,9 +16,11 @@ namespace Temp.Entrance.EntrySystems
             Systems = new EcsSystems(world, sharedData);
             Systems
                 .Add(new CleanReleasedObjectsSystem())
-                .Add(new DeletePuzzleFigureSystem())
+                .Add(new DeletePuzzleFigureSystem(sharedData.SceneData.powerUpsHandler))
                 
                 .Add(sharedData.EventsBus.GetDestroyEventsSystem()
+                    .IncSingleton<LeftMouseDownEvent>()
+                    .IncSingleton<RightMouseDownEvent>()
                     .IncSingleton<FiguresWereSpawnedEvent>()
                 )
                 .Inject()

@@ -34,6 +34,7 @@ namespace PuzzleCore.ECS.Components
     {
         public int Amount;
 
+        // TODO Change to PackedEntity
         public int AnchorCellEntity;
     }
     

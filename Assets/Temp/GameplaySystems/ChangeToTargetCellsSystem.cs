@@ -1,6 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Components;
+using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using Temp.Utils;
 
 namespace Temp.GameplaySystems
 {
@@ -26,16 +28,19 @@ namespace Temp.GameplaySystems
 
             foreach (var entity in _highlightedCellsFilter.Value)
             {
-                _highlightedCellsPool.Value.Del(entity);
+                //_highlightedCellsPool.Value.Del(entity);
 
                 if (_occupiedCellsPool.Value.Has(entity))
                 {
-                    _occupiedCellsPool.Value.Del(entity);
-                    _targetedCellsPool.Value.Add(entity);
+                    // _occupiedCellsPool.Value.Del(entity);
+                    // _targetedCellsPool.Value.Add(entity);
+                    
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Targeted);
                 }
                 else
                 {
-                    _defaultCellsPool.Value.Add(entity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(entity), CellStateEnum.Default);
+                    //_defaultCellsPool.Value.Add(entity);
                 }
             }
         }

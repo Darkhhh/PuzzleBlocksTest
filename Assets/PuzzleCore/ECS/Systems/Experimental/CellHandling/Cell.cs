@@ -22,6 +22,12 @@ namespace PuzzleCore.ECS.Systems.Experimental.CellHandling
         #endregion
 
 
+        #region Private Values
+
+        private Vector3 _parentPosition;
+
+        #endregion
+
         #region Properties
 
         private CellState CurrentState { get; set; }
@@ -32,11 +38,15 @@ namespace PuzzleCore.ECS.Systems.Experimental.CellHandling
 
         public GameObject TargetBlock { get; private set; }
 
+        public Vector3 ParentPosition => _parentPosition;
+
         #endregion
 
 
         public void Init(GameObject puzzleBlock, GameObject targetBlock)
         {
+            _parentPosition = transform.parent.position;
+            
             PuzzleBlock = puzzleBlock;
             TargetBlock = targetBlock;
             Renderer = GetComponent<SpriteRenderer>();

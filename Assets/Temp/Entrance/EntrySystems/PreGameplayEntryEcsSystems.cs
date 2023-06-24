@@ -2,6 +2,7 @@
 using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.SharedData;
 using Temp.DragSystems;
+using Temp.PostGameplaySystems;
 using Temp.PreGameplayRunSystems;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ namespace Temp.Entrance.EntrySystems
                 .Add(new PuzzleFigureTakeSystem())
                 .Add(new ManualPowerUpTakeSystem())
                 .Add(new DetectDraggableOverGridObjectSystem())
+                .Add(new ResetCellsToDefaultSystem())
                 .Inject()
                 .Init();
         }

@@ -47,6 +47,9 @@ namespace PuzzleCore.ECS.Components
     }
     
     public struct TargetedCellStateComponent { }
-    
-    public struct ChangeCellStateComponent { }
+
+    public struct ChangeCellStateComponent
+    {
+        public CellStateEnum State;
+    }
 }

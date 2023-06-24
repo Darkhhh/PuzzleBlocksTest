@@ -93,8 +93,8 @@ namespace PuzzleCore.ECS
                 .Add(new DragOverGridHandleSystem(magnetDistance))                                                                      // +
                 
                 
-                .Add(new CountPointsSystem())
-                .Add(new ClearPuzzleGridSystem())
+                .Add(new CountPointsSystem())                                                                                           // +
+                .Add(new ClearPuzzleGridSystem())                                                                                       // +
                 
                 .Add(new ReleaseDraggingOverGridObjectSystem())                                                                         // +
                 .Add(new ReleaseDraggingObjectSystem())                                                                                 // +
@@ -105,23 +105,23 @@ namespace PuzzleCore.ECS
                 .Add(new RoughClearPuzzleGridSystem(powerUpsHandler))
                 
                 .Add(new HighlightDestroyableCellsSystem())                                                                             // +
-                .Add(new ReHighlightGridSystem())
-                .Add(new DeHighlightGridSystem())
+                .Add(new ReHighlightGridSystem())                                                                                       // +
+                .Add(new DeHighlightGridSystem())                                                                                       // +
 
-                .Add(new SetPowerUpOnGridSystem(powerUpsHandler))
+                .Add(new SetPowerUpOnGridSystem(powerUpsHandler))                                                                       // +
                 .Add(new CheckFullRowAndColumnsSystem())                                                                                // +
 
-                .Add(new ActivateCrossPowerUpSystem(powerUpsHandler))
-                .Add(new ActivateMultiplierPowerUpSystem(powerUpsHandler))
-                .Add(new ActivateCoinPowerUpSystem(powerUpsHandler))
-                .Add(new ActivateArmoredBlockPowerUpSystem(powerUpsHandler))
+                .Add(new ActivateCrossPowerUpSystem(powerUpsHandler))                                                                   // +
+                .Add(new ActivateMultiplierPowerUpSystem(powerUpsHandler))                                                              // +
+                .Add(new ActivateCoinPowerUpSystem(powerUpsHandler))                                                                    // +
+                .Add(new ActivateArmoredBlockPowerUpSystem(powerUpsHandler))                                                            // +
                 
                 .Add(new ChangeFigureScaleSystem())
                 
-                .Add(new RemovePowerUpFromFigureSystem(powerUpsHandler))
+                .Add(new RemovePowerUpFromFigureSystem(powerUpsHandler))                                                                // +
                 .Add(new DeSpawnFigureSystem())                                                                                         // +
                 .Add(new CheckOnEndGameSystem())                                                                                        // +
-                .Add(new HighlightSingleFigurePlaceSystem())                                                                            // +
+                .Add(new HighlightSingleFigurePlaceSystem())                                                                            // -
                 
                 .Inject()
                 .Init();

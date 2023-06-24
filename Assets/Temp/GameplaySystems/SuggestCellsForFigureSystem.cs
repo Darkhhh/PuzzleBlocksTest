@@ -4,8 +4,10 @@ using Leopotam.EcsLite.Di;
 using PuzzleCore.ECS.Common;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Systems.Experimental.CellHandling;
 using SevenBoldPencil.EasyEvents;
 using Temp.Components.Events;
+using Temp.Utils;
 using UnityEngine;
 
 namespace Temp.GameplaySystems
@@ -14,14 +16,17 @@ namespace Temp.GameplaySystems
     {
         private readonly EcsFilterInject<Inc<PuzzleFigureComponent, AvailablePlacesComponent>> _figuresFilter = default;
         private readonly EcsFilterInject<Inc<CellComponent>> _cellsFilter = default;
+        private readonly EcsFilterInject<Inc<SuggestedCellStateComponent>> _suggestedCellsFilter = default;
 
         private readonly EcsPoolInject<PuzzleFigureComponent> _figuresPool = default;
         private readonly EcsPoolInject<AvailablePlacesComponent> _availablePlacesPool = default;
-        private readonly EcsPoolInject<CanNotBeTakenComponent> _notTakenFiguresPool = default;
+
+        private readonly EcsPoolInject<HighlightedCellStateComponent> _highlightedCellsPool = default;
+        //private readonly EcsPoolInject<CanNotBeTakenComponent> _notTakenFiguresPool = default;
         private readonly EcsPoolInject<CellComponent> _cellComponents = default;
-        private readonly EcsPoolInject<DefaultCellStateComponent> _defaultCellsPool = default;
-        private readonly EcsPoolInject<SuggestedCellStateComponent> _suggestedCellsPool = default;
-        private readonly EcsPoolInject<ChangeCellStateComponent> _changeStateCellsPool = default;
+        //private readonly EcsPoolInject<DefaultCellStateComponent> _defaultCellsPool = default;
+        //private readonly EcsPoolInject<SuggestedCellStateComponent> _suggestedCellsPool = default;
+        //private readonly EcsPoolInject<ChangeCellStateComponent> _changeStateCellsPool = default;
 
 
         private readonly Dictionary<Vector3Int, int> _entityCellsByPosition = new();
@@ -39,7 +44,8 @@ namespace Temp.GameplaySystems
         
         public void Run(IEcsSystems systems)
         {
-            if (!_events.HasEventSingleton<FiguresWereSpawnedEvent>()) return;
+            //TODO Change Return conditions
+            //if (!_events.HasEventSingleton<FiguresWereSpawnedEvent>()) return;
 
             if (_figuresFilter.Value.GetEntitiesCount() == 0) return;
 
@@ -63,6 +69,7 @@ namespace Temp.GameplaySystems
             }
 
             if (placeableFigures != 1) return;
+            if (_suggestedCellsFilter.Value.GetEntitiesCount() > 0) return;
             
             ref var figure = ref _figuresPool.Value.Get(entity);
             ref var placeData = ref _availablePlacesPool.Value.Get(entity);
@@ -75,20 +82,11 @@ namespace Temp.GameplaySystems
             {
                 if (!_entityCellsByPosition.TryGetValue(cellPosition + blockPositions[i].GetIntVector(),
                         out var e)) continue;
-                
-                _suggestedCellsPool.Value.Add(e);
-                if (!_changeStateCellsPool.Value.Has(e))
-                    _changeStateCellsPool.Value.Add(e);
-                if (_defaultCellsPool.Value.Has(e))
-                    _defaultCellsPool.Value.Add(e);
+                if (!_highlightedCellsPool.Value.Has(e))
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(e), CellStateEnum.Suggested);
             }
-
-            
-            _suggestedCellsPool.Value.Add(placeData.AnchorCellEntity);
-            if (!_changeStateCellsPool.Value.Has(placeData.AnchorCellEntity))
-                _changeStateCellsPool.Value.Add(placeData.AnchorCellEntity);
-            if (_defaultCellsPool.Value.Has(placeData.AnchorCellEntity))
-                _defaultCellsPool.Value.Add(placeData.AnchorCellEntity);
+            if (!_highlightedCellsPool.Value.Has(placeData.AnchorCellEntity))
+                CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(placeData.AnchorCellEntity), CellStateEnum.Suggested);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using PuzzleCore.ECS.Common;
 using UnityEngine;
@@ -119,5 +120,29 @@ namespace PuzzleCore.ECS.Views
         {
             return RelativeBlocksPositions;
         }
+
+        private void OnEnable()
+        {
+            // var thisTransform = transform;
+            // var currentScale = thisTransform.localScale;
+            // var scaleChange = NonDragScale - currentScale;
+            //
+            // thisTransform.localScale = currentScale + scaleChange;
+        }
+
+        private void OnDisable()
+        {
+            // var thisTransform = transform;
+            // var currentScale = thisTransform.localScale;
+            // var scaleChange = DefaultScale - currentScale;
+            //
+            // thisTransform.localScale = currentScale + scaleChange;
+        }
+
+        public static Vector3 DefaultScale = Vector3.one;
+        
+        public static Vector3 DragScale = new (0.85f, 0.85f, 0.85f);
+        
+        public static Vector3 NonDragScale = new (0.7f, 0.7f, 0.7f);
     }
 }

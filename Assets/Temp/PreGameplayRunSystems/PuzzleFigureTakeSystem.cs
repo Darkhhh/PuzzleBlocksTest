@@ -31,7 +31,9 @@ namespace Temp.PreGameplayRunSystems
             {
                 if (!_cantTakeComponents.Value.Has(entity))
                 {
-                    // TODO Change Figure Scale
+                    ref var data = ref _events.NewEventSingleton<ChangeFigureScaleComponent>();
+                    data.Entity = entity;
+                    data.Increase = true;
                     continue;
                 }
                 _draggingObjectComponents.Value.Del(entity);

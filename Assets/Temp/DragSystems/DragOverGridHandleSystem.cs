@@ -5,9 +5,11 @@ using PuzzleCore;
 using PuzzleCore.ECS.Common;
 using PuzzleCore.ECS.Components;
 using PuzzleCore.ECS.SharedData;
+using PuzzleCore.ECS.Systems.Experimental.CellHandling;
 using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
 using Temp.SharedData;
+using Temp.Utils;
 using UnityEngine;
 
 namespace Temp.DragSystems
@@ -40,7 +42,11 @@ namespace Temp.DragSystems
 
         private readonly EcsPoolInject<HighlightedCellStateComponent> _highlightedCellsPool = default;
         
+        private readonly EcsPoolInject<SuggestedCellStateComponent> _suggestedCellsPool = default;
+        
         private readonly EcsPoolInject<DefaultCellStateComponent> _defaultCellsPool = default;
+        
+        private readonly EcsPoolInject<DestroyableCellStateComponent> _destroyableCellsPool = default;
         
         private readonly EcsPoolInject<ChangeCellStateComponent> _changeStateCellsPool = default;
 
@@ -133,15 +139,11 @@ namespace Temp.DragSystems
                 
                 foreach (var orderedCellEntity in orderedCellsEntities)
                 {
-                    if (!_highlightedCellsPool.Value.Has(orderedCellEntity))
-                        _highlightedCellsPool.Value.Add(orderedCellEntity);
-                    _changeStateCellsPool.Value.Add(orderedCellEntity);
-                    _defaultCellsPool.Value.Del(orderedCellEntity);
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(orderedCellEntity),
+                        CellStateEnum.Highlighted);
                 }
-                if (!_highlightedCellsPool.Value.Has(anchorCellEntity))
-                    _highlightedCellsPool.Value.Add(anchorCellEntity);
-                _changeStateCellsPool.Value.Add(anchorCellEntity);
-                _defaultCellsPool.Value.Del(anchorCellEntity);
+                CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(anchorCellEntity),
+                    CellStateEnum.Highlighted);
                 _anchorCellComponents.Value.Add(anchorCellEntity);
             }
         }
@@ -160,9 +162,8 @@ namespace Temp.DragSystems
                 if (!_entityCellsByPosition.TryGetValue(anchorCellPosition + blockPosition, out var entity)) continue;
                 if (checkOnAvailable)
                 {
-                    ref var c = ref _cellComponents.Value.Get(entity);
-                    
-                    if(!_occupiedCellsPool.Value.Has(entity)) orderedCellsEntities.Add(entity);
+                    if(!_occupiedCellsPool.Value.Has(entity) && !_destroyableCellsPool.Value.Has(entity)) 
+                        orderedCellsEntities.Add(entity);
                 }
                 else
                 {

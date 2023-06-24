@@ -4,6 +4,6 @@
     {
         public const float PowerUpProbability = 0.3f;
         
-        public const float MagnetDistance = 0.5f;
+        public const float MagnetDistance = 0.45f;
     }
 }

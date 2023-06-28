@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore;
-using PuzzleCore.ECS.Common;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.SharedData;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
-using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components;
 using Temp.SharedData;
 using Temp.Utils;
+using Temp.Views;
+using Temp.Views.Cell;
 using UnityEngine;
 
 namespace Temp.DragSystems
@@ -139,11 +136,28 @@ namespace Temp.DragSystems
                 
                 foreach (var orderedCellEntity in orderedCellsEntities)
                 {
-                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(orderedCellEntity),
+                    if (_occupiedCellsPool.Value.Has(orderedCellEntity))
+                    {
+                        CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(orderedCellEntity),
+                            CellStateEnum.Highlighted, CellStateEnum.Occupied);
+                    }
+                    else
+                    {
+                        CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(orderedCellEntity),
+                            CellStateEnum.Highlighted);
+                    }
+                }
+                
+                if (_occupiedCellsPool.Value.Has(anchorCellEntity))
+                {
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(anchorCellEntity),
+                        CellStateEnum.Highlighted, CellStateEnum.Occupied);
+                }
+                else
+                {
+                    CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(anchorCellEntity),
                         CellStateEnum.Highlighted);
                 }
-                CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(anchorCellEntity),
-                    CellStateEnum.Highlighted);
                 _anchorCellComponents.Value.Add(anchorCellEntity);
             }
         }

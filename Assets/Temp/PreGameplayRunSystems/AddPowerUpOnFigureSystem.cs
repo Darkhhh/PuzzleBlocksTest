@@ -1,11 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Components.Events;
-using PuzzleCore.ECS.SharedData;
-using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components;
+using Temp.Components.Events;
+using Temp.Mono;
+using Temp.SharedData;
+using Temp.Views;
 using UnityEngine;
 
 namespace Temp.PreGameplayRunSystems

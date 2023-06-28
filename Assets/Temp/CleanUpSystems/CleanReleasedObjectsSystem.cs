@@ -1,6 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
+using Temp.Components;
 
 namespace Temp.CleanUpSystems
 {
@@ -8,13 +8,11 @@ namespace Temp.CleanUpSystems
     {
         private readonly EcsFilterInject<Inc<ReleasedObjectComponent>> _releasedObjectsFilter = default;
 
-        private readonly EcsPoolInject<ReleasedObjectComponent> _releasedObjectsPool = default;
-
         public void Run(IEcsSystems systems)
         {
             foreach (var entity in _releasedObjectsFilter.Value)
             {
-                _releasedObjectsPool.Value.Del(entity);
+                _releasedObjectsFilter.Pools.Inc1.Del(entity);
             }
         }
     }

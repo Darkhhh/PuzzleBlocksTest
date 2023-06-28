@@ -1,10 +1,9 @@
-﻿using System;
-using Leopotam.EcsLite;
+﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore;
-using PuzzleCore.ECS.Common;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Views;
+using Temp.Components;
+using Temp.Mono;
+using Temp.Utils;
+using Temp.Views;
 using UnityEngine;
 
 namespace Temp.GameplaySystems

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
-using PuzzleCore.ECS.SharedData;
+using Temp.SharedData;
 
 namespace Temp.Entrance
 {

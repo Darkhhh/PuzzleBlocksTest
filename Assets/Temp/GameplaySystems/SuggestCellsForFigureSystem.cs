@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Common;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.SharedData;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
 using SevenBoldPencil.EasyEvents;
-using Temp.Components.Events;
+using Temp.Components;
+using Temp.SharedData;
 using Temp.Utils;
+using Temp.Views.Cell;
 using UnityEngine;
 
 namespace Temp.GameplaySystems

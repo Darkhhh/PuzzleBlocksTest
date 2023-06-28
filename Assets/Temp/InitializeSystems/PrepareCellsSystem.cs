@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Leopotam.EcsLite;
-using PuzzleCore;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using Temp.Components;
+using Temp.Mono;
+using Temp.Views.Cell;
 using UnityEngine;
 
 namespace Temp.InitializeSystems
@@ -24,7 +24,7 @@ namespace Temp.InitializeSystems
         {
             var cells = (from Transform child 
                     in _grid.transform 
-                select child.GetComponent<Cell>()).ToArray();
+                select child.GetComponent<CellView>()).ToArray();
             
             var world = systems.GetWorld();
             var cellsPool = world.GetPool<CellComponent>();

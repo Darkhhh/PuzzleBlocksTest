@@ -14,7 +14,7 @@ namespace Temp.InitializeSystems
 
         public void Init(IEcsSystems systems)
         {
-            _handler.Initialize();
+            //_handler.Initialize();
         }
     }
 }

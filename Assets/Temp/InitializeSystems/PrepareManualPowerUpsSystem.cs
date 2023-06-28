@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Views;
+using Temp.Components;
+using Temp.Views;
 using UnityEngine;
 
 namespace Temp.InitializeSystems

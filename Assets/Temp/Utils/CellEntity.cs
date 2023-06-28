@@ -1,8 +1,7 @@
 ﻿using System;
 using Leopotam.EcsLite;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
-using UnityEngine;
+using Temp.Components;
+using Temp.Views.Cell;
 
 namespace Temp.Utils
 {
@@ -41,7 +40,8 @@ namespace Temp.Utils
                     world.GetPool<SuggestedCellStateComponent>().Add(entity);
                     break;
                 case CellStateEnum.Highlighted:
-                    world.GetPool<HighlightedCellStateComponent>().Add(entity);
+                    ref var data = ref world.GetPool<HighlightedCellStateComponent>().Add(entity);
+                    data.PreviousState = previousState;
                     break;
                 case CellStateEnum.Occupied:
                     world.GetPool<OccupiedCellStateComponent>().Add(entity);

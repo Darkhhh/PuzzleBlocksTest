@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using Temp.Components;
 using Temp.Utils;
+using Temp.Views.Cell;
 
 namespace Temp.GameplaySystems
 {
@@ -20,7 +20,7 @@ namespace Temp.GameplaySystems
         private readonly EcsPoolInject<TargetedCellStateComponent> _targetedCellsPool = default;
         private readonly EcsPoolInject<DefaultCellStateComponent> _defaultCellsPool = default;
         private readonly EcsPoolInject<ChangeCellStateComponent> _changeCellsPool = default;
-        private readonly EcsPoolInject<ShouldBeClearedCellComponent> _clearingCellsPool = default;
+        //private readonly EcsPoolInject<ShouldBeClearedCellComponent> _clearingCellsPool = default;
 
         public void Run(IEcsSystems systems)
         {
@@ -33,7 +33,7 @@ namespace Temp.GameplaySystems
                 // _changeCellsPool.Value.Add(cellEntity);
                 
                 CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(cellEntity), CellStateEnum.Default);
-                _clearingCellsPool.Value.Add(cellEntity);
+                    //_clearingCellsPool.Value.Add(cellEntity);
             }
         }
     }

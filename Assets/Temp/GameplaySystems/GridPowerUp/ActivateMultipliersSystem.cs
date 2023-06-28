@@ -1,11 +1,11 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Common;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.SharedData;
-using PuzzleCore.ECS.Views;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components;
 using Temp.Components.Events;
+using Temp.SharedData;
+using Temp.Utils;
+using Temp.Views;
 
 namespace Temp.GameplaySystems.GridPowerUp
 {

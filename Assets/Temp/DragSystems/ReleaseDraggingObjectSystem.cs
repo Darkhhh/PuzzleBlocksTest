@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Components.Events;
-using PuzzleCore.ECS.SharedData;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components;
+using Temp.Components.Events;
+using Temp.SharedData;
 
 namespace Temp.DragSystems
 {

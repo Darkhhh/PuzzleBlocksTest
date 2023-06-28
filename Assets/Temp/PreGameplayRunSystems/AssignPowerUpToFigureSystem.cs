@@ -1,7 +1,6 @@
 ﻿using Leopotam.EcsLite;
-using PuzzleCore.ECS.Components.Events;
-using PuzzleCore.ECS.SharedData;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components.Events;
 using Temp.SharedData;
 using Random = UnityEngine.Random;
 

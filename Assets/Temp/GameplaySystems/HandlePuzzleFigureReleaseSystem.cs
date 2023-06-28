@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
+using Temp.Components;
 using Temp.Utils;
+using Temp.Views.Cell;
 
 namespace Temp.GameplaySystems
 {

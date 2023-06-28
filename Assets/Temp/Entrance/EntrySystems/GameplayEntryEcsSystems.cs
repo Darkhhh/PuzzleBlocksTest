@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.SharedData;
 using Temp.DragSystems;
 using Temp.GameplaySystems;
 using Temp.GameplaySystems.GridPowerUp;
+using Temp.SharedData;
 
 namespace Temp.Entrance.EntrySystems
 {

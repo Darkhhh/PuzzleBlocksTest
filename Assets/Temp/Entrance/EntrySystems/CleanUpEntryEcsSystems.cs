@@ -1,10 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components.Events;
-using PuzzleCore.ECS.SharedData;
 using Temp.CleanUpSystems;
 using Temp.Components.Events;
-using Temp.PostGameplaySystems;
+using Temp.SharedData;
 
 namespace Temp.Entrance.EntrySystems
 {
@@ -21,6 +19,7 @@ namespace Temp.Entrance.EntrySystems
                 .Add(sharedData.EventsBus.GetDestroyEventsSystem()
                     .IncSingleton<LeftMouseDownEvent>()
                     .IncSingleton<RightMouseDownEvent>()
+                    .IncSingleton<DraggableObjectWasTakenEvent>()
                     .IncSingleton<FiguresWereSpawnedEvent>()
                 )
                 .Inject()

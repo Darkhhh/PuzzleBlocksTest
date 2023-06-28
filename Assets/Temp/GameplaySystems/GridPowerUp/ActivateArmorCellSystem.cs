@@ -1,10 +1,10 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
-using PuzzleCore.ECS.Views;
+using Temp.Components;
+using Temp.Mono;
 using Temp.Utils;
+using Temp.Views;
+using Temp.Views.Cell;
 
 namespace Temp.GameplaySystems.GridPowerUp
 {

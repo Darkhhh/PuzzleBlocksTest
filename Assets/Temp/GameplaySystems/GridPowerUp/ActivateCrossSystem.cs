@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Common;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.Systems.Experimental.CellHandling;
-using PuzzleCore.ECS.Views;
+using Temp.Components;
 using Temp.Utils;
+using Temp.Views;
+using Temp.Views.Cell;
 using UnityEngine;
 
 namespace Temp.GameplaySystems.GridPowerUp

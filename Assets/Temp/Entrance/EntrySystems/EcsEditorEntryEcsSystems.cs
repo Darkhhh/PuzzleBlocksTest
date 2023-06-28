@@ -1,5 +1,5 @@
 ﻿using Leopotam.EcsLite;
-using PuzzleCore.ECS.SharedData;
+using Temp.SharedData;
 
 namespace Temp.Entrance.EntrySystems
 {

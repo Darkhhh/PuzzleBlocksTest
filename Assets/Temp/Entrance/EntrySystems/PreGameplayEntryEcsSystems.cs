@@ -1,9 +1,9 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.SharedData;
 using Temp.DragSystems;
 using Temp.PostGameplaySystems;
 using Temp.PreGameplayRunSystems;
+using Temp.SharedData;
 using UnityEngine;
 
 namespace Temp.Entrance.EntrySystems

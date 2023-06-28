@@ -1,7 +1,7 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.SharedData;
 using Temp.PostGameplaySystems;
+using Temp.SharedData;
 
 namespace Temp.Entrance.EntrySystems
 {
@@ -16,7 +16,9 @@ namespace Temp.Entrance.EntrySystems
             
             Systems
                 .Add(new ChangeFiguresScaleSystem())
+                .Add(new ClearTargetedCellsSystem(sceneData.powerUpsHandler))
                 .Add(new ClearDestroyableCellsSystem(sceneData.powerUpsHandler))
+                
                 .Add(new LightCellsSystem())
                 .Add(new CountCoinsAndScoreSystem())
                 .Add(new CheckOnEndGameSystem())

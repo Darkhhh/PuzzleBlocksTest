@@ -1,8 +1,8 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
-using PuzzleCore.ECS.Components;
-using PuzzleCore.ECS.SharedData;
 using SevenBoldPencil.EasyEvents;
+using Temp.Components;
+using Temp.SharedData;
 using UnityEngine;
 
 namespace Temp.PostGameplaySystems

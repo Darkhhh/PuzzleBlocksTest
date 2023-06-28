@@ -1,5 +1,4 @@
 ﻿using Leopotam.EcsLite;
-using PuzzleCore.ECS.SharedData;
 using SevenBoldPencil.EasyEvents;
 using Temp.Entrance.EntrySystems;
 using Temp.SharedData;

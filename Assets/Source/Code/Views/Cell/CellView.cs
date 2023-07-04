@@ -28,11 +28,14 @@ namespace Source.Code.Views.Cell
 
         #endregion
 
+        
         #region Properties
 
         private CellState CurrentState { get; set; }
 
         public GameObject PuzzleBlock { get; private set; }
+        
+        public SpriteRenderer PuzzleBlockRenderer { get; private set; }
         
         public SpriteRenderer Renderer { get; private set; }
 
@@ -57,6 +60,7 @@ namespace Source.Code.Views.Cell
             PuzzleBlock.transform.position = position;
             PuzzleBlock.transform.parent = thisTransform;
             PuzzleBlock.SetActive(false);
+            PuzzleBlockRenderer = PuzzleBlock.GetComponent<SpriteRenderer>();
             
             TargetBlock.transform.position = position;
             TargetBlock.transform.parent = thisTransform;

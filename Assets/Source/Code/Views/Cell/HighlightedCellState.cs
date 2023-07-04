@@ -4,17 +4,23 @@ namespace Source.Code.Views.Cell
 {
     public class HighlightedCellState : CellState
     {
-        private static readonly Color HighlightedColor = Color.green;
-        private static readonly Color DefaultColor = Color.white;
-        
         public override void OnEnterState(CellView context)
         {
-            context.Renderer.color = HighlightedColor;
+            context.PuzzleBlock.SetActive(true);
+            
+            var color = context.PuzzleBlockRenderer.color;
+            var newColor = new Color(color.r, color.g, color.b, 0.75f);
+            
+            context.PuzzleBlockRenderer.color = newColor;
         }
 
         public override void OnExitState(CellView context)
         {
-            context.Renderer.color = DefaultColor;
+            var color = context.PuzzleBlockRenderer.color;
+            var newColor = new Color(color.r, color.g, color.b, 1f);
+            
+            context.PuzzleBlockRenderer.color = newColor;
+            context.PuzzleBlock.SetActive(false);
         }
 
         public override bool CanBeChangedOn(CellStateEnum state)

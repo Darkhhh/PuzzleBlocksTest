@@ -1,4 +1,5 @@
 ﻿using Source.Code.Mono;
+using Source.UI.Code;
 using UI.InGame;
 using UnityEngine;
 
@@ -30,7 +31,7 @@ namespace Source.Code.SharedData
         
         
         [Header("UI")]
-        public InGameUserInterfaceHandler uiHandler;
+        public InGameUIHandler uiHandler;
         [Space]
         
         [Header("Effects")] 

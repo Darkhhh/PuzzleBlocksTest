@@ -1,5 +1,7 @@
 ﻿using Leopotam.EcsLite;
+using Leopotam.EcsLite.Di;
 using Source.Code.SharedData;
+using Source.Code.UpdateUserInterfaceSystems;
 
 namespace Source.Code.Entrance.EntrySystems
 {
@@ -8,17 +10,21 @@ namespace Source.Code.Entrance.EntrySystems
         public EcsSystems Systems { get; set; }
         public void Init(EcsWorld world, SystemsSharedData sharedData)
         {
-            throw new System.NotImplementedException();
+            Systems = new EcsSystems(world, sharedData);
+            Systems
+                .Add(new UpdateInGameUISystem(sharedData.SceneData.uiHandler))
+                .Inject()
+                .Init();
         }
 
         public void Run()
         {
-            throw new System.NotImplementedException();
+            Systems?.Run();
         }
 
         public void Destroy()
         {
-            throw new System.NotImplementedException();
+            Systems?.Destroy();
         }
     }
 }

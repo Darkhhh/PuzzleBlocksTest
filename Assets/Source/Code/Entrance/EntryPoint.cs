@@ -43,7 +43,7 @@ namespace Source.Code.Entrance
                 .Add(new AnimationsEntryEcsSystems())
                 .Add(new PostGameplayEntryEcsSystems())
                 .Add(new CleanUpEntryEcsSystems())
-                //.Add(new UpdateUserInterfaceSystems())
+                .Add(new UpdateUserInterfaceEntryEcsSystems())
                 .Init();
         }
 

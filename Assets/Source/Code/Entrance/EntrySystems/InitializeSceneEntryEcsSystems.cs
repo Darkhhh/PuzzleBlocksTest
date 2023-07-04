@@ -20,7 +20,7 @@ namespace Source.Code.Entrance.EntrySystems
             Systems
                 .Add(new PrepareCellsSystem(sceneData.grid, sceneData.handler, sceneData.targetPrefab))
                 .Add(new PrepareManualPowerUpsSystem(sceneData.manualPowerUpsStorage))
-                .Add(new PrepareGameInterfaceSystem(sceneData.uiHandler))
+                //.Add(new PrepareGameInterfaceSystem(sceneData.uiHandler))
                 .Inject()
                 .Init();
         }

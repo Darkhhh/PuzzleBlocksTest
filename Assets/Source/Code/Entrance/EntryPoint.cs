@@ -40,6 +40,7 @@ namespace Source.Code.Entrance
                 .Add(new InitializeSceneEntryEcsSystems())
                 .Add(new PreGameplayEntryEcsSystems())
                 .Add(new GameplayEntryEcsSystems())
+                .Add(new AnimationsEntryEcsSystems())
                 .Add(new PostGameplayEntryEcsSystems())
                 .Add(new CleanUpEntryEcsSystems())
                 //.Add(new UpdateUserInterfaceSystems())

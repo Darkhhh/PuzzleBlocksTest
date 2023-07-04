@@ -31,5 +31,9 @@ namespace Source.Code.SharedData
         
         [Header("UI")]
         public InGameUserInterfaceHandler uiHandler;
+        [Space]
+        
+        [Header("Effects")] 
+        public DissolveBlocksHandler dissolveBlocksHandler;
     }
 }

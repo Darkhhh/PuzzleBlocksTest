@@ -16,9 +16,10 @@ namespace Source.Code.DragSystems
         private readonly EcsFilterInject<Inc<DraggingObjectComponent>> _draggingObjectFilter = default;
         private readonly EcsFilterInject<Inc<DraggableObjectComponent>> _draggableObjectFilter = default;
         
-        private readonly EcsPoolInject<DraggableObjectComponent> _draggableObjectComponents = default;
-        private readonly EcsPoolInject<DraggingObjectComponent> _draggingObjectComponents = default;
-        
+        private readonly EcsPoolInject<DraggableObjectComponent> _draggableObjectPool = default;
+        private readonly EcsPoolInject<DraggingObjectComponent> _draggingObjectPool = default;
+        private readonly EcsPoolInject<DoNotTakeObject> _doNotTakeObjectsPool = default;
+
         private readonly LayerMask _draggableObjectsLayers;
         private EventsBus _events;
         
@@ -47,10 +48,12 @@ namespace Source.Code.DragSystems
             
             foreach (var entity in _draggableObjectFilter.Value)
             {
-                ref var o = ref _draggableObjectComponents.Value.Get(entity);
+                ref var o = ref _draggableObjectPool.Value.Get(entity);
                 if (o.View.GetTransform() != hit.transform) continue;
+
+                if (_doNotTakeObjectsPool.Value.Has(entity)) break;
                 
-                ref var component = ref _draggingObjectComponents.Value.Add(entity);
+                ref var component = ref _draggingObjectPool.Value.Add(entity);
                 var position = o.View.GetTransform().position;
                 component.Offset = position - mousePosition;
                 component.InitialPosition = o.View.GetObjectPosition();

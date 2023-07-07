@@ -2,10 +2,10 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Utils;
 using Source.Code.Components;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
-using Source.Code.Utils;
 using UnityEngine;
 
 namespace Source.Code.PreGameplayRunSystems

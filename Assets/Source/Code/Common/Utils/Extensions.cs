@@ -1,7 +1,7 @@
 ﻿using Source.Code.Views;
 using UnityEngine;
 
-namespace Source.Code.Utils
+namespace Source.Code.Common.Utils
 {
     public static class Extensions
     {

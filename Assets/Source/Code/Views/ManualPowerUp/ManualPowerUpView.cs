@@ -1,5 +1,6 @@
 ﻿using System;
-using Source.Code.Utils;
+using System.Collections;
+using Source.Code.Common.Utils;
 using UnityEngine;
 
 namespace Source.Code.Views.ManualPowerUp
@@ -49,5 +50,10 @@ namespace Source.Code.Views.ManualPowerUp
 
         
         public Transform GetTransform() => transform;
+        
+        public void ExecuteCoroutine(IEnumerator routine)
+        {
+            StartCoroutine(routine);
+        }
     }
 }

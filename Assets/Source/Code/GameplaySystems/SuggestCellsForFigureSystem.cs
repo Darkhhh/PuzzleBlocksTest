@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Source.Code.Common.Utils;
 using Source.Code.Components;
-using Source.Code.Utils;
 using Source.Code.Views.Cell;
 using UnityEngine;
 

@@ -69,6 +69,8 @@ namespace Source.Code.PreGameplayRunSystems
             {
                 _figureWeights[i] = _figureWeights[i - 1] + _sceneFigures[i - 1].Weight;
             }
+            
+            Run(systems);
         }
 
         #endregion

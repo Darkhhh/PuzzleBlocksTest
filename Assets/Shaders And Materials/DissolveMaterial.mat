@@ -50,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DissolveAmount: 1
+    - _DissolveAmount: 0.549
     - _EnableExternalAlpha: 0
     m_Colors:
     - _AdditionalColor: {r: 5.346282, g: 5.124444, b: 0.7320635, a: 1}

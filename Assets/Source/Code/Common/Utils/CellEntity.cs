@@ -3,7 +3,7 @@ using Leopotam.EcsLite;
 using Source.Code.Components;
 using Source.Code.Views.Cell;
 
-namespace Source.Code.Utils
+namespace Source.Code.Common.Utils
 {
     public static class CellEntity
     {

@@ -1,3 +1,6 @@
+using SevenBoldPencil.EasyEvents;
+using Source.Code.Components.Events;
+using Source.UI.InGame;
 using TMPro;
 using UI.InGame;
 using UnityEngine;
@@ -9,10 +12,13 @@ namespace Source.UI.Code
         [SerializeField] private TextMeshProUGUI scoreValueText;
         [SerializeField] private TextMeshProUGUI coinsValueText;
 
-        public void Init()
+        private EventsBus _events;
+        
+        public void Init(EventsBus events)
         {
             SetNewScore(0);
             SetNewCoinsAmount(0);
+            _events = events;
         }
 
         public void SetNewScore(int score)
@@ -23,6 +29,11 @@ namespace Source.UI.Code
         public void SetNewCoinsAmount(int coinsAmount)
         {
             coinsValueText.text = coinsAmount.ToString();
+        }
+
+        public void OnSwapButtonClick()
+        {
+            _events.NewEventSingleton<SwapFiguresAndPowerUpsEvent>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using static System.Math;
 
-namespace Source.Code.Utils
+namespace Source.Code.Common.Utils
 {
     public static class Utilities
     {

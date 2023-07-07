@@ -57,4 +57,10 @@ namespace Source.Code.Components
     {
         public Vector3 InitialPosition;
     }
+    
+    
+    /// <summary>
+    /// Добавляется на объект, который нельзя перетаскивать.
+    /// </summary>
+    public struct DoNotTakeObject { }
 }

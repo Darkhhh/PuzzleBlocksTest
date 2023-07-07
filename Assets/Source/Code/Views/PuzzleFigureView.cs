@@ -1,5 +1,6 @@
+using System.Collections;
 using System.Linq;
-using Source.Code.Utils;
+using Source.Code.Common.Utils;
 using UnityEngine;
 
 namespace Source.Code.Views
@@ -98,6 +99,11 @@ namespace Source.Code.Views
             Offset = new Vector3((xAxis.Max + xAxis.Min) / 2, (yAxis.Max + yAxis.Min) / 2);
         }
 
-        
+
+
+        public void ExecuteCoroutine(IEnumerator routine)
+        {
+            StartCoroutine(routine);
+        }
     }
 }

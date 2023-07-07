@@ -2,6 +2,7 @@
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
+using Source.UI.InGame;
 using UI.InGame;
 
 namespace Source.Code.UpdateUserInterfaceSystems
@@ -18,7 +19,7 @@ namespace Source.Code.UpdateUserInterfaceSystems
         public void Init(IEcsSystems systems)
         {
             _events = systems.GetShared<SystemsSharedData>().EventsBus;
-            _handler.Init();
+            _handler.Init(_events);
         }
 
         public void Run(IEcsSystems systems)

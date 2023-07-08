@@ -36,7 +36,6 @@ namespace Source.Code.AnimationSystems
         {
             if (_removingFigureFilter.Value.GetEntitiesCount() == 0) return;
 
-            Debug.Log($"Ready to animate {_destroyableCellsFilter.Value.GetEntitiesCount()} cells");
             var position = _targetPosition;
             
             foreach (var entity in _destroyableCellsFilter.Value)

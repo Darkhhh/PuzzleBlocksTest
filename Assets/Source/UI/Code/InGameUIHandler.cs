@@ -1,5 +1,6 @@
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
+using Source.Localization;
 using Source.UI.InGame;
 using TMPro;
 using UI.InGame;
@@ -7,13 +8,20 @@ using UnityEngine;
 
 namespace Source.UI.Code
 {
-    public class InGameUIHandler : MonoBehaviour, IGameUIHandler
+    public class InGameUIHandler : PageHandler, IGameUIHandler
     {
+        [SerializeField] private PauseUIHandler pauseUIHandler;
+        
         [SerializeField] private TextMeshProUGUI scoreValueText;
         [SerializeField] private TextMeshProUGUI coinsValueText;
 
         private EventsBus _events;
-        
+        //private ILocalizationHandler _localizationHandler;
+        //private Language _currentLanguage;
+
+
+        #region IGameUIHandler
+
         public void Init(EventsBus events)
         {
             SetNewScore(0);
@@ -31,9 +39,41 @@ namespace Source.UI.Code
             coinsValueText.text = coinsAmount.ToString();
         }
 
+        #endregion
+
+
+        #region ButtonClickHandlers
+
         public void OnSwapButtonClick()
         {
             _events.NewEventSingleton<SwapFiguresAndPowerUpsEvent>();
+        }
+
+        public void OnPauseButtonClick()
+        {
+            pauseUIHandler.gameObject.SetActive(true);
+            //pauseUIHandler.Prepare(_localizationHandler, _currentLanguage);
+            pauseUIHandler.OnPageOpen();
+        }
+
+        #endregion
+        
+
+        
+
+        private void UpdateTexts()
+        {
+            
+        }
+
+        public override void OnPageOpen()
+        {
+            
+        }
+
+        public override void OnPageClose()
+        {
+            
         }
     }
 }

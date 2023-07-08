@@ -11,9 +11,9 @@ namespace Source.Code.AnimationSystems
 {
     public class SwapFiguresAndPowerUpsSystem : IEcsInitSystem, IEcsRunSystem
     {
-        private const int XOffset = 5;
+        private const int XOffset = 10;
         private static readonly Vector3 Offset = new (XOffset, 0);
-        private const float ChangingSpeed = 5;
+        private const float ChangingSpeed = 7;
 
 
         private readonly EcsFilterInject<Inc<PuzzleFigureComponent>> _figuresFilter = default;

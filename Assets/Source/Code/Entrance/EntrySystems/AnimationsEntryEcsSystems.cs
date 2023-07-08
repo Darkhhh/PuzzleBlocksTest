@@ -16,7 +16,7 @@ namespace Source.Code.Entrance.EntrySystems
             Systems = new EcsSystems(world, sharedData);
             
             Systems
-                .Add(new AnimateDestroyableCellsSystem(sharedData.SceneData.dissolveBlocksHandler, new Vector3(4,4)))
+                .Add(new AnimateDestroyableCellsSystem(sharedData.SceneData.dissolveBlocksHandler, new Vector3(1.5f,5)))
                 .Add(new SwapFiguresAndPowerUpsSystem())
                 .Inject()
                 .Init();

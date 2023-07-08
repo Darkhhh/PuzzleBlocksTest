@@ -10,10 +10,10 @@ namespace Source.Code.PostGameplaySystems
 {
     public class ChangeFiguresScaleSystem : IEcsInitSystem, IEcsRunSystem
     {
-        #region Const
+        #region Scales
 
         private readonly Vector3 _defaultScale = new (1,1,1);
-        private readonly Vector3 _spawnScale = new (0.7f, 0.7f, 0.7f);
+        private readonly Vector3 _spawnScale = new (0.6f, 0.6f, 0.6f);
         private readonly Vector3 _draggingScale = new (0.9f, 0.9f, 0.9f);
 
         #endregion

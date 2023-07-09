@@ -42,6 +42,7 @@ namespace Source.Localization
                 _handle = handle;
                 callbackOnCompleted?.Invoke();
             };
+            _currentLanguage = language;
         }
 
         public void GetPageStrings(string pageTag, ref Dictionary<string, (string val, int fontSize)> strings)

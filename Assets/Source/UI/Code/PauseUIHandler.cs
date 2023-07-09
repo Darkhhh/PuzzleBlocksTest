@@ -37,10 +37,10 @@ namespace Source.UI.Code
         #endregion
         
         
-        public override void Prepare(ILocalizationHandler localizationHandler, Language currentLanguage)
+        public override void Prepare()
         {
-            base.Prepare(localizationHandler, currentLanguage);
-            StartCoroutine(SetAllTexts(localizationHandler));
+            base.Prepare();
+            StartCoroutine(SetAllTexts(GetLocalizationHandler()));
         }
 
 
@@ -74,8 +74,7 @@ namespace Source.UI.Code
 
         public void OnSettingsButtonClick()
         {
-            Debug.Log("Settings Button Clicked!");
-            settingsPage.Prepare(GetLocalizationHandler(), GetCurrentLanguage());
+            settingsPage.Prepare();
             settingsPage.gameObject.SetActive(true);
         }
 

@@ -1,18 +1,17 @@
 ﻿using Source.Localization;
 using UnityEngine;
+using Zenject;
 
 namespace Source.UI.Code
 {
     public abstract class PageHandler : MonoBehaviour, IPageHandler
     {
-        private ILocalizationHandler _localizationHandler;
+        [Inject] private ILocalizationHandler _localizationHandler;
         private Language _currentLanguage;
         
         
-        public virtual void Prepare(ILocalizationHandler localizationHandler, Language currentLanguage)
+        public virtual void Prepare()
         {
-            _localizationHandler = localizationHandler;
-            _currentLanguage = currentLanguage;
             if (!_localizationHandler.IsLoaded())
             {
                 _localizationHandler.Load(_currentLanguage);

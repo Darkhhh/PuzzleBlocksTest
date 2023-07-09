@@ -17,8 +17,8 @@ namespace Source.Code.InitializeSystems
 
         public void Init(IEcsSystems systems)
         {
-            _localizationHandler.Init();
-            _handler.Prepare(_localizationHandler, Language.English);
+            //_localizationHandler.Init();
+            _handler.Prepare();
         }
     }
 }

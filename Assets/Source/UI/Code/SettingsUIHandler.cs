@@ -31,9 +31,9 @@ namespace Source.UI.Code
             gameObject.SetActive(false);
         }
 
-        public override void Prepare(ILocalizationHandler localizationHandler, Language currentLanguage)
+        public override void Prepare()
         {
-            base.Prepare(localizationHandler, currentLanguage);
+            base.Prepare();
             
             dropdown.options.Clear();
             foreach (var item in Enum.GetValues(typeof(Language)).Cast<Language>())
@@ -44,7 +44,7 @@ namespace Source.UI.Code
             musicOnIcon.SetActive(true);
             musicOffIcon.SetActive(false);
             
-            StartCoroutine(SetAllTexts(localizationHandler));
+            StartCoroutine(SetAllTexts(GetLocalizationHandler()));
         }
 
         

@@ -75,7 +75,7 @@ namespace Source.UI.Code
         public void OnPauseButtonClick()
         {
             pauseUIHandler.gameObject.SetActive(true);
-            pauseUIHandler.Prepare(GetLocalizationHandler(), GetCurrentLanguage());
+            pauseUIHandler.Prepare();
             pauseUIHandler.OnPageOpen();
         }
 
@@ -92,10 +92,10 @@ namespace Source.UI.Code
             
         }
 
-        public override void Prepare(ILocalizationHandler localizationHandler, Language currentLanguage)
+        public override void Prepare()
         {
-            base.Prepare(localizationHandler, currentLanguage);
-            StartCoroutine(SetAllTexts(localizationHandler));
+            base.Prepare();
+            StartCoroutine(SetAllTexts(GetLocalizationHandler()));
         }
         
         private IEnumerator SetAllTexts(ILocalizationHandler localizationHandler)

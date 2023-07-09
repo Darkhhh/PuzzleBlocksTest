@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 49dc9f7ccff734847b3b54ef71556c8a, type: 2}
-  movingSpeed: 4
+  movingSpeed: 8

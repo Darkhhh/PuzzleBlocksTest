@@ -16,9 +16,9 @@
         <Str id="xml-pause-main-menu" FontSize="95">Menu</Str>
     </Page>
     <Page id="xml-settings">
-        <Str id="xml-settings-title" FontSize="160">Settings</Str>
-        <Str id="xml-settings-music" FontSize="120">Music and sounds</Str>
-        <Str id="xml-settings-language" FontSize="160">Language</Str>
+        <Str id="xml-settings-title" FontSize="120">Settings</Str>
+        <Str id="xml-settings-music" FontSize="70">Music and sounds</Str>
+        <Str id="xml-settings-language" FontSize="70">Language</Str>
     </Page>
     <Page id="xml-market">
         <Str id="xml-market-title" FontSize="30">Store</Str>

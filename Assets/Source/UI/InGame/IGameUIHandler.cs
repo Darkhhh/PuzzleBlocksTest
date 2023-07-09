@@ -4,7 +4,7 @@ namespace Source.UI.InGame
 {
     public interface IGameUIHandler
     {
-        public void Init(EventsBus events);
+        public void Init();
 
         public void SetNewScore(int score);
 

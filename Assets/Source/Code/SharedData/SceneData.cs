@@ -1,6 +1,8 @@
 ﻿using Source.Code.Mono;
 using Source.Localization;
 using Source.UI.Code;
+using Source.UI.Code.InGamePageManagerScripts;
+using Source.UI.Code.Pages;
 using UI.InGame;
 using UnityEngine;
 
@@ -40,5 +42,8 @@ namespace Source.Code.SharedData
 
         [Space] [Header("Localization Handler")]
         public LocalizationHandler localizationHandler;
+
+        [Space] [Header("Page Manager")] 
+        public PageManager pageManager;
     }
 }

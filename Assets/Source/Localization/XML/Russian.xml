@@ -9,16 +9,16 @@
         <Str id="xml-score" FontSize="64">Счёт</Str>
     </Page>
     <Page id="xml-pause">
-        <Str id="xml-pause-title" FontSize="96">Пауза</Str>
-        <Str id="xml-pause-continue" FontSize="64">Продолжить</Str>
-        <Str id="xml-pause-restart" FontSize="64">Перезапуск</Str>
-        <Str id="xml-pause-settings" FontSize="64">Настройки</Str>
-        <Str id="xml-pause-main-menu" FontSize="64">Главное меню</Str>
+        <Str id="xml-pause-title" FontSize="64">Пауза</Str>
+        <Str id="xml-pause-continue" FontSize="32">Продолжить</Str>
+        <Str id="xml-pause-restart" FontSize="32">Перезапуск</Str>
+        <Str id="xml-pause-settings" FontSize="32">Настройки</Str>
+        <Str id="xml-pause-main-menu" FontSize="32">Главное меню</Str>
     </Page>
     <Page id="xml-settings">
-        <Str id="xml-settings-title" FontSize="50">Настройки</Str>
-        <Str id="xml-settings-music" FontSize="70">Звуки и музыка</Str>
-        <Str id="xml-settings-language" FontSize="70">Язык</Str>
+        <Str id="xml-settings-title" FontSize="40">Настройки</Str>
+        <Str id="xml-settings-music" FontSize="40">Звуки и музыка</Str>
+        <Str id="xml-settings-language" FontSize="40">Язык</Str>
     </Page>
     <Page id="xml-market">
         <Str id="xml-market-title" FontSize="30">Магазин</Str>

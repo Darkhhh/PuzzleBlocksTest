@@ -72,5 +72,7 @@ namespace Source.Localization
         }
 
         public bool IsLoaded() => _handle.IsValid();
+
+        public Language GetCurrentLanguage() => _currentLanguage;
     }
 }

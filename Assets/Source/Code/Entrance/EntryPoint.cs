@@ -3,7 +3,10 @@ using SevenBoldPencil.EasyEvents;
 using Source.Code.Entrance.EntrySystems;
 using Source.Code.SharedData;
 using Source.Localization;
+using Source.UI.Code;
+using Source.UI.Code.InGamePageManagerScripts;
 using UnityEngine;
+using Zenject;
 
 namespace Source.Code.Entrance
 {
@@ -46,6 +49,8 @@ namespace Source.Code.Entrance
                 .Add(new CleanUpEntryEcsSystems())
                 .Add(new UpdateUserInterfaceEntryEcsSystems())
                 .Init();
+            
+            sceneData.pageManager.Init(_sharedData.EventsBus, sceneData.localizationHandler, Language.Russian);
         }
 
         

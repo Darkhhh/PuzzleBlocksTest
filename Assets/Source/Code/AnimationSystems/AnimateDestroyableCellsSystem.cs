@@ -44,7 +44,7 @@ namespace Source.Code.AnimationSystems
 
                 var destroyingCell = _handler.Get().Prepare(cell.Position);
                 
-                destroyingCell.MoveTowards(position, () =>
+                destroyingCell.MoveTowards(new Vector3(Random.Range(-6f, 6f), Random.Range(-6f, 6f)), () =>
                 {
                     destroyingCell.PlayEffect(() =>
                     {

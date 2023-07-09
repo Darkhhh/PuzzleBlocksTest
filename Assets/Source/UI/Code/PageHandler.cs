@@ -1,4 +1,7 @@
-﻿using Source.Localization;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using Source.Localization;
 using UnityEngine;
 using Zenject;
 
@@ -6,30 +9,34 @@ namespace Source.UI.Code
 {
     public abstract class PageHandler : MonoBehaviour, IPageHandler
     {
-        [Inject] private ILocalizationHandler _localizationHandler;
-        private Language _currentLanguage;
+        [Inject] protected ILocalizationHandler LocalizationHandler;
+
+        protected Dictionary<string, (string val, int fontSize)> PageStrings;
         
-        
-        public virtual void Prepare()
+        protected string UIPageTag { get; set; }
+
+        public virtual void Init(string pageTag)
         {
-            if (!_localizationHandler.IsLoaded())
-            {
-                _localizationHandler.Load(_currentLanguage);
-            }
+            UIPageTag = pageTag;
         }
 
         public abstract void OnPageOpen();
 
         public abstract void OnPageClose();
+        public abstract void UpdateTexts();
 
-        public virtual void ChangeLanguage(Language newLanguage)
+
+        protected IEnumerator GetPageStrings(Action callback = null)
         {
-            _localizationHandler.Load(newLanguage);
-            _currentLanguage = newLanguage;
+            while (!LocalizationHandler.IsLoaded())
+            {
+                yield return null;
+            }
+
+            PageStrings = new Dictionary<string, (string val, int fontSize)>();
+            LocalizationHandler.GetPageStrings(UIPageTag, ref PageStrings);
+            
+            callback?.Invoke();
         }
-
-
-        public ILocalizationHandler GetLocalizationHandler() => _localizationHandler;
-        public Language GetCurrentLanguage() => _currentLanguage;
     }
 }

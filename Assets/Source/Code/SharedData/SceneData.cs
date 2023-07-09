@@ -1,4 +1,5 @@
 ﻿using Source.Code.Mono;
+using Source.Localization;
 using Source.UI.Code;
 using UI.InGame;
 using UnityEngine;
@@ -36,5 +37,8 @@ namespace Source.Code.SharedData
         
         [Header("Effects")] 
         public DissolveBlocksHandler dissolveBlocksHandler;
+
+        [Space] [Header("Localization Handler")]
+        public LocalizationHandler localizationHandler;
     }
 }

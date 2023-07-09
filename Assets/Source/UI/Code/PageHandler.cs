@@ -13,10 +13,10 @@ namespace Source.UI.Code
         {
             _localizationHandler = localizationHandler;
             _currentLanguage = currentLanguage;
-            // if (!_localizationHandler.IsLoaded())
-            // {
-            //     _localizationHandler.Load(_currentLanguage);
-            // }
+            if (!_localizationHandler.IsLoaded())
+            {
+                _localizationHandler.Load(_currentLanguage);
+            }
         }
 
         public abstract void OnPageOpen();
@@ -28,5 +28,9 @@ namespace Source.UI.Code
             _localizationHandler.Load(newLanguage);
             _currentLanguage = newLanguage;
         }
+
+
+        public ILocalizationHandler GetLocalizationHandler() => _localizationHandler;
+        public Language GetCurrentLanguage() => _currentLanguage;
     }
 }

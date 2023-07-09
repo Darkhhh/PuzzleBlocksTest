@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document id="English">
+    <Page id="xml-main-menu">
+        <Str id="xml-play-button" FontSize="64">Play</Str>
+        <Str id="xml-market-button" FontSize="64">Store</Str>
+        <Str id="xml-settings-button" FontSize="56">Settings</Str>
+    </Page>
+    <Page id="xml-game">
+        <Str id="xml-score" FontSize="130">Score</Str>
+    </Page>
+    <Page id="xml-pause">
+        <Str id="xml-pause-title" FontSize="130">Pause</Str>
+        <Str id="xml-pause-continue" FontSize="95">Resume</Str>
+        <Str id="xml-pause-restart" FontSize="95">Restart</Str>
+        <Str id="xml-pause-settings" FontSize="95">Settings</Str>
+        <Str id="xml-pause-main-menu" FontSize="95">Menu</Str>
+    </Page>
+    <Page id="xml-settings">
+        <Str id="xml-settings-title" FontSize="160">Settings</Str>
+        <Str id="xml-settings-music" FontSize="120">Music and sounds</Str>
+        <Str id="xml-settings-language" FontSize="160">Language</Str>
+    </Page>
+    <Page id="xml-market">
+        <Str id="xml-market-title" FontSize="30">Store</Str>
+    </Page>
+    
+    <MarketItems>
+        <MarketItem id="xml-market-barrel">
+            <Title FontSize="30">Barrel with gunpowder</Title>
+            <Decsription FontSize="100">Clears cells within a 1 cell radius from the activation site</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-barrel-3">
+            <Title FontSize="30">Triple Barrel</Title>
+            <Decsription FontSize="100">Clears cells within a 2 cell radius from the activation site</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-brush">
+            <Title FontSize="30">Broomstick</Title>
+            <Decsription FontSize="100">Clears cells on a row</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-canonball">
+            <Title FontSize="30">Canon Ball</Title>
+            <Decsription FontSize="100">Clears one cell</Decsription>
+        </MarketItem>
+    </MarketItems>
+</Document>

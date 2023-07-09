@@ -3,7 +3,6 @@ using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
 using Source.UI.InGame;
-using UI.InGame;
 
 namespace Source.Code.UpdateUserInterfaceSystems
 {

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document id="Russian">
+    <Page id="xml-main-menu">
+        <Str id="xml-play-button" FontSize="64">Играть</Str>
+        <Str id="xml-market-button" FontSize="64">Магазин</Str>
+        <Str id="xml-settings-button" FontSize="56">Настройки</Str>
+    </Page>
+    <Page id="xml-game">
+        <Str id="xml-score" FontSize="64">Счёт</Str>
+    </Page>
+    <Page id="xml-pause">
+        <Str id="xml-pause-title" FontSize="96">Пауза</Str>
+        <Str id="xml-pause-continue" FontSize="64">Продолжить</Str>
+        <Str id="xml-pause-restart" FontSize="64">Перезапуск</Str>
+        <Str id="xml-pause-settings" FontSize="64">Настройки</Str>
+        <Str id="xml-pause-main-menu" FontSize="64">Главное меню</Str>
+    </Page>
+    <Page id="xml-settings">
+        <Str id="xml-settings-title" FontSize="50">Настройки</Str>
+        <Str id="xml-settings-music" FontSize="70">Звуки и музыка</Str>
+        <Str id="xml-settings-language" FontSize="70">Язык</Str>
+    </Page>
+    <Page id="xml-market">
+        <Str id="xml-market-title" FontSize="30">Магазин</Str>
+    </Page>
+    
+    
+    <MarketItems>
+        <MarketItem id="xml-market-barrel">
+            <Title FontSize="30">Бочонок с порохом</Title>
+            <Decsription FontSize="100">Очищает клетки в радиусе 1 клетки от места активации</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-barrel-3">
+            <Title FontSize="30">Тройной бочонок</Title>
+            <Decsription FontSize="100">Очищает клетки в радиусе 2 клеток от места активации</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-brush">
+            <Title FontSize="30">Метелка</Title>
+            <Decsription FontSize="100">Очищает клетки на выбранной строке</Decsription>
+        </MarketItem>
+        <MarketItem id="xml-market-canonball">
+            <Title FontSize="30">Пушечное ядро</Title>
+            <Decsription FontSize="100">Очищает 1 клетку</Decsription>
+        </MarketItem>
+    </MarketItems>
+</Document>

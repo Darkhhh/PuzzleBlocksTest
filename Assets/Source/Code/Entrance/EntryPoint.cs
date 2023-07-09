@@ -2,6 +2,7 @@
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Entrance.EntrySystems;
 using Source.Code.SharedData;
+using Source.Localization;
 using UnityEngine;
 
 namespace Source.Code.Entrance
@@ -47,11 +48,10 @@ namespace Source.Code.Entrance
                 .Init();
         }
 
-        private void Update()
-        {
-            _container.Run();
-        }
+        
+        private void Update() => _container.Run();
 
+        
         private void OnDestroy()
         {
             if (_container == null) return;

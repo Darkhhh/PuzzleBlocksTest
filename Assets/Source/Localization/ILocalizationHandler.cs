@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Source.Localization
 {
     public interface ILocalizationHandler
     {
+        public void Init();
+        
         public bool IsLoaded();
 
-        public Dictionary<string, (string text, float fontSize)> GetPageStrings();
+        public void GetPageStrings(string pageTag, ref Dictionary<string, (string val, int fontSize)> strings);
 
-        public void Load(Language language);
+        public void Load(Language language, Action callbackOnCompleted = null);
     }
 }

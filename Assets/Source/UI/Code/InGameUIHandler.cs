@@ -1,23 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
 using Source.Localization;
 using Source.UI.InGame;
 using TMPro;
-using UI.InGame;
 using UnityEngine;
 
 namespace Source.UI.Code
 {
     public class InGameUIHandler : PageHandler, IGameUIHandler
     {
+        #region Const Strings
+
+        private const string PageTag = "xml-game";
+
+        private const string ScoreTextTag = "xml-score";
+
+        #endregion
+        
+        
+        #region Serialize Fields
+
         [SerializeField] private PauseUIHandler pauseUIHandler;
         
         [SerializeField] private TextMeshProUGUI scoreValueText;
+        
         [SerializeField] private TextMeshProUGUI coinsValueText;
 
+        [SerializeField] private TextMeshProUGUI scoreText;
+
+        #endregion
+
+        
+        
+        #region Private Fields
+
         private EventsBus _events;
-        //private ILocalizationHandler _localizationHandler;
-        //private Language _currentLanguage;
+
+        #endregion
+        
 
 
         #region IGameUIHandler
@@ -42,6 +64,7 @@ namespace Source.UI.Code
         #endregion
 
 
+        
         #region ButtonClickHandlers
 
         public void OnSwapButtonClick()
@@ -52,20 +75,13 @@ namespace Source.UI.Code
         public void OnPauseButtonClick()
         {
             pauseUIHandler.gameObject.SetActive(true);
-            //pauseUIHandler.Prepare(_localizationHandler, _currentLanguage);
+            pauseUIHandler.Prepare(GetLocalizationHandler(), GetCurrentLanguage());
             pauseUIHandler.OnPageOpen();
         }
 
         #endregion
-        
 
         
-
-        private void UpdateTexts()
-        {
-            
-        }
-
         public override void OnPageOpen()
         {
             
@@ -74,6 +90,28 @@ namespace Source.UI.Code
         public override void OnPageClose()
         {
             
+        }
+
+        public override void Prepare(ILocalizationHandler localizationHandler, Language currentLanguage)
+        {
+            base.Prepare(localizationHandler, currentLanguage);
+            StartCoroutine(SetAllTexts(localizationHandler));
+        }
+        
+        private IEnumerator SetAllTexts(ILocalizationHandler localizationHandler)
+        {
+            while (!localizationHandler.IsLoaded())
+            {
+                yield return null;
+            }
+
+            var strings = new Dictionary<string, (string val, int fontSize)>();
+            localizationHandler.GetPageStrings(PageTag, ref strings);
+        
+        
+            var data = strings[ScoreTextTag];
+            scoreText.text = data.val;
+            scoreText.fontSize = data.fontSize;
         }
     }
 }

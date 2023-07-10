@@ -31,4 +31,10 @@ namespace Source.Code.Components
 
         public PowerUpView View;
     }
+    
+    
+    /// <summary>
+    /// Обозначает клетку, с которой нужно удалить усиление без активации.
+    /// </summary>
+    public struct RemovePowerUpComponent { }
 }

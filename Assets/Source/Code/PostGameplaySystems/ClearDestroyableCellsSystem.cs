@@ -18,15 +18,11 @@ namespace Source.Code.PostGameplaySystems
         private readonly EcsFilterInject<Inc<PuzzleFigureComponent, ShouldBeRemovedFigureComponent>> _removingFigureFilter = default;
         private readonly EcsFilterInject<Inc<CellComponent, DestroyableCellStateComponent>>_destroyableCellsFilter = default;
 
-        private readonly EcsPoolInject<CellPowerUpComponent> _cellsPowerUpsPool = default;
+        private readonly EcsPoolInject<CellPowerUpComponent> _cellPowerUpsPool = default;
+        private readonly EcsPoolInject<RemovePowerUpComponent> _clearCellPowerUpPool = default;
 
-        private readonly PowerUpsHandler _handler;
         private EventsBus _events;
-        
-        
-        public ClearDestroyableCellsSystem(PowerUpsHandler handler) => _handler = handler;
-        
-        
+
         public void Init(IEcsSystems systems) => _events = systems.GetShared<SystemsSharedData>().EventsBus;
         
         
@@ -53,13 +49,10 @@ namespace Source.Code.PostGameplaySystems
             foreach (var cellEntity in _destroyableCellsFilter.Value)
             {
                 CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(cellEntity), CellStateEnum.Default);
-
-                if (_cellsPowerUpsPool.Value.Has(cellEntity))
-                {
-                    ref var cellPowerUp = ref _cellsPowerUpsPool.Value.Get(cellEntity);
                 
-                    _handler.ReturnPowerUp(cellPowerUp.View);
-                    _cellsPowerUpsPool.Value.Del(cellEntity);
+                if (_cellPowerUpsPool.Value.Has(cellEntity))
+                {
+                    _clearCellPowerUpPool.Value.Add(cellEntity);
                 }
             }
         }

@@ -38,4 +38,10 @@ namespace Source.Code.Components.Events
         
         public int NewScore;
     }
+    
+    
+    /// <summary>
+    /// Создается в CheckOnEndGameSystem. Уничтожается в RestartGameSystem после обработки.
+    /// </summary>
+    public struct GameOverEvent : IEventSingleton { }
 }

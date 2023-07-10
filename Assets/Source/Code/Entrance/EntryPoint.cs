@@ -50,11 +50,14 @@ namespace Source.Code.Entrance
                 .Add(new UpdateUserInterfaceEntryEcsSystems())
                 .Init();
             
-            sceneData.pageManager.Init(_sharedData.EventsBus, sceneData.localizationHandler, Language.Russian);
+            sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.Russian);
         }
 
-        
-        private void Update() => _container.Run();
+
+        private void Update()
+        {
+            if (!_sharedData.GameData.Pause) _container.Run();
+        }
 
         
         private void OnDestroy()

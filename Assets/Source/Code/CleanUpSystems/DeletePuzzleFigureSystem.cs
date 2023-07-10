@@ -27,6 +27,8 @@ namespace Source.Code.CleanUpSystems
         private readonly EcsPoolInject<AvailablePlacesComponent> _figurePlacePool = default;
 
         private readonly EcsPoolInject<FigurePowerUpComponent> _figurePowerUpsPool = default;
+        
+        private readonly EcsPoolInject<CanNotBeTakenComponent>  _notTakenFiguresFilter = default;
 
         #endregion
 
@@ -67,6 +69,7 @@ namespace Source.Code.CleanUpSystems
                 _draggableObjectPool.Value.Del(entity);
                 _draggableOverGridObjectPool.Value.Del(entity);
                 _figurePlacePool.Value.Del(entity);
+                _notTakenFiguresFilter.Value.Del(entity);
 
                 if (_figurePowerUpsPool.Value.Has(entity))
                 {

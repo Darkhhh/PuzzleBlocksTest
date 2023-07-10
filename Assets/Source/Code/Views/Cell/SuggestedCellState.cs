@@ -5,6 +5,7 @@ namespace Source.Code.Views.Cell
     public class SuggestedCellState : CellState
     {
         private static readonly Color SuggestionColor = Color.cyan;
+        private static readonly Color DefaultColor = Color.white;
         
         public override void OnEnterState(CellView context)
         {
@@ -13,7 +14,7 @@ namespace Source.Code.Views.Cell
 
         public override void OnExitState(CellView context)
         {
-            
+            context.Renderer.color = DefaultColor;
         }
 
         public override bool CanBeChangedOn(CellStateEnum state)

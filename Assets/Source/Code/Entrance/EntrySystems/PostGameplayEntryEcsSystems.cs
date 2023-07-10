@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
+using Source.Code.CleanUpSystems;
 using Source.Code.PostGameplaySystems;
 using Source.Code.SharedData;
 
@@ -15,13 +16,14 @@ namespace Source.Code.Entrance.EntrySystems
             Systems = new EcsSystems(world, sharedData);
             
             Systems
+                .Add(new RestartGameSystem())
                 .Add(new ChangeFiguresScaleSystem())
                 .Add(new ClearTargetedCellsSystem(sceneData.powerUpsHandler))
-                .Add(new ClearDestroyableCellsSystem(sceneData.powerUpsHandler))
+                .Add(new ClearDestroyableCellsSystem())
                 
                 .Add(new LightCellsSystem())
                 .Add(new CountCoinsAndScoreSystem())
-                .Add(new CheckOnEndGameSystem())
+                
                 .Inject()
                 .Init();
         }

@@ -24,6 +24,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void OnPausePageOpen()
         {
+            _sharedData.GameData.Pause = true;
             _pauseUIHandler.gameObject.SetActive(true);
             _pauseUIHandler.OnPageOpen();
         }

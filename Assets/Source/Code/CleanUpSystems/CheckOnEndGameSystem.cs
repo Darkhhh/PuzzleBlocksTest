@@ -2,10 +2,11 @@
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components;
+using Source.Code.Components.Events;
 using Source.Code.SharedData;
 using UnityEngine;
 
-namespace Source.Code.PostGameplaySystems
+namespace Source.Code.CleanUpSystems
 {
     public class CheckOnEndGameSystem : IEcsInitSystem, IEcsRunSystem
     {
@@ -18,8 +19,13 @@ namespace Source.Code.PostGameplaySystems
 
         public void Run(IEcsSystems systems)
         {
-            if (_figuresFilter.Value.GetEntitiesCount() == _notTakenFiguresFilter.Value.GetEntitiesCount())
-                Debug.Log("Game Over!");
+            if (_events.HasEventSingleton<RestartGameEvent>()) return;
+            
+            if (_figuresFilter.Value.GetEntitiesCount() == _notTakenFiguresFilter.Value.GetEntitiesCount() &&
+                _figuresFilter.Value.GetEntitiesCount() > 0)
+            {
+                _events.NewEventSingleton<GameOverEvent>();
+            }
         }
     }
 }

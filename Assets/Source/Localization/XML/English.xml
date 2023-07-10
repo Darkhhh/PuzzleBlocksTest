@@ -8,6 +8,11 @@
     <Page id="xml-game">
         <Str id="xml-score" FontSize="130">Score</Str>
     </Page>
+    <Page id="xml-endgame">
+        <Str id="xml-title" FontSize="64">Game Over</Str>
+        <Str id="xml-restart" FontSize="48">Restart</Str>
+        <Str id="xml-menu" FontSize="48">Back to menu</Str>
+    </Page>
     <Page id="xml-pause">
         <Str id="xml-pause-title" FontSize="130">Pause</Str>
         <Str id="xml-pause-continue" FontSize="95">Resume</Str>

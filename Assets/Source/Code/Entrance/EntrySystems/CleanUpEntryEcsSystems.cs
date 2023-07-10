@@ -15,6 +15,9 @@ namespace Source.Code.Entrance.EntrySystems
             Systems
                 .Add(new CleanReleasedObjectsSystem())
                 .Add(new DeletePuzzleFigureSystem(sharedData.SceneData.powerUpsHandler))
+                .Add(new RemovePowerUpsFromCellsSystem(sharedData.SceneData.powerUpsHandler))
+                .Add(new HandleEndGameSystem(sharedData.SceneData.pageManager))
+                .Add(new CheckOnEndGameSystem())
                 
                 .Add(sharedData.EventsBus.GetDestroyEventsSystem()
                     .IncSingleton<LeftMouseDownEvent>()

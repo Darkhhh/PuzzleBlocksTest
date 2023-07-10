@@ -29,6 +29,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void OpenGame()
         {
+            _sharedData.GameData.Pause = false;
             _pauseUIHandler.gameObject.SetActive(false);
             _inGameUIHandler.OnPageOpen();
         }
@@ -40,6 +41,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void RestartGame()
         {
+            _sharedData.GameData.Pause = false;
             _pauseUIHandler.gameObject.SetActive(false);
             _gameEvents.NewEventSingleton<RestartGameEvent>();
         }

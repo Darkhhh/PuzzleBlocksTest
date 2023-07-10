@@ -29,7 +29,7 @@ namespace Source.Code.PreGameplayRunSystems
                 ref var e = ref _events.NewEventSingleton<LeftMouseDownEvent>();
                 e.Position = mousePosition;
             }
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonUp(0))
             {
                 ref var e = ref _events.NewEventSingleton<RightMouseDownEvent>();
                 e.Position = mousePosition;

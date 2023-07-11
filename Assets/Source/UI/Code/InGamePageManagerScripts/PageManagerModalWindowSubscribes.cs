@@ -7,7 +7,10 @@ namespace Source.UI.Code.InGamePageManagerScripts
         private void SubscribeToModalPageEvents()
         {
             _modalUIHandler.RestartGame = RestartGameFromModalWindow;
+            _modalUIHandler.RestartGame += PlaySoundOnButtonClick;
+            
             _modalUIHandler.BackToMenu = OpenMenu;
+            _modalUIHandler.BackToMenu += PlaySoundOnButtonClick;
         }
         
         private void UnsubscribeToModalPageEvents()

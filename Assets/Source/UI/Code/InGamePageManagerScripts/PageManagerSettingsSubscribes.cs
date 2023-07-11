@@ -8,8 +8,11 @@ namespace Source.UI.Code.InGamePageManagerScripts
         private void SubscribeToSettingsPageEvents()
         {
             _settingsUIHandler.ChangeLanguage = ChangeLanguage;
+            
             _settingsUIHandler.ChangeMusicStatus = ChangeMusicStatus;
+            
             _settingsUIHandler.ReturnBack = ReturnFromSettings;
+            _settingsUIHandler.ReturnBack += PlaySoundOnButtonClick;
         }
 
         private void UnsubscribeToSettingsPageEvents()

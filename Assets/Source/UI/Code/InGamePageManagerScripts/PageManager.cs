@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Audio;
 using Source.Code.SharedData;
 using Source.Localization;
 using Source.UI.Code.Pages;
@@ -11,6 +12,8 @@ namespace Source.UI.Code.InGamePageManagerScripts
 {
     public partial class PageManager : MonoBehaviour
     {
+        [Inject] private AudioManager _audioManager;
+        
         [Inject] private InGameUIHandler _inGameUIHandler;
         [Inject] private PauseUIHandler _pauseUIHandler;
         [Inject] private SettingsUIHandler _settingsUIHandler;
@@ -75,6 +78,12 @@ namespace Source.UI.Code.InGamePageManagerScripts
         {
             _pages[pageTag].OnPageClose();
             _pages[pageTag].gameObject.SetActive(false);
+        }
+
+
+        private void PlaySoundOnButtonClick()
+        {
+            _audioManager.Play(SoundTag.ButtonClick);
         }
     }
 }

@@ -8,9 +8,16 @@ namespace Source.UI.Code.InGamePageManagerScripts
         private void SubscribeToPausePageEvents()
         {
             _pauseUIHandler.SettingsOpened = OpenSettings;
+            _pauseUIHandler.SettingsOpened += PlaySoundOnButtonClick;
+            
             _pauseUIHandler.GameOpened = OpenGame;
+            _pauseUIHandler.GameOpened += PlaySoundOnButtonClick;
+            
             _pauseUIHandler.MenuOpened = OpenMenu;
+            _pauseUIHandler.MenuOpened += PlaySoundOnButtonClick;
+            
             _pauseUIHandler.RestartClicked = RestartGame;
+            _pauseUIHandler.RestartClicked += PlaySoundOnButtonClick;
         }
         
         private void UnsubscribeToPausePageEvents()

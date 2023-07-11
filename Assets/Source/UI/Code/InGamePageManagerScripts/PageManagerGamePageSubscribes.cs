@@ -7,6 +7,8 @@ namespace Source.UI.Code.InGamePageManagerScripts
         private void SubscribeToGamePageEvents()
         {
             _inGameUIHandler.PauseOpened = OnPausePageOpen;
+            _inGameUIHandler.PauseOpened += PlaySoundOnButtonClick;
+            
             _inGameUIHandler.SwapItems = OnSwapButtonClick;
         }
         

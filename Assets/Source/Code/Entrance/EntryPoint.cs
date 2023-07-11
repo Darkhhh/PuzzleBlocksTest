@@ -1,5 +1,6 @@
 ﻿using Leopotam.EcsLite;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Audio;
 using Source.Code.Entrance.EntrySystems;
 using Source.Code.SharedData;
 using Source.Localization;
@@ -51,6 +52,7 @@ namespace Source.Code.Entrance
                 .Init();
             
             sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.Russian);
+            sceneData.audioManager.LoadAndPlay(SoundTag.BackgroundMusic);
         }
 
 

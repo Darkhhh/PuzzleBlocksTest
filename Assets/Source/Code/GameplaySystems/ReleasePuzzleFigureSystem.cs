@@ -2,6 +2,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Audio;
 using Source.Code.Components;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
@@ -22,9 +23,15 @@ namespace Source.Code.GameplaySystems
         private readonly EcsPoolInject<ShouldBeRemovedFigureComponent> _removedFiguresComponents = default;
         
         private EventsBus _events;
-        
-        
-        public void Init(IEcsSystems systems) => _events = systems.GetShared<SystemsSharedData>().EventsBus;
+        private AudioManager _audio;
+
+
+        public void Init(IEcsSystems systems)
+        {
+            var shared = systems.GetShared<SystemsSharedData>();
+            _events = shared.EventsBus;
+            _audio = shared.SceneData.audioManager;
+        }
         
         
         public void Run(IEcsSystems systems)
@@ -36,6 +43,7 @@ namespace Source.Code.GameplaySystems
                 if (_destroyableCellsFilter.Value.GetEntitiesCount() > 0 || _highlightedCellsFilter.Value.GetEntitiesCount() > 0)
                 {
                     _removedFiguresComponents.Value.Add(figureEntity);
+                    _audio.Play(SoundTag.FigureSet);
                 }
                 else
                 {

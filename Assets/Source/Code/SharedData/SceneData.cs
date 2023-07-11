@@ -1,10 +1,12 @@
-﻿using Source.Code.Mono;
+﻿using Source.Code.Common.Audio;
+using Source.Code.Mono;
 using Source.Localization;
 using Source.UI.Code;
 using Source.UI.Code.InGamePageManagerScripts;
 using Source.UI.Code.Pages;
 using UI.InGame;
 using UnityEngine;
+using Zenject;
 
 namespace Source.Code.SharedData
 {
@@ -45,5 +47,8 @@ namespace Source.Code.SharedData
 
         [Space] [Header("Page Manager")] 
         public PageManager pageManager;
+
+
+        [HideInInspector] [Inject] public AudioManager audioManager;
     }
 }

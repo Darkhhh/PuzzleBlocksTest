@@ -1,11 +1,14 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Audio;
 using Source.Code.Common.Utils;
 using Source.Code.Components;
 using Source.Code.Components.Events;
 using Source.Code.Mono;
 using Source.Code.SharedData;
+using Source.Code.Views;
 using Source.Code.Views.Cell;
 
 namespace Source.Code.PostGameplaySystems
@@ -22,8 +25,14 @@ namespace Source.Code.PostGameplaySystems
         private readonly EcsPoolInject<RemovePowerUpComponent> _clearCellPowerUpPool = default;
 
         private EventsBus _events;
+        private AudioManager _audio;
 
-        public void Init(IEcsSystems systems) => _events = systems.GetShared<SystemsSharedData>().EventsBus;
+        public void Init(IEcsSystems systems)
+        {
+            var shared = systems.GetShared<SystemsSharedData>();
+            _events = shared.EventsBus;
+            _audio = shared.SceneData.audioManager;
+        }
         
         
         public void Run(IEcsSystems systems)
@@ -46,15 +55,45 @@ namespace Source.Code.PostGameplaySystems
                 }
             }
 
+            bool crosses = false, coins = false, multipliers = false, armor = false;
             foreach (var cellEntity in _destroyableCellsFilter.Value)
             {
                 CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(cellEntity), CellStateEnum.Default);
                 
                 if (_cellPowerUpsPool.Value.Has(cellEntity))
                 {
+                    ref var powerUp = ref _cellPowerUpsPool.Value.Get(cellEntity);
+
+                    switch (powerUp.Type)
+                    {
+                        case PowerUpType.Cross:
+                            crosses = true;
+                            break;
+                        case PowerUpType.Coin:
+                            coins = true;
+                            break;
+                        case PowerUpType.ArmoredBlock:
+                            armor = true;
+                            break;
+                        case PowerUpType.MultiplierX2 or PowerUpType.MultiplierX5 or PowerUpType.MultiplierX10:
+                            multipliers = true;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+
                     _clearCellPowerUpPool.Value.Add(cellEntity);
                 }
             }
+            
+            if (crosses) _audio.Play(SoundTag.ActivatingCross);
+            if (coins)
+            {
+                _audio.Play(multipliers ? SoundTag.CollectCoinsWithMultipliers : SoundTag.CollectingCoins);
+            }
+            if (armor) _audio.Play(SoundTag.DestroyingArmorBlock);
+            if (!coins && multipliers) _audio.Play(SoundTag.CollectMultipliers);
         }
 
         

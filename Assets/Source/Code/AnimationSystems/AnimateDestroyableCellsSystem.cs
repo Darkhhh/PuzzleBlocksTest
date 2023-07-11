@@ -18,6 +18,8 @@ namespace Source.Code.AnimationSystems
         private readonly Vector3 _targetPosition;
         private readonly Vector3 _offset = new (0, -0.05f);
         private AudioManager _audio;
+        private int _animatedCells;
+        private const int AudioFrequency = 4;
 
         public AnimateDestroyableCellsSystem(DissolveBlocksHandler handler, Vector3 targetPosition)
         {
@@ -29,6 +31,7 @@ namespace Source.Code.AnimationSystems
         {
             _handler.Init(48);
             _audio = systems.GetShared<SystemsSharedData>().SceneData.audioManager;
+            _animatedCells = 0;
         }
 
         public void Run(IEcsSystems systems)
@@ -45,7 +48,9 @@ namespace Source.Code.AnimationSystems
                 
                 destroyingCell.MoveTowards(new Vector3(Random.Range(-6f, 6f), Random.Range(-6f, 6f)), () =>
                 {
-                    _audio.Play(SoundTag.DissolvingBlocks);
+                    _animatedCells++;
+                    if (_animatedCells % AudioFrequency == 0) _audio.Play(SoundTag.DissolvingBlocks);
+                    if (_animatedCells > 100) _animatedCells = 0;
                     destroyingCell.PlayEffect(() =>
                     {
                         _handler.Return(destroyingCell);

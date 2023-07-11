@@ -7,6 +7,8 @@ namespace Source.Code.Common.Audio
     public class AudioManager : MonoBehaviour
     {
         [SerializeField] private Sound[] sounds;
+        private AudioSource[] _sources;
+        private const int AdditionalSourcesNumber = 4;
 
         public bool IsLoaded { get; private set; } = false;
 
@@ -14,11 +16,16 @@ namespace Source.Code.Common.Audio
         {
             if (IsLoaded) return;
 
-            foreach (var sound in sounds)
+            _sources = new AudioSource[sounds.Length + AdditionalSourcesNumber];
+            for (int i = 0; i < _sources.Length; i++)
             {
-                sound.source = gameObject.AddComponent<AudioSource>();
-                sound.InitializeAudioSource();
+                _sources[i] = gameObject.AddComponent<AudioSource>();
             }
+            // foreach (var sound in sounds)
+            // {
+            //     sound.source = gameObject.AddComponent<AudioSource>();
+            //     sound.InitializeAudioSource();
+            // }
             
             IsLoaded = true;
         }
@@ -43,9 +50,18 @@ namespace Source.Code.Common.Audio
             {
                 if(s.tag != soundTag) continue;
 
-                if (s.source.isPlaying) return;
-                s.source.Play();
-                return;
+                foreach (var source in _sources)
+                {
+                    if (source.isPlaying) continue;
+
+                    s.source = source;
+                    s.InitializeAudioSource();
+                    s.source.Play();
+                    return;
+                }
+                // if (s.source.isPlaying) return;
+                // s.source.Play();
+                // return;
             }
         }
 

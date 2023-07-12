@@ -32,6 +32,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
         {
             _settingsUIHandler.gameObject.SetActive(true);
             _settingsUIHandler.OnPageOpen();
+            _settingsUIHandler.SetMusicValue(_audioManager.IsSoundOn);
         }
 
         private void OpenGame()

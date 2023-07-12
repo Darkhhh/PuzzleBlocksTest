@@ -8,26 +8,31 @@ namespace Source.Code.Common.Audio
     {
         [SerializeField] private Sound[] sounds;
         private AudioSource[] _sources;
+        private bool _soundOn = true;
         private const int AdditionalSourcesNumber = 4;
 
         public bool IsLoaded { get; private set; } = false;
+        public bool IsSoundOn => _soundOn;
 
-        public void Load()
+        public AudioManager Load()
         {
-            if (IsLoaded) return;
+            if (IsLoaded) return this;
 
             _sources = new AudioSource[sounds.Length + AdditionalSourcesNumber];
             for (int i = 0; i < _sources.Length; i++)
             {
                 _sources[i] = gameObject.AddComponent<AudioSource>();
             }
-            // foreach (var sound in sounds)
-            // {
-            //     sound.source = gameObject.AddComponent<AudioSource>();
-            //     sound.InitializeAudioSource();
-            // }
             
             IsLoaded = true;
+            return this;
+        }
+
+
+        public AudioManager SoundOn(bool val)
+        {
+            _soundOn = val;
+            return this;
         }
 
 
@@ -46,6 +51,8 @@ namespace Source.Code.Common.Audio
 
         public void Play(SoundTag soundTag)
         {
+            if (!_soundOn) return;
+            
             foreach (var s in sounds)
             {
                 if(s.tag != soundTag) continue;
@@ -59,21 +66,15 @@ namespace Source.Code.Common.Audio
                     s.source.Play();
                     return;
                 }
-                // if (s.source.isPlaying) return;
-                // s.source.Play();
-                // return;
             }
         }
 
 
-        public void PlayWithDelay(SoundTag soundTag, float delay)
+        public void StopAll()
         {
-            foreach (var s in sounds)
+            foreach (var audioSource in _sources)
             {
-                if(s.tag != soundTag) continue;
-                
-                s.source.PlayDelayed(delay);
-                return;
+                if (audioSource.isPlaying) audioSource.Stop();
             }
         }
 

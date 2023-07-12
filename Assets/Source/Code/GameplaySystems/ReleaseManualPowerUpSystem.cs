@@ -30,6 +30,7 @@ namespace Source.Code.GameplaySystems
                 if (_targetedCellsFilter.Value.GetEntitiesCount() > 0)
                 {
                     manualPowerUp.AvailableAmount--;
+                    manualPowerUp.View.SetAmountText(manualPowerUp.AvailableAmount);
                     _events.NewEventSingleton<ClearTargetedCellsEvent>();
                 }
                 _releasedManualPowerUpFilter.Pools.Inc2.Del(powerUpEntity);

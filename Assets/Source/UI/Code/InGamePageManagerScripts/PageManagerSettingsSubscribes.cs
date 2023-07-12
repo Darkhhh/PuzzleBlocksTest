@@ -1,5 +1,5 @@
+using Source.Code.Common.Audio;
 using Source.Localization;
-using UnityEngine;
 
 namespace Source.UI.Code.InGamePageManagerScripts
 {
@@ -25,7 +25,6 @@ namespace Source.UI.Code.InGamePageManagerScripts
         
         private void ChangeLanguage(Language newLang)
         {
-            Debug.Log($"Changing To {newLang.ToString()}");
             _localizationHandler.Load(newLang, () =>
             {
                 _inGameUIHandler.UpdateTexts();
@@ -36,8 +35,9 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void ChangeMusicStatus(bool playing)
         {
-            var val = playing ? "On" : "Off";
-            Debug.Log($"Music {val}");
+            _audioManager.SoundOn(playing);
+            if (!playing) _audioManager.StopAll();
+            else _audioManager.Play(SoundTag.BackgroundMusic);
         }
 
         private void ReturnFromSettings()

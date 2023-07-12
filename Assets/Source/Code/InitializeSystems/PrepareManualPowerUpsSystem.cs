@@ -30,6 +30,8 @@ namespace Source.Code.InitializeSystems
                 manualPowerUp.View = child.gameObject.GetComponent<ManualPowerUpView>();
                 manualPowerUp.View.Init();
                 manualPowerUp.AvailableAmount = 1;
+                manualPowerUp.View.SetAmountText(manualPowerUp.AvailableAmount);
+                manualPowerUp.View.SetActiveCanvas(false);
                 
                 ref var draggableObject = ref _draggableObjectComponents.Value.Add(entity);
                 draggableObject.View = manualPowerUp.View;

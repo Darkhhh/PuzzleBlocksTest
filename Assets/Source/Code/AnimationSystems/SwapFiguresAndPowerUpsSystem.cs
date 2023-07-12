@@ -111,6 +111,7 @@ namespace Source.Code.AnimationSystems
             foreach (var powerUpEntity in _manualPowerUpFilter.Value)
             {
                 ref var powerUp = ref _manualPowerUpFilter.Pools.Inc1.Get(powerUpEntity);
+                powerUp.View.SetActiveCanvas(false);
 
                 if (!_doNotTakeObjectPool.Value.Has(powerUpEntity)) _doNotTakeObjectPool.Value.Add(powerUpEntity);
                 
@@ -121,7 +122,12 @@ namespace Source.Code.AnimationSystems
                     ChangingSpeed,() =>
                     {
                         _movingObjects--;
-                        if (!_figuresActive) _doNotTakeObjectPool.Value.Del(powerUpEntity);
+                        if (!_figuresActive)
+                        {
+                            ref var powerUp = ref _manualPowerUpFilter.Pools.Inc1.Get(powerUpEntity);
+                            powerUp.View.SetActiveCanvas(true);
+                            _doNotTakeObjectPool.Value.Del(powerUpEntity);
+                        }
                     }));
             }
         }

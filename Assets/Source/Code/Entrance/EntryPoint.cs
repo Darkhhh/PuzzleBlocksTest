@@ -51,8 +51,9 @@ namespace Source.Code.Entrance
                 .Add(new UpdateUserInterfaceEntryEcsSystems())
                 .Init();
             
-            sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.Russian);
-            sceneData.audioManager.LoadAndPlay(SoundTag.BackgroundMusic);
+            sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.English);
+            sceneData.audioManager.Load().SoundOn(false).Play(SoundTag.BackgroundMusic);
+            //sceneData.audioManager.LoadAndPlay(SoundTag.BackgroundMusic);
         }
 
 

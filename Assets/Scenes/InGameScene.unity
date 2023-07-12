@@ -1389,7 +1389,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 28}
+  m_SizeDelta: {x: 0, y: 60}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &180639332
 GameObject:
@@ -9034,7 +9034,7 @@ GameObject:
   - component: {fileID: 1060246343}
   - component: {fileID: 1060246347}
   m_Layer: 5
-  m_Name: EngGameCanvas
+  m_Name: EndGameCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12985,10 +12985,10 @@ RectTransform:
   m_Father: {fileID: 174777426}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -15}
-  m_SizeDelta: {x: 0, y: 60}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1577451522
 MonoBehaviour:
@@ -13577,6 +13577,7 @@ MonoBehaviour:
   dissolveBlocksHandler: {fileID: 1718301570}
   localizationHandler: {fileID: 555232318}
   pageManager: {fileID: 1153289296}
+  audioManager: {fileID: 0}
 --- !u!4 &1677982197
 Transform:
   m_ObjectHideFlags: 0

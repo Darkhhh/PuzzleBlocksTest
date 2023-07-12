@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Source.Code.Common.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace Source.Code.Views.ManualPowerUp
@@ -17,6 +18,9 @@ namespace Source.Code.Views.ManualPowerUp
     {
         [SerializeField] private ManualPowerUpType type;
 
+        [SerializeField] private GameObject canvas;
+        [SerializeField] private TextMeshProUGUI amountText;
+        
         private ManualPowerUpAction _action;
         
         [HideInInspector]
@@ -51,9 +55,10 @@ namespace Source.Code.Views.ManualPowerUp
         
         public Transform GetTransform() => transform;
         
-        public void ExecuteCoroutine(IEnumerator routine)
-        {
-            StartCoroutine(routine);
-        }
+        public void ExecuteCoroutine(IEnumerator routine) => StartCoroutine(routine);
+
+        public void SetAmountText(int amount) => amountText.text = amount.ToString();
+
+        public void SetActiveCanvas(bool val) => canvas.SetActive(val);
     }
 }

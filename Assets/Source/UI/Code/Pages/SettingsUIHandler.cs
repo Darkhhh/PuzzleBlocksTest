@@ -46,10 +46,13 @@ namespace Source.UI.Code.Pages
                 dropdown.options.Add(new TMP_Dropdown.OptionData(item.ToString()));
                 if (item == currentLanguage) dropdown.value = dropdown.options.Count - 1;
             }
-
-            musicOnIcon.SetActive(true);
-            musicOffIcon.SetActive(false);
             UpdateTexts();
+        }
+
+        public void SetMusicValue(bool val)
+        {
+            musicOnIcon.SetActive(val);
+            musicOffIcon.SetActive(!val);
         }
 
         public override void OnPageClose() { }

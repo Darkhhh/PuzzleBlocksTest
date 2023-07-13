@@ -1,5 +1,6 @@
 using Source.Code.Components.Events;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Source.UI.Code.InGamePageManagerScripts
 {
@@ -44,7 +45,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void OpenMenu()
         {
-            Debug.Log("Exit To Menu");
+            SceneManager.LoadSceneAsync("MenuScene");
         }
 
         private void RestartGame()

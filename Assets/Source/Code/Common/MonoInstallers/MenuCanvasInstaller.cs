@@ -4,13 +4,13 @@ using Zenject;
 
 namespace Source.Code.Common.MonoInstallers
 {
-    public class MarketCanvasInstaller : MonoInstaller
+    public class MenuCanvasInstaller : MonoInstaller
     {
-        [SerializeField] private MarketUIHandler handler;
+        [SerializeField] private MenuUIHandler handler;
         public override void InstallBindings()
         {
             Container
-                .Bind<MarketUIHandler>()
+                .Bind<MenuUIHandler>()
                 .FromInstance(handler)
                 .AsSingle();
             Container.QueueForInject(handler);

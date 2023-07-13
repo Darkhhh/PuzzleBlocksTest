@@ -52,7 +52,7 @@ namespace Source.Code.Entrance
                 .Init();
             
             sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.English);
-            sceneData.audioManager.Load().SoundOn(false).Play(SoundTag.BackgroundMusic);
+            sceneData.audioManager.Load().SoundOn(true).Play(SoundTag.BackgroundMusic);
             //sceneData.audioManager.LoadAndPlay(SoundTag.BackgroundMusic);
         }
 

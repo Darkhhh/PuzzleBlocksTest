@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using Source.Code.Common.Utils;
+using Source.UI.Code.Menu.Pages;
+using Source.UI.Code.Menu.Pages.Market;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -74,5 +77,44 @@ namespace Source.Localization
         public bool IsLoaded() => _handle.IsValid();
 
         public Language GetCurrentLanguage() => _currentLanguage;
+        
+        
+        public void GetMarketItems(ref Dictionary<string, MarketItemInfo> strings)
+        {
+            if (_xmlData.DocumentElement != null)
+            {
+                var node = _xmlData.DocumentElement.SelectSingleNode("MarketItems");
+                if (node is null) throw new Exception($"Not available data with tag: MarketItems");
+                var elements = node.SelectNodes("MarketItem");
+                if (elements is null) return;
+
+                foreach (XmlNode e in elements)
+                {
+                    var itemTag = e!.Attributes!["id"].Value;
+                    var descriptionNode = e.SelectSingleNode("Description");
+                    if (descriptionNode is null) throw new Exception("Can not get description from item");
+                    var description = new TextInfo
+                    {
+                        Text = descriptionNode.InnerText,
+                        FontSize = Convert.ToInt32(descriptionNode.Attributes!["FontSize"].Value)
+                    };
+                    var titleNode = e.SelectSingleNode("Title");
+                    if (titleNode is null) throw new Exception("Can not get title from item");
+                    var title = new TextInfo
+                    {
+                        Text = titleNode.InnerText, FontSize = Convert.ToInt32(titleNode.Attributes!["FontSize"].Value)
+                    };
+
+                    strings.Add(itemTag, new MarketItemInfo
+                    {
+                        Description =  description, Name = title
+                    });
+                }
+            }
+            else
+            {
+                throw new Exception("XML File not available");
+            }
+        }
     }
 }

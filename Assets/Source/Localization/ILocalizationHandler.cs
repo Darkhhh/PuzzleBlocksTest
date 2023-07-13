@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Source.UI.Code.Menu.Pages.Market;
 
 namespace Source.Localization
 {
@@ -14,5 +15,7 @@ namespace Source.Localization
         public void Load(Language language, Action callbackOnCompleted = null);
 
         public Language GetCurrentLanguage();
+
+        public void GetMarketItems(ref Dictionary<string, MarketItemInfo> strings);
     }
 }

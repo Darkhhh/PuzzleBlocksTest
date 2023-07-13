@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Document id="English">
     <Page id="xml-main-menu">
-        <Str id="xml-play-button" FontSize="64">Play</Str>
-        <Str id="xml-market-button" FontSize="64">Store</Str>
-        <Str id="xml-settings-button" FontSize="56">Settings</Str>
+        <Str id="xml-play-button" FontSize="128">Play</Str>
+        <Str id="xml-market-button" FontSize="128">Store</Str>
+        <Str id="xml-settings-button" FontSize="128">Settings</Str>
     </Page>
     <Page id="xml-game">
         <Str id="xml-score" FontSize="130">Score</Str>
@@ -26,25 +26,26 @@
         <Str id="xml-settings-language" FontSize="70">Language</Str>
     </Page>
     <Page id="xml-market">
-        <Str id="xml-market-title" FontSize="30">Store</Str>
+        <Str id="xml-market-title" FontSize="200">Store</Str>
+        <Str id="xml-market-buy" FontSize="128">Buy</Str>
     </Page>
     
     <MarketItems>
         <MarketItem id="xml-market-barrel">
-            <Title FontSize="30">Barrel with gunpowder</Title>
-            <Decsription FontSize="100">Clears cells within a 1 cell radius from the activation site</Decsription>
+            <Title FontSize="130">Barrel with gunpowder</Title>
+            <Description FontSize="100">Clears cells within a 1 cell radius from the activation site</Description>
         </MarketItem>
         <MarketItem id="xml-market-barrel-3">
-            <Title FontSize="30">Triple Barrel</Title>
-            <Decsription FontSize="100">Clears cells within a 2 cell radius from the activation site</Decsription>
+            <Title FontSize="130">Triple Barrel</Title>
+            <Description FontSize="100">Clears cells within a 2 cell radius from the activation site</Description>
         </MarketItem>
         <MarketItem id="xml-market-brush">
-            <Title FontSize="30">Broomstick</Title>
-            <Decsription FontSize="100">Clears cells on a row</Decsription>
+            <Title FontSize="130">Broomstick</Title>
+            <Description FontSize="120">Clears cells on a row</Description>
         </MarketItem>
         <MarketItem id="xml-market-canonball">
-            <Title FontSize="30">Canon Ball</Title>
-            <Decsription FontSize="100">Clears one cell</Decsription>
+            <Title FontSize="130">Canon Ball</Title>
+            <Description FontSize="120">Clears one cell</Description>
         </MarketItem>
     </MarketItems>
 </Document>

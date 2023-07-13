@@ -6,15 +6,23 @@ namespace Source.Code.Common.MonoInstallers
 {
     public class AudioManagerInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject prefab;
+        //[SerializeField] private GameObject prefab;
+        
+        [SerializeField] private AudioManager handler;
         public override void InstallBindings()
         {
-            var instance = Container.InstantiatePrefabForComponent<AudioManager>(prefab);
+            // var instance = Container.InstantiatePrefabForComponent<AudioManager>(prefab);
+            // Container
+            //     .Bind<AudioManager>()
+            //     .FromInstance(instance)
+            //     .AsSingle();
+            // Container.QueueForInject(instance);
+            
             Container
                 .Bind<AudioManager>()
-                .FromInstance(instance)
+                .FromInstance(handler)
                 .AsSingle();
-            Container.QueueForInject(instance);
+            Container.QueueForInject(handler);
         }
     }
 }

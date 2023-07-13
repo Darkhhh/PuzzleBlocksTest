@@ -208,7 +208,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &52340141
 GameObject:
@@ -254,6 +254,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2116187374}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &64052262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64052264}
+  - component: {fileID: 64052263}
+  m_Layer: 0
+  m_Name: AudioManagerInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &64052263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64052262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143848dbe9812e24cab18893dd8c9bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handler: {fileID: 159592136}
+--- !u!4 &64052264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64052262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2116187374}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &65740736
 GameObject:
@@ -1105,6 +1150,74 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 150}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &159592135
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3515009995594028400, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515009995594028403, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+--- !u!114 &159592136 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3515009995594028401, guid: 5aef4ef3380949f4a978e23e4b085783, type: 3}
+  m_PrefabInstance: {fileID: 159592135}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85396b38d801f44183216580fbe89d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &180639332
 GameObject:
   m_ObjectHideFlags: 0
@@ -4462,7 +4575,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660857073
 GameObject:
@@ -4895,7 +5008,7 @@ Transform:
   m_Children:
   - {fileID: 777476936}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &688110936
 GameObject:
@@ -8036,7 +8149,7 @@ Transform:
   m_Children:
   - {fileID: 2046947509}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051435840
 GameObject:
@@ -10982,7 +11095,7 @@ Transform:
   - {fileID: 1513593653}
   - {fileID: 66948180}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497739514
 GameObject:
@@ -14717,6 +14830,7 @@ MonoBehaviour:
   - {fileID: 1943000566}
   - {fileID: 180639333}
   - {fileID: 1252909020}
+  - {fileID: 64052263}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -14751,6 +14865,7 @@ Transform:
   - {fileID: 1943000567}
   - {fileID: 180639334}
   - {fileID: 1252909021}
+  - {fileID: 64052264}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

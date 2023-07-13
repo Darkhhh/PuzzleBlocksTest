@@ -26,26 +26,27 @@
         <Str id="xml-settings-language" FontSize="40">Язык</Str>
     </Page>
     <Page id="xml-market">
-        <Str id="xml-market-title" FontSize="30">Магазин</Str>
+        <Str id="xml-market-title" FontSize="64">Магазин</Str>
+        <Str id="xml-market-buy" FontSize="48">Купить</Str>
     </Page>
     
     
     <MarketItems>
         <MarketItem id="xml-market-barrel">
-            <Title FontSize="30">Бочонок с порохом</Title>
-            <Decsription FontSize="100">Очищает клетки в радиусе 1 клетки от места активации</Decsription>
+            <Title FontSize="96">Бочонок с порохом</Title>
+            <Description FontSize="40">Очищает доску в радиусе одной клетки от места активации</Description>
         </MarketItem>
         <MarketItem id="xml-market-barrel-3">
-            <Title FontSize="30">Тройной бочонок</Title>
-            <Decsription FontSize="100">Очищает клетки в радиусе 2 клеток от места активации</Decsription>
+            <Title FontSize="96">Тройной бочонок</Title>
+            <Description FontSize="40">Очищает доску в радиусе двух клеток от места активации</Description>
         </MarketItem>
         <MarketItem id="xml-market-brush">
-            <Title FontSize="30">Метелка</Title>
-            <Decsription FontSize="100">Очищает клетки на выбранной строке</Decsription>
+            <Title FontSize="96">Метёлка</Title>
+            <Description FontSize="48">Очищает клетки на выбранной строке</Description>
         </MarketItem>
         <MarketItem id="xml-market-canonball">
-            <Title FontSize="30">Пушечное ядро</Title>
-            <Decsription FontSize="100">Очищает 1 клетку</Decsription>
+            <Title FontSize="96">Пушечное ядро</Title>
+            <Description FontSize="48">Очищает одну клетку</Description>
         </MarketItem>
     </MarketItems>
 </Document>

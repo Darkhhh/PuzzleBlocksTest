@@ -25,6 +25,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
         
         private void ChangeLanguage(Language newLang)
         {
+            _dataManager.GetData().Settings.Lang = newLang.ToString();
             _localizationHandler.Load(newLang, () =>
             {
                 _inGameUIHandler.UpdateTexts();
@@ -38,6 +39,8 @@ namespace Source.UI.Code.InGamePageManagerScripts
             _audioManager.SoundOn(playing);
             if (!playing) _audioManager.StopAll();
             else _audioManager.Play(SoundTag.BackgroundMusic);
+
+            _dataManager.GetData().Settings.MusicOn = playing;
         }
 
         private void ReturnFromSettings()

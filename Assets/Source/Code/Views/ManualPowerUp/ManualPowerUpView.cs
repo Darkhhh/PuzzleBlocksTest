@@ -20,6 +20,8 @@ namespace Source.Code.Views.ManualPowerUp
 
         [SerializeField] private GameObject canvas;
         [SerializeField] private TextMeshProUGUI amountText;
+
+        public ManualPowerUpType Type => type;
         
         private ManualPowerUpAction _action;
         

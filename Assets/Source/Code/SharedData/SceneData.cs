@@ -1,5 +1,6 @@
 ﻿using Source.Code.Common.Audio;
 using Source.Code.Mono;
+using Source.Data;
 using Source.Localization;
 using Source.UI.Code;
 using Source.UI.Code.InGamePageManagerScripts;
@@ -50,5 +51,7 @@ namespace Source.Code.SharedData
 
 
         [HideInInspector] [Inject] public AudioManager audioManager;
+        
+        [HideInInspector] [Inject] public IDataHandler DataManager;
     }
 }

@@ -1,9 +1,13 @@
-﻿using Leopotam.EcsLite;
+﻿using System;
+using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Audio;
 using Source.Code.Components;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
+using Source.Code.Views.ManualPowerUp;
+using Source.Data;
 
 namespace Source.Code.GameplaySystems
 {
@@ -13,9 +17,17 @@ namespace Source.Code.GameplaySystems
         private readonly EcsFilterInject<Inc<TargetedCellStateComponent>> _targetedCellsFilter = default;
         
         private EventsBus _events;
-        
-        
-        public void Init(IEcsSystems systems) => _events = systems.GetShared<SystemsSharedData>().EventsBus;
+        private GameData _data;
+        private AudioManager _audio;
+
+
+        public void Init(IEcsSystems systems)
+        {
+            var shared = systems.GetShared<SystemsSharedData>();
+            _events = shared.EventsBus;
+            _data = shared.SceneData.DataManager.GetData().GameData;
+            _audio = shared.SceneData.audioManager;
+        }
         
         
         public void Run(IEcsSystems systems)
@@ -30,6 +42,28 @@ namespace Source.Code.GameplaySystems
                 if (_targetedCellsFilter.Value.GetEntitiesCount() > 0)
                 {
                     manualPowerUp.AvailableAmount--;
+
+                    switch (manualPowerUp.View.Type)
+                    {
+                        case ManualPowerUpType.CanonBall:
+                            _audio.Play(SoundTag.ActivatingDynamite);
+                            _data.canonBallAmount = manualPowerUp.AvailableAmount;
+                            break;
+                        case ManualPowerUpType.Broomstick:
+                            _audio.Play(SoundTag.ActivatingBroomstick);
+                            _data.broomstickAmount = manualPowerUp.AvailableAmount;
+                            break;
+                        case ManualPowerUpType.Dynamite:
+                            _audio.Play(SoundTag.ActivatingDynamite);
+                            _data.dynamiteAmount = manualPowerUp.AvailableAmount;
+                            break;
+                        case ManualPowerUpType.LargeDynamite:
+                            _audio.Play(SoundTag.ActivatingDynamite);
+                            _data.largeDynamiteAmount = manualPowerUp.AvailableAmount;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                     manualPowerUp.View.SetAmountText(manualPowerUp.AvailableAmount);
                     _events.NewEventSingleton<ClearTargetedCellsEvent>();
                 }

@@ -1,17 +1,18 @@
+using UnityEngine.Serialization;
+
 namespace Source.Data
 {
+    [System.Serializable]
     public class GameData
     {
-        public int BestScore { get; set; }
-        
-        public int CoinsAmount { get; set; }
-        
-        public int CanonBallAmount { get; set; }
-        
-        public int DynamiteAmount { get; set; }
-        
-        public int LargeDynamiteAmount { get; set; }
-        
-        public int BroomstickAmount { get; set; }
+        public int coinsAmount;
+
+        public int canonBallAmount;
+
+        public int dynamiteAmount;
+
+        public int largeDynamiteAmount;
+
+        public int broomstickAmount;
     }
 }

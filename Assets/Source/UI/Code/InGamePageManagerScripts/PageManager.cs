@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Common.Audio;
 using Source.Code.SharedData;
+using Source.Data;
 using Source.Localization;
 using Source.UI.Code.Pages;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Source.UI.Code.InGamePageManagerScripts
     public partial class PageManager : MonoBehaviour
     {
         [Inject] private AudioManager _audioManager;
+        [Inject] private IDataHandler _dataManager;
         
         [Inject] private InGameUIHandler _inGameUIHandler;
         [Inject] private PauseUIHandler _pauseUIHandler;

@@ -21,6 +21,7 @@ namespace Source.Code.Entrance.EntrySystems
                 .Add(new PrepareCellsSystem(sceneData.grid, sceneData.handler, sceneData.targetPrefab))
                 .Add(new PrepareManualPowerUpsSystem(sceneData.manualPowerUpsStorage))
                 .Add(new PrepareGameInterfaceSystem(sceneData.uiHandler, sceneData.localizationHandler))
+                .Add(new PrepareDataSystem())
                 .Inject()
                 .Init();
         }

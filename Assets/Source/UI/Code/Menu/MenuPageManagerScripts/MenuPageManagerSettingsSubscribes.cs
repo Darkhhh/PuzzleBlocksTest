@@ -25,6 +25,8 @@ namespace Source.UI.Code.Menu.MenuPageManagerScripts
         
         private void ChangeLanguage(Language newLang)
         {
+            _dataManager.GetData().Settings.Lang = newLang.ToString();
+            
             _localizationHandler.Load(newLang, () =>
             {
                 _settingsHandler.UpdateTexts();
@@ -33,6 +35,8 @@ namespace Source.UI.Code.Menu.MenuPageManagerScripts
 
         private void ChangeMusicStatus(bool playing)
         {
+            _dataManager.GetData().Settings.MusicOn = playing;
+            
             _audioManager.SoundOn(playing);
             if (!playing) _audioManager.StopAll();
             else _audioManager.Play(SoundTag.BackgroundMusic);

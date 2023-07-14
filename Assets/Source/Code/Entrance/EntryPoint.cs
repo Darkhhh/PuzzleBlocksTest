@@ -31,6 +31,7 @@ namespace Source.Code.Entrance
 
         private void Start()
         {
+            sceneData.DataManager.Load();
             _world = new EcsWorld();
             _sharedData = new SystemsSharedData
             {
@@ -50,10 +51,10 @@ namespace Source.Code.Entrance
                 .Add(new CleanUpEntryEcsSystems())
                 .Add(new UpdateUserInterfaceEntryEcsSystems())
                 .Init();
-            
-            sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, Language.English);
-            sceneData.audioManager.Load().SoundOn(true).Play(SoundTag.BackgroundMusic);
-            //sceneData.audioManager.LoadAndPlay(SoundTag.BackgroundMusic);
+
+            var langToLoad = LocalizationExtensions.GetLanguage(sceneData.DataManager.GetData().Settings.Lang);
+            sceneData.pageManager.Init(_sharedData, sceneData.localizationHandler, langToLoad);
+            sceneData.audioManager.Load().SoundOn(sceneData.DataManager.GetData().Settings.MusicOn).Play(SoundTag.BackgroundMusic);
         }
 
 
@@ -65,6 +66,7 @@ namespace Source.Code.Entrance
         
         private void OnDestroy()
         {
+            sceneData.DataManager.Save(sceneData.DataManager.GetData());
             if (_container == null) return;
             
             _sharedData.EventsBus.Destroy();

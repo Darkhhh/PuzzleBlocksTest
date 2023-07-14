@@ -17,7 +17,8 @@ namespace Source.Code.UpdateUserInterfaceSystems
         
         public void Init(IEcsSystems systems)
         {
-            _events = systems.GetShared<SystemsSharedData>().EventsBus;
+            var shared = systems.GetShared<SystemsSharedData>();
+            _events = shared.EventsBus;
             _handler.Init();
         }
 

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  weight: 0.3
+  weight: 0.5
 --- !u!212 &-7697763407014818100
 SpriteRenderer:
   m_ObjectHideFlags: 0

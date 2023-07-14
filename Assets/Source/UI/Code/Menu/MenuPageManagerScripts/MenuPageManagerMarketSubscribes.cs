@@ -1,4 +1,5 @@
-﻿using Source.Code.Views.ManualPowerUp;
+﻿using System;
+using Source.Code.Views.ManualPowerUp;
 using UnityEngine;
 
 namespace Source.UI.Code.Menu.MenuPageManagerScripts
@@ -25,10 +26,28 @@ namespace Source.UI.Code.Menu.MenuPageManagerScripts
 
         private void BuyManualPowerUp(ManualPowerUpType type, int price)
         {
-            if (_coinsAmount - price < 0) return;
+            if (_dataManager.GetData().GameData.coinsAmount - price < 0) return;
             
-            _coinsAmount -= price;
-            _marketHandler.UpdateCoinsAmount(_coinsAmount);
+            _dataManager.GetData().GameData.coinsAmount -= price;
+            _marketHandler.UpdateCoinsAmount(_dataManager.GetData().GameData.coinsAmount);
+
+            switch (type)
+            {
+                case ManualPowerUpType.CanonBall:
+                    _dataManager.GetData().GameData.canonBallAmount++;
+                    break;
+                case ManualPowerUpType.Broomstick:
+                    _dataManager.GetData().GameData.broomstickAmount++;
+                    break;
+                case ManualPowerUpType.Dynamite:
+                    _dataManager.GetData().GameData.dynamiteAmount++;
+                    break;
+                case ManualPowerUpType.LargeDynamite:
+                    _dataManager.GetData().GameData.largeDynamiteAmount++;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
         }
 
         private void BackToMenuFromMarket()

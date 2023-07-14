@@ -41,7 +41,7 @@ namespace Source.UI.Code.Pages
         {
             dropdown.options.Clear();
             var currentLanguage = LocalizationHandler.GetCurrentLanguage();
-            foreach (var item in Enum.GetValues(typeof(Language)).Cast<Language>())
+            foreach (var item in LocalizationExtensions.GetAllLanguages())
             {
                 dropdown.options.Add(new TMP_Dropdown.OptionData(item.ToString()));
                 if (item == currentLanguage) dropdown.value = dropdown.options.Count - 1;
@@ -69,7 +69,7 @@ namespace Source.UI.Code.Pages
 
         public void OnDropdownValueChange(int val)
         {
-            var languages = Enum.GetValues(typeof(Language)).Cast<Language>().ToArray();
+            var languages = LocalizationExtensions.GetAllLanguages();
             ChangeLanguage?.Invoke(languages[val]);
         }
 

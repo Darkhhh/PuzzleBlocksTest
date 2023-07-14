@@ -3,6 +3,7 @@ using Leopotam.EcsLite;
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
 using Source.Code.SharedData;
+using Source.Data;
 
 namespace Source.Code.PostGameplaySystems
 {
@@ -10,12 +11,15 @@ namespace Source.Code.PostGameplaySystems
     {
         private EventsBus _events;
         private InGameData _gameData;
+        private GameData _data;
         
         
         public void Init(IEcsSystems systems)
         {
-            _events = systems.GetShared<SystemsSharedData>().EventsBus;
-            _gameData = systems.GetShared<SystemsSharedData>().GameData;
+            var shared = systems.GetShared<SystemsSharedData>();
+            _events = shared.EventsBus;
+            _gameData = shared.GameData;
+            _data = shared.SceneData.DataManager.GetData().GameData;
         }
 
         
@@ -38,7 +42,7 @@ namespace Source.Code.PostGameplaySystems
 
             _gameData.CurrentScore += points;
             _gameData.CoinsAmount += coins;
-            
+            _data.coinsAmount += coins;
 
             ref var updateData = ref _events.NewEventSingleton<UpdateInGameUIEvent>();
 

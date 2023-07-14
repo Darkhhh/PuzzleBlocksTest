@@ -10,6 +10,7 @@ using Source.Code.Mono;
 using Source.Code.SharedData;
 using Source.Code.Views;
 using Source.Code.Views.Cell;
+using UnityEngine;
 
 namespace Source.Code.PostGameplaySystems
 {
@@ -55,7 +56,7 @@ namespace Source.Code.PostGameplaySystems
                 }
             }
 
-            bool crosses = false, coins = false, multipliers = false, armor = false;
+            bool crosses = false, coins = false, multipliers = false;
             foreach (var cellEntity in _destroyableCellsFilter.Value)
             {
                 CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(cellEntity), CellStateEnum.Default);
@@ -71,9 +72,6 @@ namespace Source.Code.PostGameplaySystems
                             break;
                         case PowerUpType.Coin:
                             coins = true;
-                            break;
-                        case PowerUpType.ArmoredBlock:
-                            armor = true;
                             break;
                         case PowerUpType.MultiplierX2 or PowerUpType.MultiplierX5 or PowerUpType.MultiplierX10:
                             multipliers = true;
@@ -92,7 +90,6 @@ namespace Source.Code.PostGameplaySystems
             {
                 _audio.Play(multipliers ? SoundTag.CollectCoinsWithMultipliers : SoundTag.CollectingCoins);
             }
-            if (armor) _audio.Play(SoundTag.DestroyingArmorBlock);
             if (!coins && multipliers) _audio.Play(SoundTag.CollectMultipliers);
         }
 

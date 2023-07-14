@@ -1,9 +1,9 @@
 namespace Source.Data
 {
+    [System.Serializable]
     public class UserData
     {
-        public GameData GameData { get; set; }
-        
-        public SettingsData Settings { get; set; }
+        public SettingsData Settings;
+        public GameData GameData;
     }
 }

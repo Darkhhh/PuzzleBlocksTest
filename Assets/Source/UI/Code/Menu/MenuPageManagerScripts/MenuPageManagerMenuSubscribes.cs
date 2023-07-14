@@ -34,7 +34,7 @@ namespace Source.UI.Code.Menu.MenuPageManagerScripts
             _menuHandler.gameObject.SetActive(false);
             _marketHandler.gameObject.SetActive(true);
             _marketHandler.OnPageOpen();
-            _marketHandler.UpdateCoinsAmount(_coinsAmount);
+            _marketHandler.UpdateCoinsAmount(_dataManager.GetData().GameData.coinsAmount);
         }
 
         private void OnSettingsButtonClick()

@@ -17,6 +17,7 @@ namespace Source.Code.Entrance.EntrySystems
             
             Systems
                 .Add(new AnimateDestroyableCellsSystem(sharedData.SceneData.dissolveBlocksHandler, new Vector3(1.5f,5)))
+                .Add(new AnimateDestroyableArmorBlocksSystem())
                 .Add(new SwapFiguresAndPowerUpsSystem())
                 .Inject()
                 .Init();

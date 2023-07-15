@@ -18,14 +18,10 @@ namespace Source.Code.GameplaySystems.GridPowerUp
         private readonly
             EcsFilterInject<Inc<CellComponent, DestroyableCellStateComponent, CellPowerUpComponent>>_destroyablePowerUpCellsFilter = default;
 
+        private readonly EcsPoolInject<RemovePowerUpComponent> _removePowerUpPool = default;
+
         private EcsWorld _world;
-        private readonly PowerUpsHandler _handler;
         private AudioManager _audio;
-        
-        public ActivateArmorCellSystem(PowerUpsHandler handler)
-        {
-            _handler = handler;
-        }
         
         public void Run(IEcsSystems systems)
         {
@@ -39,9 +35,7 @@ namespace Source.Code.GameplaySystems.GridPowerUp
                 armoredBlocks++;
                 CellEntity.SetState(_world.PackEntityWithWorld(cellEntity), CellStateEnum.Occupied);
                 
-                // TODO Add RemovePowerUpComponent
-                _handler.ReturnPowerUp(cellPowerUp.View);
-                _destroyablePowerUpCellsFilter.Pools.Inc3.Del(cellEntity);
+                _removePowerUpPool.Value.Add(cellEntity);
             }
 
             if (armoredBlocks > 0)

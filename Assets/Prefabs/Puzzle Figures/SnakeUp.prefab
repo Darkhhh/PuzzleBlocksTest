@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 9072456146314844226}
   - component: {fileID: 9072456146314844285}
   - component: {fileID: 9072456146314844284}
-  - component: {fileID: 9072456146314844287}
   - component: {fileID: 1393839098929189636}
   m_Layer: 10
   m_Name: SnakeUp
@@ -187,7 +186,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.49274313}
+  m_Offset: {x: -0.49779114, y: 0.005047798}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,33 +197,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.9854863}
-  m_EdgeRadius: 0
---- !u!61 &9072456146314844287
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9072456146314844281}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -1.0069097, y: 0.47131944}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9571526, y: 1.9426389}
+  m_Size: {x: 2.991164, y: 2.9810681}
   m_EdgeRadius: 0
 --- !u!114 &1393839098929189636
 MonoBehaviour:

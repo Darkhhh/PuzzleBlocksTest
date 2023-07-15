@@ -43,6 +43,8 @@ namespace Source.Code.SharedData
         [Header("Effects")] 
         public DissolveBlocksHandler dissolveBlocksHandler;
 
+        public DestroyingArmorBlocksHandler destroyingArmorBlocksHandler;
+
         [Space] [Header("Localization Handler")]
         public LocalizationHandler localizationHandler;
 

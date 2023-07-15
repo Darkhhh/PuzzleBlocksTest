@@ -35,7 +35,7 @@ namespace Source.Code.Entrance.EntrySystems
                 
                 .Add(new ActivateCrossSystem())
                 .Add(new ActivateCoinSystem())
-                .Add(new ActivateArmorCellSystem(sceneData.powerUpsHandler))
+                .Add(new ActivateArmorCellSystem())
                 .Add(new ActivateMultipliersSystem())
                 
                 .Inject()

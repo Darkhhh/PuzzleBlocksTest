@@ -1,4 +1,6 @@
-﻿using Source.Code.Views;
+﻿using System.Collections.Generic;
+using Source.Code.Common.Effects;
+using Source.Code.Views;
 using UnityEngine;
 
 namespace Source.Code.Mono
@@ -11,6 +13,7 @@ namespace Source.Code.Mono
         [SerializeField] private PuzzleFigureView[] figurePrefabs;
         [SerializeField] private Transform figuresStorage;
         [SerializeField] private GameObject buildingBlock;
+        [SerializeField] private PuzzleFigureBlockScript puzzleFigureBlock;
 
         #endregion
 
@@ -40,18 +43,23 @@ namespace Source.Code.Mono
         private void ConstructFigure(PuzzleFigureView view, Transform figure)
         {
             var position = figure.position;
+            var blocks = new List<PuzzleFigureBlockScript>();
             
-            var b = Instantiate(buildingBlock, position, Quaternion.identity, figure);
+            var b = Instantiate(puzzleFigureBlock, position, Quaternion.identity, figure);
+            blocks.Add(b.Init());
             b.gameObject.SetActive(true);
             b.GetComponent<SpriteRenderer>().sortingOrder = 2;
             
             foreach (var blockPosition in view.BlocksScenePosition)
             {
-                var block = Instantiate(buildingBlock, blockPosition + position, Quaternion.identity,
+                var block = Instantiate(puzzleFigureBlock, blockPosition + position, Quaternion.identity,
                     figure.transform);
+                blocks.Add(block.Init());
                 block.gameObject.SetActive(true);
                 block.GetComponent<SpriteRenderer>().sortingOrder = 2;
             }
+            
+            view.InjectBlocks(blocks.ToArray());
         }
     }
 }

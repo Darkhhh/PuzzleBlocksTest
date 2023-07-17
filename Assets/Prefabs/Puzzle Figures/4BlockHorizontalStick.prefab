@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53ccab70efb45ad43b7647f575f6e2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnScale: 0.5
   weight: 0.76
 --- !u!1 &4697065226248062602
 GameObject:

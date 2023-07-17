@@ -12228,6 +12228,7 @@ MonoBehaviour:
   - {fileID: -1538818210262954094, guid: 0ee34c2c3ea75f14a8d3fa63a6d56e09, type: 3}
   figuresStorage: {fileID: 1827937630}
   buildingBlock: {fileID: 7343211211064409256, guid: e74a2ecd6e1cadf46b880381807b4a64, type: 3}
+  puzzleFigureBlock: {fileID: 7488619695908771048, guid: e74a2ecd6e1cadf46b880381807b4a64, type: 3}
 --- !u!4 &1827937630
 Transform:
   m_ObjectHideFlags: 0
@@ -12236,7 +12237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827937628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

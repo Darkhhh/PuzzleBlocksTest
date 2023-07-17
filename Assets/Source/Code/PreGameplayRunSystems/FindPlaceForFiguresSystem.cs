@@ -55,6 +55,7 @@ namespace Source.Code.PreGameplayRunSystems
                 
                 ref var component = ref _availablePlacesPool.Value.Add(entity);
                 ref var figure = ref _figuresPool.Value.Get(entity);
+                figure.View.SetToDefault();
                 
                 var places = 0;
 
@@ -79,6 +80,7 @@ namespace Source.Code.PreGameplayRunSystems
                 
                 _availablePlacesPool.Value.Del(entity);
                 _notTakenFiguresPool.Value.Add(entity);
+                figure.View.SetToUntouchable();
             }
             
             _events.DestroyEventSingleton<FindPlaceForFiguresEvent>();

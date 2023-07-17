@@ -54,6 +54,7 @@ namespace Source.Code.PreGameplayRunSystems
         {
             _sceneFigures = handler.GetScenePuzzleFigures();
             _spawnPoints = spawnPositions;
+            foreach (var spawnPoint in _spawnPoints) spawnPoint.gameObject.SetActive(false);
         }
         
         

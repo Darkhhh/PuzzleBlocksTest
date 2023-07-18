@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Linq;
+using Source.Code.Common.Animations;
 using Source.Code.Common.Effects;
 using Source.Code.Common.Utils;
 using UnityEngine;
@@ -10,9 +11,11 @@ namespace Source.Code.Views
     {
         #region Serialize Fields
 
-        [SerializeField] [Range(0.1f, 1f)] private float spawnScale;
+        [SerializeField] [Range(0.1f, 1f)] private float spawnScale = 0.6f;
         
         [SerializeField][Range(0.05f, 0.95f)] private float weight;
+
+        [SerializeField] private Vector3 offset;
 
         #endregion
 
@@ -31,7 +34,8 @@ namespace Source.Code.Views
 
         private Vector3 PositionCenter => gameObject.transform.position + Offset;
 
-        public Vector3 Offset { get; private set; }
+        //public Vector3 Offset { get; private set; }
+        public Vector3 Offset => offset;
 
         #endregion
 
@@ -54,7 +58,8 @@ namespace Source.Code.Views
         
         public Transform GetTransform() => transform;
 
-        public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - Offset * 0.6f;
+        //public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - Offset * 0.6f;
+        public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - Offset * SpawnScale;
 
         public Vector3Int[] GetRelativeBlockPositions() => RelativeBlocksPositions;
         
@@ -79,40 +84,6 @@ namespace Source.Code.Views
                 RelativeBlocksPositions[index] = BlocksRelativePositions[index].GetIntVector();
                 index++;
             }
-            
-            CountCenterOffset();
-        }
-        
-        private void CountCenterOffset()
-        {
-            if (_blocksPositions.Length < 1)
-            {
-                Offset = Vector3.zero;
-                return;
-            }
-            var b = _blocksPositions.ToList();
-            //b.Add(gameObject);
-            var position = gameObject.transform.position;
-            b.Add(position);
-
-            //var v = _blocks[0].transform.position - gameObject.transform.position;
-            var v = _blocksPositions[0] - position;
-            (float Min, float Max) xAxis = (v.x, v.x);
-            (float Min, float Max) yAxis = (v.y, v.y);
-            
-            //foreach (var t in b.Select(block => block.transform.position - gameObject.transform.position))
-            foreach (var t in b.Select(block => block - position))    
-            {
-                if (t.x < xAxis.Min) xAxis = (t.x, xAxis.Max);
-                if (t.x > xAxis.Min) xAxis = (xAxis.Min, t.x);
-                
-                if (t.y < yAxis.Min) yAxis = (t.y, yAxis.Max);
-                if (t.y > yAxis.Min) yAxis = (yAxis.Min, t.y);
-            }
-
-            Offset = new Vector3((xAxis.Max + xAxis.Min) / 2, (yAxis.Max + yAxis.Min) / 2);
-            
-            Debug.Log($"Figure {gameObject.name} offset is {Offset}");
         }
 
 
@@ -120,6 +91,11 @@ namespace Source.Code.Views
         public void ExecuteCoroutine(IEnumerator routine) => StartCoroutine(routine);
 
 
+        public void SetOffset(Vector3 vector)
+        {
+            offset = vector;
+        }
+        
         public void InjectBlocks(PuzzleFigureBlockScript[] blocks) => _figureBlocks = blocks;
 
 
@@ -131,6 +107,11 @@ namespace Source.Code.Views
         public void SetToUntouchable()
         {
             foreach (var item in _figureBlocks) item.SetToGrayScale();
+        }
+
+        public void ReturnBack(Vector3 initialPosition, float speed)
+        {
+            StartCoroutine(MovingCoroutines.MoveTowards(transform, initialPosition - Offset, speed));
         }
     }
 }

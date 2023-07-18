@@ -48,8 +48,8 @@ namespace Source.Code.GameplaySystems
                 else
                 {
                     ref var draggingInfo = ref _releasedFigureFilter.Pools.Inc2.Get(figureEntity);
-                    puzzleFigure.View.transform.DOMove(draggingInfo.InitialPosition - puzzleFigure.View.Offset,
-                        0.5f);
+                    //puzzleFigure.View.transform.DOMove(draggingInfo.InitialPosition - puzzleFigure.View.Offset, 0.5f);
+                    puzzleFigure.View.ReturnBack(draggingInfo.InitialPosition, 4);
 
                     ref var data = ref _events.NewEventSingleton<ChangeFigureScaleComponent>();
                     data.Entity = figureEntity;

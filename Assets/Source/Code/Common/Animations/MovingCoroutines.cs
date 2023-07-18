@@ -23,6 +23,8 @@ namespace Source.Code.Common.Animations
                 t.position = Vector3.MoveTowards(t.position, targetPosition, speed * Time.deltaTime);
                 yield return null;
             }
+
+            t.position = targetPosition;
             callback?.Invoke();
         }
     }

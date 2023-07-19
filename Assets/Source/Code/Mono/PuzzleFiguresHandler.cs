@@ -50,9 +50,12 @@ namespace Source.Code.Mono
             b.gameObject.SetActive(true);
             b.GetComponent<SpriteRenderer>().sortingOrder = 2;
             
-            foreach (var blockPosition in view.BlocksScenePosition)
+            foreach (var blockPosition in view.GetRelativeBlockPositions())
             {
-                var block = Instantiate(puzzleFigureBlock, blockPosition + position, Quaternion.identity,
+                var block = Instantiate(
+                    puzzleFigureBlock, 
+                    blockPosition + position, 
+                    Quaternion.identity, 
                     figure.transform);
                 blocks.Add(block.Init());
                 block.gameObject.SetActive(true);

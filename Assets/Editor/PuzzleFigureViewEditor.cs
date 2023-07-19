@@ -1,20 +1,23 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Source.Code.Common.Utils;
 using Source.Code.Views;
 using UnityEditor;
 using UnityEngine;
 
 namespace Editor
 {
-    [CustomEditor(typeof(PuzzleFigureView))]
+    [CustomEditor(typeof(PuzzleFigureView))] [CanEditMultipleObjects]
     public class PuzzleFigureViewEditor : UnityEditor.Editor
     {
         private const string PivotObjectName = "Pivot";
 
-        private SerializedProperty _offsetProperty;
+        private SerializedProperty _offsetProperty, _blocksProperty;
 
         private void OnEnable()
         {
             _offsetProperty = serializedObject.FindProperty("offset");
+            _blocksProperty = serializedObject.FindProperty("blocks");
         }
 
         public override void OnInspectorGUI()
@@ -24,7 +27,26 @@ namespace Editor
             
             var figure = (PuzzleFigureView)target;
             
-            GUILayout.Label("Scale Editor");
+            GUILayout.Label("Blocks Assignment");
+            GUILayout.BeginHorizontal();
+            {
+                if (GUILayout.Button("Find Child Blocks"))
+                {
+                    _blocksProperty.ClearArray();
+                    var children = figure.transform.Cast<Transform>().ToList();
+                    children.Reverse();
+                    foreach (var child in children)
+                    {
+                        _blocksProperty.InsertArrayElementAtIndex(0);
+                        var e = _blocksProperty.GetArrayElementAtIndex(0);
+                        e.vector3IntValue = child.position.GetIntVector();
+                    }
+                }
+            }
+            GUILayout.EndHorizontal();
+            
+            
+            GUILayout.Label("Scale Preview");
             GUILayout.BeginHorizontal();
             {
                 if (GUILayout.Button("Apply Scale"))
@@ -64,16 +86,6 @@ namespace Editor
                         
                         var pivotPosition = child.position;
                         _offsetProperty.vector3Value = pivotPosition;
-                        break;
-                    }
-                }
-                if (GUILayout.Button("Delete"))
-                {
-                    foreach (Transform child in figure.transform)
-                    {
-                        if (child.gameObject.name != PivotObjectName) continue;
-
-                        DestroyImmediate(child.gameObject);
                         break;
                     }
                 }

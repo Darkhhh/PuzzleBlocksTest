@@ -63,13 +63,13 @@ namespace Source.Code.GameplaySystems
             ref var figure = ref _figuresPool.Value.Get(entity);
             ref var placeData = ref _availablePlacesPool.Value.Get(entity);
 
-            var blockPositions = figure.RelativeBlockPositions;
+            var blockPositions = figure.View.GetRelativeBlockPositions();
             ref var cell = ref _cellsFilter.Pools.Inc1.Get(placeData.AnchorCellEntity);
             
             var cellPosition = cell.Position.GetIntVector();
             for (var i = 0; i < blockPositions.Length; i++)
             {
-                if (!_entityCellsByPosition.TryGetValue(cellPosition + blockPositions[i].GetIntVector(),
+                if (!_entityCellsByPosition.TryGetValue(cellPosition + blockPositions[i],
                         out var e)) continue;
                 if (!_highlightedCellsPool.Value.Has(e))
                     CellEntity.SetState(systems.GetWorld().PackEntityWithWorld(e), CellStateEnum.Suggested);

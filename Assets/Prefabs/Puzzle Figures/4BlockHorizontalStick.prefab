@@ -214,6 +214,10 @@ MonoBehaviour:
   spawnScale: 0.5
   weight: 0.76
   offset: {x: -0.5, y: 0, z: 0}
+  blocks:
+  - {x: -1, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: -2, y: 0, z: 0}
 --- !u!1 &4697065226248062602
 GameObject:
   m_ObjectHideFlags: 0

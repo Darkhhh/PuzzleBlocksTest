@@ -65,7 +65,7 @@ namespace Source.Code.PreGameplayRunSystems
                     ref var cell = ref _cellComponents.Value.Get(cellEntity);
                     
                     if (_occupiedCellsPool.Value.Has(cellEntity)) continue;
-                    if (!FigureCanBePlaced(cell.Position.GetIntVector(), figure.RelativeBlockPositions)) continue;
+                    if (!FigureCanBePlaced(cell.Position.GetIntVector(), figure.View.GetRelativeBlockPositions())) continue;
                     
 
                     places++;
@@ -87,11 +87,11 @@ namespace Source.Code.PreGameplayRunSystems
         }
         
         
-        private bool FigureCanBePlaced(Vector3Int cellPosition, Vector3[] blockPositions)
+        private bool FigureCanBePlaced(Vector3Int cellPosition, Vector3Int[] blockPositions)
         {
             for (var i = 0; i < blockPositions.Length; i++)
             {
-                if (!_entityCellsByPosition.TryGetValue(cellPosition + blockPositions[i].GetIntVector(),
+                if (!_entityCellsByPosition.TryGetValue(cellPosition + blockPositions[i],
                         out var entity)) return false;
                 if (_occupiedCellsPool.Value.Has(entity)) return false;
             }

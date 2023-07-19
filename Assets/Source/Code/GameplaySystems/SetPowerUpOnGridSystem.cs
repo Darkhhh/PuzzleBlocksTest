@@ -52,7 +52,7 @@ namespace Source.Code.GameplaySystems
                 else
                 {
                     powerUpPosition = puzzleFigure.View.transform.position.GetIntVector() + 
-                                      puzzleFigure.RelativeBlockPositions[powerUp.BlockNumber].GetIntVector();
+                                      puzzleFigure.View.GetRelativeBlockPositions()[powerUp.BlockNumber];
                 }
 
                 foreach (var cellEntity in _highlightedCellsFilter.Value)

@@ -72,15 +72,17 @@ namespace Source.Code.PreGameplayRunSystems
         {
             var blockNumber = -1;
             var blockPosition = Vector3.zero;
-            if (view.BlocksRelativePositions.Length > 0)
+            var blocksPositions = view.GetRelativeBlockPositions();
+            if (blocksPositions.Length > 0)
             {
-                blockNumber = Random.Range(0, view.BlocksRelativePositions.Length);
-                blockPosition = view.BlocksScenePosition[blockNumber];
+                blockNumber = Random.Range(0, blocksPositions.Length);
+                blockPosition = blocksPositions[blockNumber];
             }
 
             powerUp = _handler.GetPowerUp(type);
             var powerUpTransform = powerUp.transform;
             var viewTransform = view.transform;
+            
             powerUpTransform.position = blockPosition + viewTransform.position;
             powerUpTransform.parent = viewTransform;
             

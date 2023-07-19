@@ -9,8 +9,6 @@ namespace Source.Code.Components
     public struct PuzzleFigureComponent
     {
         public PuzzleFigureView View;
-
-        public Vector3[] RelativeBlockPositions => View.BlocksRelativePositions;
     }
     
     

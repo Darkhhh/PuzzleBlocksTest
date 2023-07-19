@@ -13,7 +13,6 @@ namespace Source.Code.PostGameplaySystems
         #region Scales
 
         private readonly Vector3 _defaultScale = new (1,1,1);
-        private readonly Vector3 _spawnScale = new (0.6f, 0.6f, 0.6f);
         private readonly Vector3 _draggingScale = new (0.9f, 0.9f, 0.9f);
 
         #endregion
@@ -73,7 +72,8 @@ namespace Source.Code.PostGameplaySystems
 
             var transform = figure.View.transform;
             var localScale = transform.localScale;
-            var scaleVector = _spawnScale - localScale;
+            var scale = figure.View.SpawnScale;
+            var scaleVector = new Vector3(scale, scale, scale) - localScale;
             
             localScale += scaleVector;
             transform.localScale = localScale;

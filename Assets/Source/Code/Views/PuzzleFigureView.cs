@@ -17,6 +17,8 @@ namespace Source.Code.Views
 
         [SerializeField] private Vector3 offset;
 
+        [SerializeField] private Vector3Int[] blocks;
+
         #endregion
 
 
@@ -25,25 +27,15 @@ namespace Source.Code.Views
         public float SpawnScale => spawnScale;
         
         public float Weight => weight;
-        
-        public Vector3[] BlocksRelativePositions { get; private set; }
-        
-        private Vector3Int[] RelativeBlocksPositions { get; set; }
 
-        public Vector3[] BlocksScenePosition { get; private set; }
 
-        private Vector3 PositionCenter => gameObject.transform.position + Offset;
-
-        //public Vector3 Offset { get; private set; }
-        public Vector3 Offset => offset;
+        private Vector3 PositionCenter => gameObject.transform.position + offset;
 
         #endregion
 
 
         #region Private Values
 
-        //private GameObject[] _blocks;
-        private Vector3[] _blocksPositions;
         private PuzzleFigureBlockScript[] _figureBlocks;
 
         #endregion
@@ -58,45 +50,22 @@ namespace Source.Code.Views
         
         public Transform GetTransform() => transform;
 
-        //public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - Offset * 0.6f;
-        public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - Offset * SpawnScale;
+        public void SetPositionByCenter(Vector3 position) => gameObject.transform.position = position - offset * SpawnScale;
 
-        public Vector3Int[] GetRelativeBlockPositions() => RelativeBlocksPositions;
+        public Vector3Int[] GetRelativeBlockPositions() => blocks;
         
 
         public void Init()
         {
-            var childCount = transform.childCount;
-            //_blocks = new GameObject[childCount];
-            _blocksPositions = new Vector3[childCount];
-            BlocksRelativePositions = new Vector3[childCount];
-            BlocksScenePosition = new Vector3[childCount];
-            RelativeBlocksPositions = new Vector3Int[childCount];
-            var index = 0;
-            foreach (Transform child in transform)
-            {
-                var childPosition = child.position;
-                //_blocks[index] = child.gameObject;
-                _blocksPositions[index] = child.position;
-                child.gameObject.SetActive(false);
-                BlocksScenePosition[index] = childPosition;
-                BlocksRelativePositions[index] = childPosition - gameObject.transform.position;
-                RelativeBlocksPositions[index] = BlocksRelativePositions[index].GetIntVector();
-                index++;
-            }
+            foreach (Transform child in transform) child.gameObject.SetActive(false);
         }
 
 
 
         public void ExecuteCoroutine(IEnumerator routine) => StartCoroutine(routine);
-
-
-        public void SetOffset(Vector3 vector)
-        {
-            offset = vector;
-        }
         
-        public void InjectBlocks(PuzzleFigureBlockScript[] blocks) => _figureBlocks = blocks;
+        
+        public void InjectBlocks(PuzzleFigureBlockScript[] figureBlocks) => _figureBlocks = figureBlocks;
 
 
         public void SetToDefault()
@@ -111,7 +80,7 @@ namespace Source.Code.Views
 
         public void ReturnBack(Vector3 initialPosition, float speed)
         {
-            StartCoroutine(MovingCoroutines.MoveTowards(transform, initialPosition - Offset, speed));
+            StartCoroutine(MovingCoroutines.MoveTowards(transform, initialPosition - offset, speed));
         }
     }
 }

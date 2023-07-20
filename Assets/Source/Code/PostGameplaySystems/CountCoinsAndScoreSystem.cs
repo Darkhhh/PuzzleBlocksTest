@@ -2,8 +2,11 @@
 using Leopotam.EcsLite;
 using SevenBoldPencil.EasyEvents;
 using Source.Code.Components.Events;
+using Source.Code.Mono;
 using Source.Code.SharedData;
 using Source.Data;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Source.Code.PostGameplaySystems
 {
@@ -12,6 +15,7 @@ namespace Source.Code.PostGameplaySystems
         private EventsBus _events;
         private InGameData _gameData;
         private GameData _data;
+        private ScorePopUpHandler _effectHandler;
         
         
         public void Init(IEcsSystems systems)
@@ -20,6 +24,8 @@ namespace Source.Code.PostGameplaySystems
             _events = shared.EventsBus;
             _gameData = shared.GameData;
             _data = shared.SceneData.DataManager.GetData().GameData;
+            _effectHandler = shared.SceneData.scorePopUpHandler;
+            _effectHandler.Init();
         }
 
         
@@ -39,6 +45,8 @@ namespace Source.Code.PostGameplaySystems
             }
             
             _events.DestroyEventSingleton<IntermediateResultEvent>();
+            
+            _effectHandler.PlayEffect(new Vector3(Random.Range(-4, 4), Random.Range(-4, 4)), points);
 
             _gameData.CurrentScore += points;
             _gameData.CoinsAmount += coins;

@@ -2,10 +2,8 @@
 using Source.Code.Mono;
 using Source.Data;
 using Source.Localization;
-using Source.UI.Code;
 using Source.UI.Code.InGamePageManagerScripts;
 using Source.UI.Code.Pages;
-using UI.InGame;
 using UnityEngine;
 using Zenject;
 
@@ -42,9 +40,10 @@ namespace Source.Code.SharedData
         
         [Header("Effects")] 
         public DissolveBlocksHandler dissolveBlocksHandler;
-
         public DestroyingArmorBlocksHandler destroyingArmorBlocksHandler;
+        public ScorePopUpHandler scorePopUpHandler;
 
+        
         [Space] [Header("Localization Handler")]
         public LocalizationHandler localizationHandler;
 

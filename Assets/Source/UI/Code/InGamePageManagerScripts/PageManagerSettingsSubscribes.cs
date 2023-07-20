@@ -45,6 +45,8 @@ namespace Source.UI.Code.InGamePageManagerScripts
 
         private void ReturnFromSettings()
         {
+            _inGameUIHandler.gameObject.SetActive(true);
+            _pauseUIHandler.gameObject.SetActive(true);
             _settingsUIHandler.gameObject.SetActive(false);
             _pauseUIHandler.OnPageOpen();
         }

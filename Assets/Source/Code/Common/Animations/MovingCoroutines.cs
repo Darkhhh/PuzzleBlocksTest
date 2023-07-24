@@ -27,5 +27,20 @@ namespace Source.Code.Common.Animations
             t.position = targetPosition;
             callback?.Invoke();
         }
+        
+        public static IEnumerator MoveTowardsOverTime(Transform t, Vector3 targetPosition, float time, Action callback = null)
+        {
+            var elapsedTime = 0f;
+            var initialPosition = t.position;
+            while (elapsedTime < time)
+            {
+                t.position = Vector3.Lerp(initialPosition, targetPosition, (elapsedTime / time));
+                elapsedTime += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
+            t.position = targetPosition;
+            callback?.Invoke();
+        }
     }
 }

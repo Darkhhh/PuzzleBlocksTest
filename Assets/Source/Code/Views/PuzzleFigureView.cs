@@ -78,9 +78,12 @@ namespace Source.Code.Views
             foreach (var item in _figureBlocks) item.SetToGrayScale();
         }
 
-        public void ReturnBack(Vector3 initialPosition, float speed)
+        public void ReturnBack(Vector3 initialPosition, float timeInSeconds)
         {
-            StartCoroutine(MovingCoroutines.MoveTowards(transform, initialPosition - offset, speed));
+            StartCoroutine(MovingCoroutines.MoveTowardsOverTime(
+                transform,
+                initialPosition - offset,
+                timeInSeconds));
         }
     }
 }

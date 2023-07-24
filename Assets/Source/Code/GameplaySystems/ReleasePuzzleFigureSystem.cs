@@ -2,6 +2,7 @@
 using Leopotam.EcsLite;
 using Leopotam.EcsLite.Di;
 using SevenBoldPencil.EasyEvents;
+using Source.Code.Common.Animations;
 using Source.Code.Common.Audio;
 using Source.Code.Components;
 using Source.Code.Components.Events;
@@ -48,8 +49,7 @@ namespace Source.Code.GameplaySystems
                 else
                 {
                     ref var draggingInfo = ref _releasedFigureFilter.Pools.Inc2.Get(figureEntity);
-                    //puzzleFigure.View.transform.DOMove(draggingInfo.InitialPosition - puzzleFigure.View.Offset, 0.5f);
-                    puzzleFigure.View.ReturnBack(draggingInfo.InitialPosition, 4);
+                    puzzleFigure.View.ReturnBack(draggingInfo.InitialPosition, 0.5f);
 
                     ref var data = ref _events.NewEventSingleton<ChangeFigureScaleComponent>();
                     data.Entity = figureEntity;
